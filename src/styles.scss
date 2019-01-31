@@ -1,5 +1,9 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
+body {
+  margin: 0;
+}
+
 #loginBackground {
   background-color:  #00bfb2;
   height: 100vh;
