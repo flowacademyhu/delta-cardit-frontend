@@ -2,7 +2,10 @@
   <div class="login-container">
     <div class="form-box">
       <mat-form-field>
-        <input matInput placeholder="E-mail cím">
+        <input matInput placeholder="E-mail cím" type="email" [formControl]="email" required>
+        <mat-error *ngIf="email.invalid">
+          {{getErrorMessage()}}          
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field>
