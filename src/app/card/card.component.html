@@ -1,0 +1,10 @@
+<div class='card-container'>
+  <div class='flippable-card' [ngClass]="{'flipped':flipped}" (click)='flipped = !flipped'>
+    <mat-card class='card'>
+      <mat-card-title>Kérdés</mat-card-title>
+    </mat-card>
+    <mat-card class='back'>
+        <mat-card-title>Válasz</mat-card-title>
+    </mat-card>
+  </div>
+</div>
