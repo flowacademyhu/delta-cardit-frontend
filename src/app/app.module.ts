@@ -14,7 +14,8 @@ import {MatListModule} from '@angular/material/list';
 import { NavComponent } from './nav/nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatButtonModule } from '@angular/material';
-
+import { CardComponent } from './card/card.component';
+import {MatCardModule} from '@angular/material/card';
 
 
 
@@ -23,6 +24,7 @@ import { MatButtonModule } from '@angular/material';
     AppComponent,
     LoginComponent,
     NavComponent,
+    CardComponent
   ],
   imports: [
     HttpClientModule,
@@ -37,6 +39,7 @@ import { MatButtonModule } from '@angular/material';
     AppRoutingModule,
     BrowserAnimationsModule,
     LayoutModule,
+    MatCardModule,
     MatButtonModule
   ],
   providers: [],
