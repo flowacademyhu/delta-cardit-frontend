@@ -25,7 +25,6 @@ import { MatButtonModule } from '@angular/material';
     NavComponent,
   ],
   imports: [
-    [BrowserAnimationsModule],
     HttpClientModule,
     MatListModule,
     MatToolbarModule,
