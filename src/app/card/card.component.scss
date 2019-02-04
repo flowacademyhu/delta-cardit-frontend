@@ -1,4 +1,4 @@
-.container {
+.card-button-container {
   display: flex;
   justify-content: space-evenly;
   align-items: baseline;
@@ -7,12 +7,11 @@
 .backbutton {
 }
 
-.frontbutton {
-  
+.nextbutton {
 }
 
 .card-container {
-  width: 300px;
+  width: 250px;
   height: 270px;
   position: relative;
   transform: translateX(-50%);
@@ -28,17 +27,16 @@
   height: 100%;
   position: absolute;
   transform-style: preserve-3d;
-  transition: transform 1s;
+  transition: transform 0.5s;
 }
 
 
 
 .flippable-card mat-card {
   background: aquamarine;
-  margin: 0;
   display: block;
   position: absolute;
-  width: 250px;
+  width: 200px;
   height: 222px;
   backface-visibility: hidden;
 }
@@ -47,11 +45,29 @@
 
 .flippable-card .back {
   background: crimson;
-  transform: rotateY( 180deg );
+  transform: rotateY(180deg);
 }
 
 
 
 .flippable-card.flipped {
-  transform: rotateY( 180deg );
+  transform: rotateY(180deg);
+}
+
+.buttons-container {
+  display: grid;
+  grid-template-rows: 165px 1fr;
+  grid-template-columns: 5fr 1fr 1fr 1fr 5fr;
+}
+
+.x-button {
+  align-self: end;
+}
+
+.y-button {
+  align-self: end;
+}
+
+.flip-button {
+  align-self: end;
 }
