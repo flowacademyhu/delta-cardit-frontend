@@ -4,12 +4,15 @@
       <mat-form-field>
         <input matInput placeholder="E-mail cím" type="email" [formControl]="email" required>
         <mat-error *ngIf="email.invalid">
-          {{getErrorMessage()}}          
+          {{getErrorMessageEmail()}}          
         </mat-error>
       </mat-form-field>
 
       <mat-form-field>
-        <input matInput placeholder="Jelszó" type="password">
+        <input matInput placeholder="Jelszó" type="password" [formControl]="password" required>
+        <mat-error *ngIf="password.invalid">
+          {{getErrorMessagePassword()}}
+        </mat-error>
       </mat-form-field>
 
       <button mat-raised-button class="btn">Bejelentkezés</button>
