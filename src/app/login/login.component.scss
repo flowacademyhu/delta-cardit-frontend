@@ -13,11 +13,15 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: auto;
   border-radius: 0;
 }
 
 .btn {
   background-color: #00bfb2;
   color: white;
+}
+
+.btn-position {
+  margin-top: 7%;
+  padding-left: 35%;
 }
