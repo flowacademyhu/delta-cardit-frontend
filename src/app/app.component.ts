@@ -8,6 +8,6 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'Flow Flashcard System';
 
-  private hideSidebar = false;
+  private hideNav = false;
 
 }
