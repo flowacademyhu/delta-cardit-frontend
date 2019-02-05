@@ -7,15 +7,18 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './componets/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatIconModule} from '@angular/material/icon';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatListModule} from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatListModule } from '@angular/material/list';
 import { NavComponent } from './componets/nav/nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatButtonModule } from '@angular/material';
 import { CardComponent } from './componets/card/card.component';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
+import { JwtModule } from '@auth0/angular-jwt';
+import { AuthGuard } from './services/auth.guard';
+import { AuthService } from './services/auth.service';
 
 
 
@@ -40,9 +43,21 @@ import {MatCardModule} from '@angular/material/card';
     BrowserAnimationsModule,
     LayoutModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: ['localhost:4000'],
+        blacklistedRoutes: ['localhost:4000/api/auth']
+      }
+    })
   ],
-  providers: [],
+  providers: [AuthGuard, AuthService],
   bootstrap: [AppComponent]
 })
+
+export function tokenGetter() {
+  return localStorage.getItem('access_token');
+}
+
 export class AppModule { }
