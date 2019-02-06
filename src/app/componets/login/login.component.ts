@@ -35,11 +35,11 @@ export class LoginComponent implements OnInit {
   }
 
   public submit() {
+    console.log(this.userEmail, this.userPassword);
     this.auth.login(this.userEmail, this.userPassword)
-      .pipe(first())
       .subscribe(
         result => {
-          localStorage.setItem('token', result);
+         // localStorage.setItem('token', result);
           this.router.navigate(['index']);
         },
         err => this.error = 'Could not authenticate'
