@@ -11,7 +11,9 @@ constructor(private router: Router) {}
 
 canActivate(
     next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    return true;
+    state: RouterStateSnapshot) {
+    if (localStorage.getItem('access_token')) {
+      return true;
+    }
   }
 }
