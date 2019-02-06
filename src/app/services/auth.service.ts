@@ -11,12 +11,12 @@ export class AuthService {
 
   constructor(private httpClient: HttpClient) { }
 
-/*  login(email: string, password: string) {
+  login(email: string, password: string) {
     return this.httpClient.post<{token:  string}>('http://localhost:8000/users/login', {email, password}).pipe(tap(res => {
     localStorage.setItem('access_token', res.token);
 }));
-} */
-  login(username: string, password: string): Observable<string> {
+}
+ /* login(username: string, password: string): Observable<string> {
     return this.httpClient.post<{token: string}>('http://localhost:8000/users/login', {username: username, password: password})
       .pipe(
         map(result => {
@@ -24,7 +24,7 @@ export class AuthService {
           return result.token;
         })
       );
-  }
+  } */
 
   logout() {
     localStorage.removeItem('access_token');
