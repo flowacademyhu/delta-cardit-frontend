@@ -19,6 +19,7 @@ import { MatCardModule } from '@angular/material/card';
 import { JwtModule } from '@auth0/angular-jwt';
 import { AuthGuard } from './services/auth.guard';
 import { AuthService } from './services/auth.service';
+import { CardListComponent } from './componets/card-list/card-list.component';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -29,7 +30,8 @@ export function tokenGetter() {
     AppComponent,
     LoginComponent,
     NavComponent,
-    CardComponent
+    CardComponent,
+    CardListComponent
   ],
   imports: [
     HttpClientModule,
