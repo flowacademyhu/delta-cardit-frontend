@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'Flow Flashcard System';
 
+  public hideSidebar = true;
+
   constructor(private auth: AuthService, private router: Router) { }
 
   logout() {
