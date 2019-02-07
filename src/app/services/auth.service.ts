@@ -11,13 +11,7 @@ export class AuthService {
 
   constructor(private httpClient: HttpClient) { }
 
-  login(email: string, passwordHash: string) {
-    return this.httpClient.post<any>('http://localhost:8000/users/login', {email, passwordHash}).pipe(map(res => {
-    localStorage.setItem('access_token', res.token);
-}));
-  }
-
-  /*login(email: string, password: string): Observable<string> {
+  login(email: string, password: string): Observable<string> {
     console.log(email, password);
     return this.httpClient.post<{token: string}>('http://localhost:8000/users/login', {email: email, passwordHash: password})
       .pipe(
@@ -27,7 +21,7 @@ export class AuthService {
           return result.token;
         })
       );
-  } */
+  }
 
   logout() {
     localStorage.removeItem('access_token');
