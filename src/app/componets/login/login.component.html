@@ -3,20 +3,20 @@
   <div class="login-container">
     <div class="form-box">
       <mat-form-field>
-        <input matInput placeholder="E-mail cím" type="email" [formControl]="email" required>
+        <input [(ngModel)]="userEmail" matInput placeholder="E-mail cím" type="email" [formControl]="email" required>
         <mat-error *ngIf="email.invalid">
           {{getErrorMessageEmail()}}          
         </mat-error>
       </mat-form-field>
 
       <mat-form-field>
-        <input matInput placeholder="Jelszó" type="password" [formControl]="password" required>
+        <input [(ngModel)]="userPassword" matInput placeholder="Jelszó" type="password" [formControl]="password" required>
         <mat-error *ngIf="password.invalid">
           {{getErrorMessagePassword()}}
         </mat-error>
       </mat-form-field>
       <div class="btn-position">
-      <button mat-raised-button class="btn" routerLink="/index">Bejelentkezés</button>
+      <button mat-raised-button class="btn" (click)="submit()">Bejelentkezés</button>
       </div>
     </div>
   </div>
