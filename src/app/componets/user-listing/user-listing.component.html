@@ -1,0 +1,10 @@
+<app-nav></app-nav>
+<mat-list class="listposition">
+  <h3 mat-subheader>Felhasználók</h3>
+  <mat-list-item *ngFor="let user of users">
+    <mat-icon mat-list-icon>user</mat-icon>
+    <h4 mat-line>{{user.firstName}}</h4>
+    <h4 mat-line>{{user.email}}</h4>
+    <button mat-raised-button class="btn">Szerkesztés</button>
+    <button mat-raised-button class="btn">Törlés</button>
+  </mat-list-item>
