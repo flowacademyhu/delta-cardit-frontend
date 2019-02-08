@@ -19,6 +19,10 @@ import { MatCardModule } from '@angular/material/card';
 import { JwtModule } from '@auth0/angular-jwt';
 import { AuthGuard } from './services/auth.guard';
 import { AuthService } from './services/auth.service';
+import { UserListingComponent } from './componets/user-listing/user-listing.component';
+import { UsersService } from './services/users.service';
+import { UsersComponent } from './componets/users/users.component';
+
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -29,7 +33,9 @@ export function tokenGetter() {
     AppComponent,
     LoginComponent,
     NavComponent,
-    CardComponent
+    CardComponent,
+    UserListingComponent,
+    UsersComponent
   ],
   imports: [
     HttpClientModule,
@@ -54,7 +60,7 @@ export function tokenGetter() {
       }
     })
   ],
-  providers: [AuthGuard, AuthService],
+  providers: [AuthGuard, AuthService, UsersService],
   bootstrap: [AppComponent]
 })
 
