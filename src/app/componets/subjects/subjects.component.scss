@@ -1,4 +1,8 @@
 
+.subject-list-container {
+  padding-top: 50px;
+}
+
 .subject-container {
   display: flex;
   flex-direction: row;
@@ -7,8 +11,20 @@
 }
 
 .card {
-  height: 245px;
-  width: 200px;
+/*   max-height: 200px;
+ */  max-width: 200px;
+}
+
+
+
+mat-card img{
+  object-fit: cover;
+  width: 100%;
+  height: 80%;
+  object-fit: contain;
+}
+.card-img {
+  align-items: center;
 }
 
 .vl {
