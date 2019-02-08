@@ -1,0 +1,21 @@
+
+.subject-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  height: 245px;
+  width: 200px;
+}
+
+.vl {
+  border-left: 1px solid grey;
+  height: 220px;
+}
+
+.space {
+  width: 20px;
+}
