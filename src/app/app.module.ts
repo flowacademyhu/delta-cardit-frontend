@@ -20,6 +20,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { AuthGuard } from './services/auth.guard';
 import { AuthService } from './services/auth.service';
 import { CardListComponent } from './componets/card-list/card-list.component';
+import { SubjectsComponent } from './componets/subjects/subjects.component';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -31,7 +32,8 @@ export function tokenGetter() {
     LoginComponent,
     NavComponent,
     CardComponent,
-    CardListComponent
+    CardListComponent,
+    SubjectsComponent
   ],
   imports: [
     HttpClientModule,
