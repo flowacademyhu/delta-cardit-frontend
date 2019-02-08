@@ -13,9 +13,10 @@ export class AuthService {
 
   login(email: string, password: string): Observable<string> {
     console.log(email, password);
-    return this.httpClient.post<{token: string}>('http://localhost:8000/users/login', {email: email, passwordHash: password})
+    return this.httpClient.post<{token: string}>('http://localhost:8000/users/login', {email: email, password: password})
       .pipe(
         map(result => {
+          console.log(result);
           localStorage.setItem('access_token', result.token);
           console.log(result.token);
           return result.token;

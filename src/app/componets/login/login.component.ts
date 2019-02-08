@@ -39,6 +39,7 @@ export class LoginComponent implements OnInit {
     this.auth.login(this.userEmail, this.userPassword)
       .subscribe(
         result => {
+          alert('Sikeres bejelentkezés!');
           this.router.navigate(['index']);
         },
         err => this.error = 'Could not authenticate'
