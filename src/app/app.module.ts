@@ -24,6 +24,9 @@ import { SubjectsComponent } from './componets/subjects/subjects.component';
 import { UserListingComponent } from './componets/user-listing/user-listing.component';
 import { UsersService } from './services/users.service';
 import { UsersComponent } from './componets/users/users.component';
+import { EditCardComponent } from './componets/edit-card/edit-card.component';
+import {MatDialogModule} from '@angular/material/dialog';
+
 
 
 export function tokenGetter() {
@@ -39,10 +42,12 @@ export function tokenGetter() {
     CardListComponent,
     SubjectsComponent,
     UserListingComponent,
-    UsersComponent
+    UsersComponent,
+    EditCardComponent
   ],
   imports: [
     HttpClientModule,
+    MatDialogModule,
     MatListModule,
     MatToolbarModule,
     MatIconModule,
@@ -63,6 +68,9 @@ export function tokenGetter() {
         blacklistedRoutes: ['localhost:8000/users/login']
       }
     })
+  ],
+  entryComponents: [
+    EditCardComponent
   ],
   providers: [AuthGuard, AuthService, UsersService],
   bootstrap: [AppComponent]

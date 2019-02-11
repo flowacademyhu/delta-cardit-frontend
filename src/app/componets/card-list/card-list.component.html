@@ -1,5 +1,5 @@
 <app-nav></app-nav>
-<button mat-icon-button id="fab" title="Új" routerLink="/userlist"><mat-icon aria-label= "Új">add</mat-icon></button>
+<button mat-icon-button id="fab" title="Új" routerLink="/userlist"><mat-icon aria-label= "Új" (click)="openDialog()">add</mat-icon></button>
 
 <div class="card-list-container" *ngFor="let card of cards">
   <div class="two-card-container">
@@ -31,7 +31,7 @@
   
   <div class="actions">
       <div></div>
-    <button mat-stroked-button color="primary" class="btn">Edit</button>
+    <button mat-stroked-button color="primary" class="btn" (click)="openDialog()">Edit</button>
     <div></div>
     <button mat-stroked-button color="warn" class="btn">Delete</button>
   </div>

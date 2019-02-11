@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { CardModel } from 'src/app/models/card.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,22 @@ export class CardsService {
 
   getAllCards(): Observable<any> {
     return this.httpClient.get('http://localhost:8000/cards');
+  }
+
+  getOne(id: number) {
+    return this.httpClient.get('http://localhost:3000/cards/' + id);
+  }
+
+  save(card: CardModel): Observable<any> {
+    return this.httpClient.post('http://localhost:3000/tasks', card);
+  }
+
+  edit(card: CardModel): Observable<any> {
+    return this.httpClient.put('http://localhost:3000/cards/' + card.id, card);
+  }
+
+  delete(card: CardModel) {
+    return this.httpClient.delete('http://localhost:3000/cards/' + card.id);
   }
 }
 
