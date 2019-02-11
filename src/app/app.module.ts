@@ -21,9 +21,10 @@ import { AuthGuard } from './services/auth.guard';
 import { AuthService } from './services/auth.service';
 import { CardListComponent } from './componets/card-list/card-list.component';
 import { SubjectsComponent } from './componets/subjects/subjects.component';
-import { UserListingComponent } from './componets/user-listing/user-listing.component';
 import { UsersService } from './services/users.service';
 import { UsersComponent } from './componets/users/users.component';
+import { GroupsComponent } from './componets/groups/groups.component';
+import { GroupListingComponent } from './componets/group-listing/group-listing.component';
 
 
 export function tokenGetter() {
@@ -38,8 +39,9 @@ export function tokenGetter() {
     CardComponent,
     CardListComponent,
     SubjectsComponent,
-    UserListingComponent,
-    UsersComponent
+    UsersComponent,
+    GroupsComponent,
+    GroupListingComponent
   ],
   imports: [
     HttpClientModule,
