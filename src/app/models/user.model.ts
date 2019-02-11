@@ -5,7 +5,8 @@ export class UserModel {
       public lastName?: string,
       public role?:  string,
       public email?: string,
-      public passwordHash?: string,
+      public password?: string,
+      public GroupId?: number,
       public lastLogin?: number
   ) {
   }
