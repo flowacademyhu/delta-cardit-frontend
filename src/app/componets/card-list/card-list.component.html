@@ -1,13 +1,14 @@
 <app-nav></app-nav>
-<div class="card-list-container">
+<a md-fab id="fab">
+  <md-icon>add</md-icon>
+</a>
+<div class="card-list-container" *ngFor="let card of cards">
   <div class="two-card-container">
     <mat-card class="card">
       <mat-card-title>Kérdés</mat-card-title>
       <mat-card-content>
         <p>
-          The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-          A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-          bred for hunting.
+          {{card.question}}
         </p>
       </mat-card-content>
     </mat-card>
@@ -18,9 +19,7 @@
       <mat-card-title>Válasz</mat-card-title>
       <mat-card-content>
         <p>
-          The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-          A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-          bred for hunting.
+          {{card.answer}}
         </p>
       </mat-card-content>
       <!-- <mat-card-actions>
@@ -28,5 +27,7 @@
         <button mat-button>Nem tudtam</button>
       </mat-card-actions> -->
     </mat-card>
+    <button>Szerkesztés</button>
+    <button>Törlés</button>
   </div>
 </div>

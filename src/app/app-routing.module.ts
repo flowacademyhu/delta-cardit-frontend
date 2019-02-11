@@ -11,7 +11,7 @@ import { UserListingComponent } from './componets/user-listing/user-listing.comp
 const routes: Routes = [
   { path: '', component: LoginComponent},
   { path: 'index', component: NavComponent, canActivate: [AuthGuard]},
-  { path: 'flashcard', component: CardComponent},
+  { path: 'flashcard', component: CardComponent, canActivate: [AuthGuard]},
   { path: 'learningcard', component: CardListComponent},
   { path: 'subjects', component: SubjectsComponent},
   { path: 'userlist', component: UserListingComponent}
