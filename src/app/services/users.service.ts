@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { UserModel } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,20 @@ export class UsersService {
     return this.httpClient.get('http://localhost:8000/users');
   }
 
-  getAllGroups(): Observable<any> {
-    return this.httpClient.get('http://localhost:8000/groups');
+  getOneUser(id: number): Observable<any> {
+    return this.httpClient.get('http://localhost:8000/users' + id);
   }
+
+  newUser(user: UserModel): Observable<any> {
+    return this.httpClient.post('http://localhost:8000/users', user);
+  }
+
+  editUser(user: UserModel): Observable<any> {
+    return this.httpClient.put('http://localhost:4005/users/' + user.id, user);
+  }
+
+  deleteUser(id: number) {
+    return this.httpClient.delete('http://localhost:4005/users/' + id);
+  }
+
 }
