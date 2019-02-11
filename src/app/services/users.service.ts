@@ -23,11 +23,11 @@ export class UsersService {
   }
 
   editUser(user: UserModel): Observable<any> {
-    return this.httpClient.put('http://localhost:4005/users/' + user.id, user);
+    return this.httpClient.put('http://localhost:8000/users/' + user.id, user);
   }
 
   deleteUser(id: number) {
-    return this.httpClient.delete('http://localhost:4005/users/' + id);
+    return this.httpClient.delete('http://localhost:8000/users/' + id);
   }
 
 }

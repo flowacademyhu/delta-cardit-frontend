@@ -25,6 +25,7 @@ import { UsersService } from './services/users.service';
 import { UsersComponent } from './componets/users/users.component';
 import { GroupsComponent } from './componets/groups/groups.component';
 import { UserDialogComponent } from './componets/user-dialog/user-dialog.component';
+import { UsersListingComponent } from './componets/users/users-listing/users-listing.component';
 
 
 export function tokenGetter() {
@@ -41,7 +42,8 @@ export function tokenGetter() {
     SubjectsComponent,
     UsersComponent,
     GroupsComponent,
-    UserDialogComponent
+    UserDialogComponent,
+    UsersListingComponent
   ],
   imports: [
     HttpClientModule,

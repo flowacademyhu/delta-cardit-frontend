@@ -8,6 +8,7 @@ import { CardListComponent } from './componets/card-list/card-list.component';
 import { SubjectsComponent } from './componets/subjects/subjects.component';
 import { UsersComponent } from './componets/users/users.component';
 import { GroupsComponent } from './componets/groups/groups.component';
+import { UsersListingComponent } from './componets/users/users-listing/users-listing.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent},
@@ -15,7 +16,7 @@ const routes: Routes = [
   { path: 'flashcard', component: CardComponent},
   { path: 'learningcard', component: CardListComponent},
   { path: 'subjects', component: SubjectsComponent},
-  { path: 'users', component: UsersComponent},
+  { path: 'users', component: UsersListingComponent},
   { path: 'groups', component: GroupsComponent}
 ];
 
