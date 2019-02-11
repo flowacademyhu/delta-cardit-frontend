@@ -6,8 +6,8 @@ import { CardComponent } from './componets/card/card.component';
 import { AuthGuard } from './services/auth.guard';
 import { CardListComponent } from './componets/card-list/card-list.component';
 import { SubjectsComponent } from './componets/subjects/subjects.component';
-import { UserListingComponent } from './componets/user-listing/user-listing.component';
 import { UsersComponent } from './componets/users/users.component';
+import { GroupsComponent } from './componets/groups/groups.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent},
@@ -15,7 +15,8 @@ const routes: Routes = [
   { path: 'flashcard', component: CardComponent},
   { path: 'learningcard', component: CardListComponent},
   { path: 'subjects', component: SubjectsComponent},
-  { path: 'users', component: UsersComponent}
+  { path: 'users', component: UsersComponent},
+  { path: 'groups', component: GroupsComponent}
 ];
 
 @NgModule({
