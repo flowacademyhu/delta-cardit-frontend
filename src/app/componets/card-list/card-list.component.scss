@@ -30,4 +30,15 @@
   bottom: 10px !important;
   left: auto !important;
   position: fixed !important;
+  background-color: aquamarine;
+}
+
+.actions {
+  display: grid;
+  grid-template-rows: 165px 1fr;
+  grid-template-columns: 4fr 2fr 1fr 2fr 4fr;
+}
+
+.btn {
+  align-self: center;
 }

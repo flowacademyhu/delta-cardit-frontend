@@ -1,7 +1,6 @@
 <app-nav></app-nav>
-<a md-fab id="fab">
-  <md-icon>add</md-icon>
-</a>
+<button mat-icon-button id="fab" title="Új" routerLink="/userlist"><mat-icon aria-label= "Új">add</mat-icon></button>
+
 <div class="card-list-container" *ngFor="let card of cards">
   <div class="two-card-container">
     <mat-card class="card">
@@ -27,7 +26,13 @@
         <button mat-button>Nem tudtam</button>
       </mat-card-actions> -->
     </mat-card>
-    <button>Szerkesztés</button>
-    <button>Törlés</button>
+    
+  </div>
+  
+  <div class="actions">
+      <div></div>
+    <button mat-stroked-button color="primary" class="btn">Edit</button>
+    <div></div>
+    <button mat-stroked-button color="warn" class="btn">Delete</button>
   </div>
 </div>
