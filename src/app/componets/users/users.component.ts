@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { UserModel } from 'src/app/models/user.model';
-import { GroupModel } from 'src/app/models/group.model';
 import { UsersService } from 'src/app/services/users.service';
+import { MatDialog } from '@angular/material';
+import { UserDialogComponent } from '../user-dialog/user-dialog.component';
 
 @Component({
   selector: 'app-users',
@@ -12,14 +13,22 @@ export class UsersComponent implements OnInit {
 
   public users: UserModel[] = [];
 
- // @Input() user: UserModel;
- // @Input() group: GroupModel;
+  public newUser: UserModel;
 
-  constructor(private usersService: UsersService) { }
+  constructor(private usersService: UsersService, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.usersService.getAllUsers().subscribe(users => {
       this.users = users;
+    });
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(UserDialogComponent, {
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
     });
   }
 

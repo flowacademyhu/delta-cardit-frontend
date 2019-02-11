@@ -13,7 +13,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { NavComponent } from './componets/nav/nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatButtonModule } from '@angular/material';
+import { MatButtonModule, MatDialogModule } from '@angular/material';
 import { CardComponent } from './componets/card/card.component';
 import { MatCardModule } from '@angular/material/card';
 import { JwtModule } from '@auth0/angular-jwt';
@@ -24,7 +24,7 @@ import { SubjectsComponent } from './componets/subjects/subjects.component';
 import { UsersService } from './services/users.service';
 import { UsersComponent } from './componets/users/users.component';
 import { GroupsComponent } from './componets/groups/groups.component';
-import { GroupListingComponent } from './componets/group-listing/group-listing.component';
+import { UserDialogComponent } from './componets/user-dialog/user-dialog.component';
 
 
 export function tokenGetter() {
@@ -41,7 +41,7 @@ export function tokenGetter() {
     SubjectsComponent,
     UsersComponent,
     GroupsComponent,
-    GroupListingComponent
+    UserDialogComponent
   ],
   imports: [
     HttpClientModule,
@@ -64,7 +64,11 @@ export function tokenGetter() {
         whitelistedDomains: ['localhost:8000'],
         blacklistedRoutes: ['localhost:8000/users/login']
       }
-    })
+    }),
+    MatDialogModule
+  ],
+  entryComponents: [
+    UserDialogComponent
   ],
   providers: [AuthGuard, AuthService, UsersService],
   bootstrap: [AppComponent]
