@@ -2,7 +2,6 @@
 <mat-list class="listposition">
   <h3 mat-subheader>Felhasználók</h3>
   <mat-list-item *ngFor="let user of users">
-    <mat-icon mat-list-icon>user</mat-icon>
     <app-users [userModel]="user"></app-users>
   </mat-list-item>
   <button mat-raised-button class="new-btn" (click)="openDialog()">Új felhasználó</button>

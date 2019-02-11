@@ -1,3 +1,10 @@
-<a>{{userModel.lastName}}</a>
-<button mat-raised-button class="btn">Szerkesztés</button>
-<button mat-raised-button class="btn" (click)="deleteUser()" (userDeleted)="handleUserDeleted($event)">Törlés</button>
+<div class="direction">
+  <div>
+    <a>{{userModel.lastName}}</a>
+    <a class="space">{{userModel.firstName}}</a>
+  </div>
+  <div class="btn-driection">
+    <button mat-raised-button class="btn">Szerkesztés</button>
+    <button mat-raised-button class="btn" (click)="deleteUser()" (userDeleted)="handleUserDeleted($event)">Törlés</button>
+  </div>
+</div>
