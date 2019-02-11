@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { DecksService } from 'src/app/services/decks.service';
+import { DeckModel } from 'src/app/models/deck.model';
 @Component({
   selector: 'app-subjects',
   templateUrl: './subjects.component.html',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SubjectsComponent implements OnInit {
 
-  constructor() { }
+  public decks: DeckModel[] = [];
+
+  constructor(private decksService: DecksService) { }
 
   ngOnInit() {
+    this.decksService.getAllCards().subscribe(decks => {
+      this.decks = decks;
+    });
   }
-
 }
