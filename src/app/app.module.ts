@@ -24,10 +24,10 @@ import { SubjectsComponent } from './componets/subjects/subjects.component';
 import { UsersService } from './services/users.service';
 import { UsersComponent } from './componets/users/users.component';
 import { GroupsComponent } from './componets/groups/groups.component';
-import { UserDialogComponent } from './componets/user-dialog/user-dialog.component';
+import { UserDialogComponent } from './componets/users/user-dialog/user-dialog.component';
 import { UsersListingComponent } from './componets/users/users-listing/users-listing.component';
 import { GroupListingComponent } from './componets/groups/group-listing/group-listing.component';
-import { GroupDialogComponent } from './componets/group-dialog/group-dialog.component';
+import { GroupDialogComponent } from './componets/groups/group-dialog/group-dialog.component';
 
 
 export function tokenGetter() {

@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { UserModel } from 'src/app/models/user.model';
 import { UsersService } from 'src/app/services/users.service';
 import { MatDialog } from '@angular/material';
-import { UserDialogComponent } from '../user-dialog/user-dialog.component';
+import { UserDialogComponent } from 'src/app/componets/users/user-dialog/user-dialog.component';
 
 @Component({
   selector: 'app-users',
@@ -15,9 +15,17 @@ export class UsersComponent implements OnInit {
 
   @Output() userDeleted = new EventEmitter<UserModel>();
 
-  constructor(private usersService: UsersService) { }
+  private userName: string;
+
+  constructor(private usersService: UsersService, private dialog: MatDialog) { }
 
   ngOnInit() {
+    this.userName = this.userModel.lastName + ' ' + this.userModel.firstName;
+  }
+
+  openEditDialog(): void {
+    const dialogRef = this.dialog.open(UserDialogComponent, {
+    });
   }
 
   deleteUser() {
