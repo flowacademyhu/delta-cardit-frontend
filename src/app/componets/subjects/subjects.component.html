@@ -1,29 +1,36 @@
 <app-nav></app-nav>
 
-<button mat-icon-button id="fab" title="Új" routerLink="/userlist"><mat-icon aria-label= "Új" (click)="openDialog()">add</mat-icon></button>
+<button mat-icon-button id="fab" title="Új" routerLink="/userlist">
+  <mat-icon aria-label="Új" (click)="openDialog()">add</mat-icon>
+</button>
 
-<div class="subject-list-container">
-<div class="subject-container" *ngFor="let deck of decks">
-  <mat-card class="card">
-    <mat-card-title>{{deck.subject}}</mat-card-title>
-    <br>
-    <img class="card-img" mat-card-image src="https://sdtimes.com/wp-content/uploads/2018/03/jW4dnFtA_400x400.jpg" alt="Java">
+<div class="subject-list-container" *ngFor="let deck of decks">
+  <div class="subject-container">
+    <mat-card class="card">
+      <mat-card-title>{{deck.subject}}</mat-card-title>
+      <br>
+      <img class="card-img" mat-card-image src="https://sdtimes.com/wp-content/uploads/2018/03/jW4dnFtA_400x400.jpg"
+        alt="Java">
 
-    <mat-card-actions>
-      <button mat-button routerLink="/flashcard">Megnyitás</button>
-    </mat-card-actions>
-  </mat-card>
+      <mat-card-actions>
+        <button mat-button routerLink="/flashcard">Megnyitás</button>
+      </mat-card-actions>
+    </mat-card>
+
+
+
+    <!-- <div class="space"></div>
+    <div class="vl"></div>
+    <div class="space"></div> -->
+
+    
+
+  </div>
 
   <div class="actions">
     <div></div>
-  <button mat-stroked-button color="primary" class="btn" (click)="openDialog()">Edit</button>
-  <div></div>
-  <button mat-stroked-button color="warn" class="btn" (click) = "destroy(deck.id)">Delete</button>
-</div>
-
-  <div class="space"></div>
-  <div class="vl"></div>
-  <div class="space"></div>
-
-</div>
+    <button mat-stroked-button color="primary" class="btn" (click)="openDialog()">Edit</button>
+    <div></div>
+    <button mat-stroked-button color="warn" class="btn" (click)="destroy(deck.id)">Delete</button>
+  </div>
 </div>
