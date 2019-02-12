@@ -2,7 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { UserModel } from 'src/app/models/user.model';
 import { UsersService } from 'src/app/services/users.service';
 import { MatDialog } from '@angular/material';
-import { UserDialogComponent } from 'src/app/components/users/user-dialog/user-dialog.component';
+import { UserEditDialogComponent } from './user-edit-dialog/user-edit-dialog.component';
+import { userInfo } from 'os';
 
 @Component({
   selector: 'app-users',
@@ -24,7 +25,7 @@ export class UsersComponent implements OnInit {
   }
 
   openEditDialog(): void {
-    const dialogRef = this.dialog.open(UserDialogComponent, {
+    const dialogRef = this.dialog.open(UserEditDialogComponent, {
     });
   }
 

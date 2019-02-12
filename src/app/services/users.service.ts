@@ -15,7 +15,7 @@ export class UsersService {
   }
 
   getOneUser(id: number): Observable<any> {
-    return this.httpClient.get('http://localhost:8000/users' + id);
+    return this.httpClient.get('http://localhost:8000/users/' + id);
   }
 
   newUser(user: UserModel): Observable<any> {
