@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { UserDialogComponent } from '../../user-dialog/user-dialog.component';
+import { UserDialogComponent } from 'src/app/components/users/user-dialog/user-dialog.component';
 import { UserModel } from 'src/app/models/user.model';
 import { UsersService } from 'src/app/services/users.service';
 

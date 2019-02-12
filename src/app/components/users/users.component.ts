@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { UserModel } from 'src/app/models/user.model';
 import { UsersService } from 'src/app/services/users.service';
 import { MatDialog } from '@angular/material';
-import { UserDialogComponent } from 'src/app/componets/users/user-dialog/user-dialog.component';
+import { UserDialogComponent } from 'src/app/components/users/user-dialog/user-dialog.component';
 
 @Component({
   selector: 'app-users',

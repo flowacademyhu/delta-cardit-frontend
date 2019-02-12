@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GroupDialogComponent } from 'src/app/componets/groups/group-dialog/group-dialog.component';
+import { GroupDialogComponent } from 'src/app/components/groups/group-dialog/group-dialog.component';
 import { MatDialog } from '@angular/material';
 import { GroupsService } from 'src/app/services/groups.service';
 import { GroupModel } from 'src/app/models/group.model';
