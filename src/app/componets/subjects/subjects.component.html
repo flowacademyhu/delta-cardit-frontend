@@ -1,4 +1,7 @@
 <app-nav></app-nav>
+
+<button mat-icon-button id="fab" title="Új" routerLink="/userlist"><mat-icon aria-label= "Új" (click)="openDialog()">add</mat-icon></button>
+
 <div class="subject-list-container">
 <div class="subject-container" *ngFor="let deck of decks">
   <mat-card class="card">
@@ -10,6 +13,13 @@
       <button mat-button routerLink="/flashcard">Megnyitás</button>
     </mat-card-actions>
   </mat-card>
+
+  <div class="actions">
+    <div></div>
+  <button mat-stroked-button color="primary" class="btn" (click)="openDialog()">Edit</button>
+  <div></div>
+  <button mat-stroked-button color="warn" class="btn" (click) = "destroy(deck.id)">Delete</button>
+</div>
 
   <div class="space"></div>
   <div class="vl"></div>

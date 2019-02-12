@@ -1,0 +1,11 @@
+<div class="container">
+
+  
+  <mat-form-field>
+    <textarea matInput placeholder="Pakli" [(ngModel)]="card.subject" required></textarea>
+  </mat-form-field>
+
+    <button mat-stroked-button color="primary" class="btn" (click)="save()">Mentés</button>
+  <div></div>
+  <button mat-stroked-button color="warn" class="btn" routerLink = "/learningcard">Mégsem</button>
+</div>

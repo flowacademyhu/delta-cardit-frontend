@@ -2,16 +2,16 @@
 
   
     <mat-form-field>
-      <textarea matInput placeholder="Kérdés"></textarea>
+      <textarea matInput placeholder="Kérdés" [(ngModel)]="card.question" required></textarea>
     </mat-form-field>
 
     <mat-form-field>
-        <textarea matInput placeholder="Válasz"></textarea>
+        <textarea matInput placeholder="Válasz" [(ngModel)]="card.answer" required></textarea>
       </mat-form-field>
   
   
     <mat-form-field>
-      <mat-select placeholder="Nehézség">
+      <mat-select placeholder="Nehézség" [(ngModel)]="card.difficulty" required>
         <mat-option value="option">1</mat-option>
         <mat-option value="option">2</mat-option>
         <mat-option value="option">3</mat-option>
@@ -19,7 +19,7 @@
     </mat-form-field>
 
     <mat-form-field>
-        <input matInput placeholder="Típus">
+        <input matInput placeholder="Típus" [(ngModel)]="card.type" required>
       </mat-form-field>
 
       <button mat-stroked-button color="primary" class="btn" (click)="save()">Mentés</button>
