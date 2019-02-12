@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CardModel } from 'src/app/models/card.model';
 import { CardsService } from 'src/app/services/cards.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { EditCardComponent } from '../edit-card/edit-card.component';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-card-list',
@@ -14,9 +15,7 @@ export class CardListComponent implements OnInit {
 
   public cards: CardModel[] = [];
 
-  public card: CardModel;
-
-  constructor(public dialog: MatDialog, private cardsService: CardsService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private httpClient: HttpClient, public dialog: MatDialog, private cardsService: CardsService) { }
 
   ngOnInit() {
     this.cardsService.getAllCards().subscribe(cards => {
@@ -29,19 +28,17 @@ export class CardListComponent implements OnInit {
     });
   }
 
-  destroy() {
-    this.cardsService.delete(this.card).subscribe((result) => {
+  destroy(id: number) {
+      if (confirm('Biztos véglegesen törli a kártyát?')) {
+        const url = `${'http://localhost:8000/cards'}/${id}`;
+        return this.httpClient.delete(url).toPromise()
+          .then(() => {
+          this.ngOnInit();
+          });
+      }
+    /* this.cardsService.delete(this.cards.id).subscribe((result) => {
       alert('A törlés sikeres!');
       this.router.navigate(['learningcard']);
-    });
-  }
-
-  edit() {
-    this.cardsService.edit(this.card).subscribe((result) => {
-      alert('Sikeres mentés!');
-      this.router.navigate(['learningcard']);
-    }, (error) => {
-      console.log('Error', error);
-    });
+    }); */
   }
 }

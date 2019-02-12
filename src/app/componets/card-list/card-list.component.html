@@ -11,14 +11,17 @@
         </p>
       </mat-card-content>
     </mat-card>
+
     <div class="space"></div>
     <div class="vl"></div>
     <div class="space"></div>
+
     <mat-card class="card">
       <mat-card-title>Válasz</mat-card-title>
       <mat-card-content>
         <p>
           {{card.answer}}
+
         </p>
       </mat-card-content>
       <!-- <mat-card-actions>
@@ -33,6 +36,6 @@
       <div></div>
     <button mat-stroked-button color="primary" class="btn" (click)="openDialog()">Edit</button>
     <div></div>
-    <button mat-stroked-button color="warn" class="btn">Delete</button>
+    <button mat-stroked-button color="warn" class="btn" (click) = "destroy(card.id)">Delete</button>
   </div>
 </div>

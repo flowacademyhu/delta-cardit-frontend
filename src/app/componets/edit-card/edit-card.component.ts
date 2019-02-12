@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { CardModel } from 'src/app/models/card.model';
 import { CardsService } from 'src/app/services/cards.service';
 import { Router, Params, ActivatedRoute } from '@angular/router';
@@ -12,7 +12,9 @@ export class EditCardComponent implements OnInit {
 
   public card: CardModel;
 
+
   constructor(private router: Router, private route: ActivatedRoute, private cardsService: CardsService) { }
+
 
 
   ngOnInit() {
@@ -20,6 +22,15 @@ export class EditCardComponent implements OnInit {
       this.cardsService.getOne(params.id).subscribe((result) => {
         this.card = result ? result : {} as CardModel;
       });
+    });
+  }
+
+  edit() {
+    this.cardsService.edit(this.card).subscribe((result) => {
+      alert('Sikeres mentés!');
+      this.router.navigate(['learningcard']);
+    }, (error) => {
+      console.log('Error', error);
     });
   }
 

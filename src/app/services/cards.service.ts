@@ -16,19 +16,21 @@ export class CardsService {
   }
 
   getOne(id: number) {
-    return this.httpClient.get('http://localhost:3000/cards/' + id);
+    return this.httpClient.get('http://localhost:8000/cards/' + id);
   }
 
   save(card: CardModel): Observable<any> {
-    return this.httpClient.post('http://localhost:3000/tasks', card);
+    return this.httpClient.post('http://localhost:8000/cards', card);
   }
 
   edit(card: CardModel): Observable<any> {
-    return this.httpClient.put('http://localhost:3000/cards/' + card.id, card);
+    return this.httpClient.put('http://localhost:8000/cards/' + card.id, card);
   }
 
   delete(card: CardModel) {
-    return this.httpClient.delete('http://localhost:3000/cards/' + card.id);
+    console.log(card.id);
+
+    return this.httpClient.delete('http://localhost:8000/cards/' + card.id);
   }
 }
 
