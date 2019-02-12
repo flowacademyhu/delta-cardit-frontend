@@ -10,15 +10,16 @@ import { UsersComponent } from './components/users/users.component';
 import { GroupsComponent } from './components/groups/groups.component';
 import { UsersListingComponent } from './components/users/users-listing/users-listing.component';
 import { GroupListingComponent } from './components/groups/group-listing/group-listing.component';
+import { Role } from './models/role';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent},
-  { path: 'index', component: NavComponent, canActivate: [AuthGuard]},
-  { path: 'flashcard', component: CardComponent},
-  { path: 'learningcard', component: CardListComponent},
-  { path: 'subjects', component: SubjectsComponent},
-  { path: 'users', component: UsersListingComponent},
-  { path: 'groups', component: GroupListingComponent}
+  { path: '', component: LoginComponent },
+  { path: 'index', component: NavComponent, canActivate: [AuthGuard], data: {role: ['admin', 'contributor', 'student'] } },
+  { path: 'flashcard', component: CardComponent, canActivate: [AuthGuard], data: {role: ['admin', 'contributor', 'student']} },
+  { path: 'learningcard', component: CardListComponent, canActivate: [AuthGuard], data: {role: ['admin', 'contributor', 'student']} },
+  { path: 'subjects', component: SubjectsComponent, canActivate: [AuthGuard], data: {role: ['admin', 'contributor', 'student']} },
+  { path: 'users', component: UsersListingComponent, canActivate: [AuthGuard], data: {role: ['admin', 'contributor']} },
+  { path: 'groups', component: GroupListingComponent, canActivate: [AuthGuard], data: {role: ['admin', 'contributor']} }
 ];
 
 @NgModule({

@@ -3,7 +3,6 @@ import { UserModel } from 'src/app/models/user.model';
 import { UsersService } from 'src/app/services/users.service';
 import { MatDialog } from '@angular/material';
 import { UserEditDialogComponent } from './user-edit-dialog/user-edit-dialog.component';
-import { userInfo } from 'os';
 
 @Component({
   selector: 'app-users',

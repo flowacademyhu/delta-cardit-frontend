@@ -21,8 +21,8 @@
   </mat-form-field>
   <mat-form-field>
     <mat-select placeholder="Csoport" [(ngModel)]="group">
-      <mat-option value="1">Admin</mat-option>
-      <mat-option value="2">Contributors</mat-option>
+      <mat-option [value]="1">Admin</mat-option>
+      <mat-option [value]="2">Contributors</mat-option>
     </mat-select>
   </mat-form-field>
   <button class="btn" mat-raised-button (click)="passwordGenerator()">Jelszó generálása</button>
