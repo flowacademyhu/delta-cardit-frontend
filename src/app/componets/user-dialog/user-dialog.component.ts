@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class UserDialogComponent implements OnInit {
 
-  public user: UserModel = {};
+  private user: UserModel = {};
 
   private randomPassword: string = null;
   private role: string = null;
@@ -29,7 +29,6 @@ export class UserDialogComponent implements OnInit {
     this.user.password = this.randomPassword;
     this.user.role = this.role;
     this.user.GroupId = this.group;
-    console.log(this.user.password);
     console.log(this.user);
     this.usersService.newUser(this.user).subscribe(result => {
       alert('Sikeres mentés!');

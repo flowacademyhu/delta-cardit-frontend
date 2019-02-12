@@ -2,8 +2,19 @@
   background-color: #00bfb2;
   color: white;
   width: 20%;
+  margin: 3%;
 }
 
-.listposition {
-  padding-left: 15%;
+.direction {
+  display: flex;
+  flex-direction: row;
+}
+
+.space {
+  margin: 3%;
+}
+
+.btn-directon {
+  display: flex;
+  flex-direction: row;
 }

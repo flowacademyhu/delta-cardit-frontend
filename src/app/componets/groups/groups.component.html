@@ -1,9 +1,9 @@
-<app-nav></app-nav>
-<mat-list class="listposition">
-  <h3 mat-subheader>Csoportok</h3>
-  <mat-list-item *ngFor="let group of groups">
-    <mat-icon mat-list-icon>user</mat-icon>
-    <h4 mat-line>{{group.name}}</h4>
+<div class="direction">
+  <div>
+    <a>{{groupModel.name}}</a>
+  </div>
+  <div class="btn-driection">
     <button mat-raised-button class="btn">Szerkesztés</button>
-    <button mat-raised-button class="btn">Törlés</button>
-  </mat-list-item>
+    <button mat-raised-button class="btn" (click)="deleteGroup()" (groupDeleted)="handleGroupDeleted($event)">Törlés</button>
+  </div>
+</div>

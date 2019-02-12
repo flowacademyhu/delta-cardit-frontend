@@ -27,6 +27,6 @@ export class GroupsService {
   }
 
   deleteGroup(id: number) {
-    return this.httpClient.delete('http://localhost:8000/group/' + id);
+    return this.httpClient.delete('http://localhost:8000/groups/' + id);
   }
 }

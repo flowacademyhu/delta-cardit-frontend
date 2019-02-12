@@ -9,6 +9,7 @@ import { SubjectsComponent } from './componets/subjects/subjects.component';
 import { UsersComponent } from './componets/users/users.component';
 import { GroupsComponent } from './componets/groups/groups.component';
 import { UsersListingComponent } from './componets/users/users-listing/users-listing.component';
+import { GroupListingComponent } from './componets/groups/group-listing/group-listing.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent},
@@ -17,7 +18,7 @@ const routes: Routes = [
   { path: 'learningcard', component: CardListComponent},
   { path: 'subjects', component: SubjectsComponent},
   { path: 'users', component: UsersListingComponent},
-  { path: 'groups', component: GroupsComponent}
+  { path: 'groups', component: GroupListingComponent}
 ];
 
 @NgModule({

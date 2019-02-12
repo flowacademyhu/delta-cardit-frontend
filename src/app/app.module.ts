@@ -26,6 +26,8 @@ import { UsersComponent } from './componets/users/users.component';
 import { GroupsComponent } from './componets/groups/groups.component';
 import { UserDialogComponent } from './componets/user-dialog/user-dialog.component';
 import { UsersListingComponent } from './componets/users/users-listing/users-listing.component';
+import { GroupListingComponent } from './componets/groups/group-listing/group-listing.component';
+import { GroupDialogComponent } from './componets/group-dialog/group-dialog.component';
 
 
 export function tokenGetter() {
@@ -43,7 +45,9 @@ export function tokenGetter() {
     UsersComponent,
     GroupsComponent,
     UserDialogComponent,
-    UsersListingComponent
+    UsersListingComponent,
+    GroupListingComponent,
+    GroupDialogComponent
   ],
   imports: [
     HttpClientModule,
@@ -70,7 +74,8 @@ export function tokenGetter() {
     MatDialogModule
   ],
   entryComponents: [
-    UserDialogComponent
+    UserDialogComponent,
+    GroupDialogComponent
   ],
   providers: [AuthGuard, AuthService, UsersService],
   bootstrap: [AppComponent]
