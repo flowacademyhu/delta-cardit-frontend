@@ -13,6 +13,7 @@ export class AuthService {
 
   private currentUserSubject: BehaviorSubject<UserModel>;
   public currentUser: Observable<UserModel>;
+  private token: string;
 
   constructor(private httpClient: HttpClient) {
     this.currentUserSubject = new BehaviorSubject<UserModel>(JSON.parse(localStorage.getItem('currentUser')));
@@ -29,14 +30,19 @@ export class AuthService {
       .pipe(
         map(result => {
           console.log(result);
+          this.token = result.token;
           const helper = new JwtHelperService();
-          const decodedToken = helper.decodeToken(result.token);
+          const decodedToken = helper.decodeToken(this.token);
           if (result && result.token) {
             localStorage.setItem('current_user', JSON.stringify(decodedToken));
             this.currentUserSubject.next(decodedToken);
           }
           return result;
         }));
+      }
+
+  getToken(): string {
+    return this.token;
   }
 
   logout() {
@@ -45,6 +51,6 @@ export class AuthService {
   }
 
   public get loggedIn(): boolean {
-    return (localStorage.getItem('access_token') !== null);
+    return (localStorage.getItem('current_user') !== null);
   }
 }

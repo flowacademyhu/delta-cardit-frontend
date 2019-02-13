@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -30,6 +30,7 @@ import { GroupListingComponent } from './components/groups/group-listing/group-l
 import { GroupDialogComponent } from './components/groups/group-dialog/group-dialog.component';
 import { UserEditDialogComponent } from './components/users/user-edit-dialog/user-edit-dialog.component';
 import { GroupEditDialogComponent } from './components/groups/group-edit-dialog/group-edit-dialog.component';
+import { AuthInterceptor } from './services/auth-interceptor';
 
 
 export function tokenGetter() {
@@ -83,7 +84,8 @@ export function tokenGetter() {
     UserEditDialogComponent,
     GroupEditDialogComponent
   ],
-  providers: [AuthGuard, AuthService, UsersService],
+  providers: [AuthGuard, AuthService, UsersService,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 
