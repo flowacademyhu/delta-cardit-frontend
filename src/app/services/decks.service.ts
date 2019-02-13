@@ -19,4 +19,8 @@ export class DecksService {
   save(deck: DeckModel): Observable<any> {
     return this.httpClient.post('http://localhost:8000/decks', deck);
   }
+
+  getOne(id: number) {
+    return this.httpClient.get('http://localhost:8000/decks/' + id);
+  }
 }

@@ -20,8 +20,6 @@ export class EditCardComponent implements OnInit {
 
   constructor(private router: Router, private route: ActivatedRoute, private cardsService: CardsService) { }
 
-
-
   ngOnInit() {
   }
 
@@ -35,10 +33,10 @@ export class EditCardComponent implements OnInit {
   }
 
   save() {
-    this.card.question = this.question;
-    this.card.answer = this.answer;
-    this.card.difficulty = this.difficulty;
-    this.card.type = this.type;
+    this.question = this.card.question;
+    this.answer = this.card.answer;
+    this.difficulty = this.card.difficulty;
+    this.type = this.card.type;
     console.log(this.card);
     this.cardsService.save(this.card).subscribe(result => {
       alert('Sikeres mentés!');
@@ -53,5 +51,4 @@ export class EditCardComponent implements OnInit {
   isCreateMode(): boolean {
     return !this.card.id;
   }
-
 }

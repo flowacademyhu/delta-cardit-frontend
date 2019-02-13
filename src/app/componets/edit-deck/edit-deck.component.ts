@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DeckModel } from 'src/app/models/deck.model';
 import { DecksService } from 'src/app/services/decks.service';
-import { Router } from '@angular/router';
+import { Router, Params, ActivatedRoute } from '@angular/router';
 
 
 
@@ -16,21 +16,30 @@ export class EditDeckComponent implements OnInit {
 
   public subject: string;
 
-  constructor(private router: Router, private decksService: DecksService, ) { }
+  constructor(private route: ActivatedRoute, private router: Router, private decksService: DecksService) { }
 
   ngOnInit() {
+    /* this.route.params.subscribe((params: Params) => {
+      console.log(params);
+      console.log(params.id);
+      console.log('P' + params.id);
+      this.decksService.getOne(params.id).subscribe((result) => {
+        console.log('R' + result);
+        this.deck = result ? result : {} as DeckModel;
+      });
+    }); */
   }
 
   save() {
-    this.deck.subject = this.subject;
+    this.subject = this.deck.subject;
     console.log(this.deck);
     this.decksService.save(this.deck).subscribe(result => {
       alert('Sikeres mentés!');
-      this.router.navigate(['learningcard']);
+      this.router.navigate(['decks']);
     },
     err => {
       alert('Sikertelen mentés!');
-      this.router.navigate(['learningcard']);
+      this.router.navigate(['decks']);
     });
   }
 }
