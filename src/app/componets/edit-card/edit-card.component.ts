@@ -23,6 +23,13 @@ export class EditCardComponent implements OnInit {
   ngOnInit() {
   }
 
+
+  toInt(value) {
+    console.log(value, parseInt(value, 10));
+    return parseInt(value, 10);
+  }
+
+
   edit() {
     this.cardsService.edit(this.card).subscribe((result) => {
       alert('Sikeres mentés!');
