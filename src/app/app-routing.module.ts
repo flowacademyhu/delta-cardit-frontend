@@ -11,6 +11,7 @@ import { GroupsComponent } from './components/groups/groups.component';
 import { UsersListingComponent } from './components/users/users-listing/users-listing.component';
 import { GroupListingComponent } from './components/groups/group-listing/group-listing.component';
 import { Role } from './models/role';
+import { UsersEditComponent } from './components/users/users-edit/users-edit.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'learningcard', component: CardListComponent, canActivate: [AuthGuard], data: {role: ['admin', 'contributor', 'student']} },
   { path: 'subjects', component: SubjectsComponent, canActivate: [AuthGuard], data: {role: ['admin', 'contributor', 'student']} },
   { path: 'users', component: UsersComponent, canActivate: [AuthGuard], data: {role: ['admin', 'contributor']} },
+  { path: 'users/edit/:id', component: UsersEditComponent, canActivate: [AuthGuard], data: {role: ['admin', 'contributor']} },
   { path: 'groups', component: GroupListingComponent, canActivate: [AuthGuard], data: {role: ['admin', 'contributor']} }
 ];
 

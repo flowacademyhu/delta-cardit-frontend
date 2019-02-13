@@ -7,7 +7,7 @@ export class UserModel {
       public password?: string,
       public role?:  string,
       public GroupId?: number,
-      public lastLogin?: number
+      public lastLogin?: string
   ) {
   }
 }

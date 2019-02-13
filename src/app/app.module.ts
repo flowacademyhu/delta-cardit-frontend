@@ -28,9 +28,9 @@ import { UserDialogComponent } from './components/users/user-dialog/user-dialog.
 import { UsersListingComponent } from './components/users/users-listing/users-listing.component';
 import { GroupListingComponent } from './components/groups/group-listing/group-listing.component';
 import { GroupDialogComponent } from './components/groups/group-dialog/group-dialog.component';
-import { UserEditDialogComponent } from './components/users/user-edit-dialog/user-edit-dialog.component';
 import { GroupEditDialogComponent } from './components/groups/group-edit-dialog/group-edit-dialog.component';
 import { AuthInterceptor } from './services/auth-interceptor';
+import { UsersEditComponent } from './components/users/users-edit/users-edit.component';
 
 
 export function tokenGetter() {
@@ -51,9 +51,9 @@ export function tokenGetter() {
     UsersListingComponent,
     GroupListingComponent,
     GroupDialogComponent,
-    UserEditDialogComponent,
     GroupEditDialogComponent,
-    UserEditDialog
+    UserEditDialog,
+    UsersEditComponent
   ],
   imports: [
     HttpClientModule,
