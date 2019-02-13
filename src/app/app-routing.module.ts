@@ -8,8 +8,6 @@ import { CardListComponent } from './components/card-list/card-list.component';
 import { SubjectsComponent } from './components/subjects/subjects.component';
 import { UsersComponent } from './components/users/users.component';
 import { GroupsComponent } from './components/groups/groups.component';
-import { GroupListingComponent } from './components/groups/group-listing/group-listing.component';
-import { Role } from './models/role';
 import { UsersEditComponent } from './components/users/users-edit/users-edit.component';
 import { GroupsEditComponent } from './components/groups/groups-edit/groups-edit.component';
 

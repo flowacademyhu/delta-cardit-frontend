@@ -25,6 +25,7 @@ export class UsersEditComponent implements OnInit {
   }
 
   update() {
+    console.log(this.user);
       this.usersService.editUser(this.user).subscribe((result) => {
         alert('Mentés sikeres');
         this.router.navigate(['users']);
