@@ -15,7 +15,7 @@ export class GroupsService {
   }
 
   getOneGroup(id: number): Observable<any> {
-    return this.httpClient.get('http://localhost:8000/groups' + id);
+    return this.httpClient.get('http://localhost:8000/groups/' + id);
   }
 
   newGroup(group: GroupModel): Observable<any> {
