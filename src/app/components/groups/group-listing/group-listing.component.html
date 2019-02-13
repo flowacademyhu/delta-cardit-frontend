@@ -1,7 +1,0 @@
-<app-nav></app-nav>
-<mat-list class="listposition">
-  <h3 mat-subheader>Csoportok</h3>
-  <mat-list-item *ngFor="let group of groups">
-    <app-groups [groupModel]=group></app-groups>
-  </mat-list-item>
-  <button mat-raised-button class="new-btn" (click)="openDialog()">Új csoport</button>

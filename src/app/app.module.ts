@@ -25,9 +25,7 @@ import { UsersService } from './services/users.service';
 import { UsersComponent } from './components/users/users.component';
 import { GroupsComponent } from './components/groups/groups.component';
 import { UserDialogComponent } from './components/users/user-dialog/user-dialog.component';
-import { GroupListingComponent } from './components/groups/group-listing/group-listing.component';
 import { GroupDialogComponent } from './components/groups/group-dialog/group-dialog.component';
-import { GroupEditDialogComponent } from './components/groups/group-edit-dialog/group-edit-dialog.component';
 import { AuthInterceptor } from './services/auth-interceptor';
 import { UsersEditComponent } from './components/users/users-edit/users-edit.component';
 import { GroupsEditComponent } from './components/groups/groups-edit/groups-edit.component';
@@ -48,9 +46,7 @@ export function tokenGetter() {
     UsersComponent,
     GroupsComponent,
     UserDialogComponent,
-    GroupListingComponent,
     GroupDialogComponent,
-    GroupEditDialogComponent,
     UsersEditComponent,
     GroupsEditComponent
   ],
@@ -81,7 +77,6 @@ export function tokenGetter() {
   entryComponents: [
     UserDialogComponent,
     GroupDialogComponent,
-    GroupEditDialogComponent
   ],
   providers: [AuthGuard, AuthService, UsersService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
