@@ -24,6 +24,7 @@ import { SubjectsComponent } from './componets/subjects/subjects.component';
 import { UserListingComponent } from './componets/user-listing/user-listing.component';
 import { UsersService } from './services/users.service';
 import { UsersComponent } from './componets/users/users.component';
+import { GameCardComponent } from './componets/game-card/game-card.component';
 
 
 export function tokenGetter() {
@@ -39,7 +40,8 @@ export function tokenGetter() {
     CardListComponent,
     SubjectsComponent,
     UserListingComponent,
-    UsersComponent
+    UsersComponent,
+    GameCardComponent
   ],
   imports: [
     HttpClientModule,
