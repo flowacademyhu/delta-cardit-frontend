@@ -25,6 +25,7 @@ import { UserListingComponent } from './componets/user-listing/user-listing.comp
 import { UsersService } from './services/users.service';
 import { UsersComponent } from './componets/users/users.component';
 import { GameCardComponent } from './componets/game-card/game-card.component';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 
 export function tokenGetter() {
@@ -58,6 +59,7 @@ export function tokenGetter() {
     LayoutModule,
     MatCardModule,
     MatButtonModule,
+    DragDropModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
