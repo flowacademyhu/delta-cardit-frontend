@@ -14,12 +14,12 @@ canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
   const currentUser = this.auth.currentUserValue;
   if (currentUser) {
       if (!currentUser.role === route.data.role) {
-          this.router.navigate(['/']);
+          this.router.navigate(['']);
           return false;
       }
       return true;
   }
-  //this.router.navigate(['/']);
+  this.router.navigate(['']);
   return false;
 }
 }

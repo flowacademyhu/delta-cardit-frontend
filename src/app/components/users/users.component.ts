@@ -32,13 +32,6 @@ export class UsersComponent implements OnInit {
     });
   }
 
-  openEditDialog(id: number): void {
-    this.getUser(id);
-    console.log(this.selectedUser);
-    const dialogRef = this.dialog.open(UserEditDialog, {
-    });
-  }
-
   loadUsers() {
     this.usersService.getAllUsers().subscribe(users => {
       this.users = users;
@@ -75,13 +68,4 @@ export class UsersComponent implements OnInit {
       console.log('Error', error);
     });
   }
-}
-
-@Component({
-  selector: 'app-edit-dialog',
-  templateUrl: 'users-edit-dialog.html',
-})
-
-export class UserEditDialog {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
 }
