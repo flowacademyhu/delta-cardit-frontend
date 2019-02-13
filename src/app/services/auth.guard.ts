@@ -19,7 +19,7 @@ canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
       }
       return true;
   }
-  this.router.navigate(['/']);
+  //this.router.navigate(['/']);
   return false;
 }
 }

@@ -22,7 +22,7 @@ import { AuthService } from './services/auth.service';
 import { CardListComponent } from './components/card-list/card-list.component';
 import { SubjectsComponent } from './components/subjects/subjects.component';
 import { UsersService } from './services/users.service';
-import { UsersComponent } from './components/users/users.component';
+import { UsersComponent, UserEditDialog } from './components/users/users.component';
 import { GroupsComponent } from './components/groups/groups.component';
 import { UserDialogComponent } from './components/users/user-dialog/user-dialog.component';
 import { UsersListingComponent } from './components/users/users-listing/users-listing.component';
@@ -52,7 +52,8 @@ export function tokenGetter() {
     GroupListingComponent,
     GroupDialogComponent,
     UserEditDialogComponent,
-    GroupEditDialogComponent
+    GroupEditDialogComponent,
+    UserEditDialog
   ],
   imports: [
     HttpClientModule,
@@ -81,7 +82,7 @@ export function tokenGetter() {
   entryComponents: [
     UserDialogComponent,
     GroupDialogComponent,
-    UserEditDialogComponent,
+    UserEditDialog,
     GroupEditDialogComponent
   ],
   providers: [AuthGuard, AuthService, UsersService,

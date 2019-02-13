@@ -1,8 +1,8 @@
-import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, Inject} from '@angular/core';
 import { UserModel } from 'src/app/models/user.model';
 import { UsersService } from 'src/app/services/users.service';
-import { MatDialog } from '@angular/material';
-import { UserEditDialogComponent } from './user-edit-dialog/user-edit-dialog.component';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
+import { UserDialogComponent } from './user-dialog/user-dialog.component';
 
 @Component({
   selector: 'app-users',
@@ -15,25 +15,73 @@ export class UsersComponent implements OnInit {
 
   @Output() userDeleted = new EventEmitter<UserModel>();
 
+  private users: UserModel[] = [];
+  private sendedUser: UserModel = {} as UserModel;
+  private selectedUser: UserModel;
+
   private userName: string;
 
   constructor(private usersService: UsersService, private dialog: MatDialog) { }
 
   ngOnInit() {
-    this.userName = this.userModel.lastName + ' ' + this.userModel.firstName;
+    this.loadUsers();
   }
 
-  openEditDialog(): void {
-    const dialogRef = this.dialog.open(UserEditDialogComponent, {
+  openDialog(): void {
+    const dialogRef = this.dialog.open(UserDialogComponent, {
     });
   }
 
-  deleteUser() {
-    this.usersService.deleteUser(this.userModel.id).subscribe(result => {
+  openEditDialog(id: number): void {
+    this.getUser(id);
+    console.log(this.selectedUser);
+    const dialogRef = this.dialog.open(UserEditDialog, {
+    });
+  }
+
+  loadUsers() {
+    this.usersService.getAllUsers().subscribe(users => {
+      this.users = users;
+    });
+  }
+
+  handleUserDeleted() {
+    this.usersService.getAllUsers().subscribe(users => {
+      this.users = users;
+    });
+  }
+
+  getUser(id: number) {
+    this.usersService.getOneUser(id).subscribe(user => {
+      this.selectedUser = user;
+      console.log(this.selectedUser);
+    });
+  }
+
+  updateUser() {
+    this.selectedUser = this.sendedUser;
+    this.usersService.editUser(this.sendedUser).subscribe(result => {
+      alert('A mentés sikeres!');
+    }, err => {
+      alert('A mentés sikertelen!');
+    });
+  }
+
+  deleteUser(id: number) {
+    this.usersService.deleteUser(id).subscribe(result => {
       alert('A törlés sikeres!');
       this.userDeleted.next(this.userModel);
     }, error => {
       console.log('Error', error);
     });
   }
+}
+
+@Component({
+  selector: 'app-edit-dialog',
+  templateUrl: 'users-edit-dialog.html',
+})
+
+export class UserEditDialog {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
 }

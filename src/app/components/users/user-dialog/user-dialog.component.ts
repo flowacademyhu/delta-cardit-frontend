@@ -14,7 +14,6 @@ export class UserDialogComponent implements OnInit {
 
   private randomPassword: string = null;
   private role: string = null;
-  private group: number = null;
 
   constructor(private usersService: UsersService, private router: Router) { }
 
@@ -28,7 +27,6 @@ export class UserDialogComponent implements OnInit {
   save() {
     this.user.password = this.randomPassword;
     this.user.role = this.role;
-    this.user.GroupId = this.group;
     console.log(this.user);
     this.usersService.newUser(this.user).subscribe(result => {
       alert('Sikeres mentés!');

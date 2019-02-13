@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'flashcard', component: CardComponent, canActivate: [AuthGuard], data: {role: ['admin', 'contributor', 'student']} },
   { path: 'learningcard', component: CardListComponent, canActivate: [AuthGuard], data: {role: ['admin', 'contributor', 'student']} },
   { path: 'subjects', component: SubjectsComponent, canActivate: [AuthGuard], data: {role: ['admin', 'contributor', 'student']} },
-  { path: 'users', component: UsersListingComponent, canActivate: [AuthGuard], data: {role: ['admin', 'contributor']} },
+  { path: 'users', component: UsersComponent, canActivate: [AuthGuard], data: {role: ['admin', 'contributor']} },
   { path: 'groups', component: GroupListingComponent, canActivate: [AuthGuard], data: {role: ['admin', 'contributor']} }
 ];
 
