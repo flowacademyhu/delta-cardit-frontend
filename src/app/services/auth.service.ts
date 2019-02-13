@@ -48,6 +48,7 @@ export class AuthService {
   logout() {
     localStorage.removeItem('current_user');
     this.currentUserSubject.next(null);
+    this.token = null;
   }
 
   public get loggedIn(): boolean {
