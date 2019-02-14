@@ -6,13 +6,15 @@
 
   </div>
 
-  <div class='card-container'>
+  <div class='card-container' *ngFor="let card of cards" >
     <div class='flippable-card' [ngClass]="{'flipped':flipped}">
       <mat-card class='front'>
         <mat-card-title>Kérdés</mat-card-title>
+        <mat-card-content>{{card.question}}</mat-card-content>
       </mat-card>
       <mat-card class='back'>
         <mat-card-title>Válasz</mat-card-title>
+        <mat-card-content>{{card.answer}}</mat-card-content>
       </mat-card>
     </div>
   </div>
