@@ -14,14 +14,6 @@ export class AppComponent /* implements OnInit */ {
 
   constructor(private auth: AuthService, private router: Router) { }
 
-  /*ngOnInit(): void {
-    this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        this.hideSidebar = this.router.url === '/';
-      }
-    });
-  } */
-
   logout() {
     this.auth.logout();
     this.router.navigate(['']);
