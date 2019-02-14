@@ -3,10 +3,11 @@ export class UserModel {
       public id?: number,
       public firstName?: string,
       public lastName?: string,
-      public role?:  string,
       public email?: string,
-      public passwordHash?: string,
-      public lastLogin?: number
+      public password?: string,
+      public role?:  string,
+      public GroupId?: number,
+      public lastLogin?: string
   ) {
   }
 }

@@ -1,0 +1,32 @@
+<h4>Új felhasználó adatai</h4>
+<div class="style">
+  <mat-form-field>
+    <input matInput placeholder="Vezetéknév" [(ngModel)]="user.lastName" required>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Keresztnév" [(ngModel)]="user.firstName" required>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="E-mail cím" [(ngModel)]="user.email" required>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Jelszó" type="password" [value]="randomPassword" required>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="Szerepkör" [(ngModel)]="role">
+      <mat-option value="admin">Admin</mat-option>
+      <mat-option value="contributor">Mentor</mat-option>
+      <mat-option value="student">Hallgató</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="Csoport" [(ngModel)]="GroupId">
+      <mat-option [value]="1">Admin</mat-option>
+      <mat-option [value]="2">Contributors</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button class="btn" mat-raised-button (click)="passwordGenerator()">Jelszó generálása</button>
+  <div class="btn-position">
+    <button class="btn" mat-raised-button (click)="save()">Felvétel</button>
+  </div>
+</div>

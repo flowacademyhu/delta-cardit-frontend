@@ -1,0 +1,30 @@
+<app-nav></app-nav>
+<div class="conatiner">
+<h1>Felhasználó adatainak módosítása</h1>
+  <mat-form-field>
+    <input type="text" id="lastName" name="lastName"  matInput placeholder="Vezetáknév" [(ngModel)]="user.lastName">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input type="text" id="firstName" name="firstName"  matInput placeholder="Keresztnév" [(ngModel)]="user.firstName">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input type="text" id="email" name="email"  matInput placeholder="E-mail cím" [(ngModel)]="user.email">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Szerepkör" [(ngModel)]="user.role">
+      <mat-option value="admin">Admin</mat-option>
+      <mat-option value="contributor">Mentor</mat-option>
+      <mat-option value="student">Hallgató</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+      <mat-select placeholder="Csoport" [(ngModel)]="user.GroupId">
+        <mat-option [value]="1">Admin</mat-option>
+        <mat-option [value]="3">Contributor</mat-option>
+      </mat-select>
+    </mat-form-field>
+</div>
+<button class="btn" mat-raised-button (click)="update()">Módosítás</button>

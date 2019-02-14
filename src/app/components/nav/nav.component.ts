@@ -12,12 +12,20 @@ import { RouterLink, Router } from '@angular/router';
 })
 export class NavComponent {
 
+  private currentUser;
+
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches)
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, private auth: AuthService, private router: Router) {}
+  constructor(private breakpointObserver: BreakpointObserver, private auth: AuthService, private router: Router) {
+    this.auth.currentUser.subscribe(result => this.currentUser = result);
+  }
+
+  get isAdmin() {
+    return this.currentUser && this.currentUser.role === 'admin';
+  }
 
   logout() {
     this.auth.logout();

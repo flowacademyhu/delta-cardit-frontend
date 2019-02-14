@@ -4,26 +4,31 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './componets/login/login.component';
+import { LoginComponent } from './components/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
-import { NavComponent } from './componets/nav/nav.component';
+import { NavComponent } from './components/nav/nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatButtonModule } from '@angular/material';
-import { CardComponent } from './componets/card/card.component';
+import { MatButtonModule, MatDialogModule } from '@angular/material';
+import { CardComponent } from './components/card/card.component';
 import { MatCardModule } from '@angular/material/card';
 import { JwtModule } from '@auth0/angular-jwt';
 import { AuthGuard } from './services/auth.guard';
 import { AuthService } from './services/auth.service';
-import { CardListComponent } from './componets/card-list/card-list.component';
-import { SubjectsComponent } from './componets/subjects/subjects.component';
-import { UserListingComponent } from './componets/user-listing/user-listing.component';
+import { CardListComponent } from './components/card-list/card-list.component';
+import { SubjectsComponent } from './components/subjects/subjects.component';
 import { UsersService } from './services/users.service';
-import { UsersComponent } from './componets/users/users.component';
+import { UsersComponent } from './components/users/users.component';
+import { GroupsComponent } from './components/groups/groups.component';
+import { UserDialogComponent } from './components/users/user-dialog/user-dialog.component';
+import { GroupDialogComponent } from './components/groups/group-dialog/group-dialog.component';
+import { AuthInterceptor } from './services/auth-interceptor';
+import { UsersEditComponent } from './components/users/users-edit/users-edit.component';
+import { GroupsEditComponent } from './components/groups/groups-edit/groups-edit.component';
 
 
 export function tokenGetter() {
@@ -38,8 +43,12 @@ export function tokenGetter() {
     CardComponent,
     CardListComponent,
     SubjectsComponent,
-    UserListingComponent,
-    UsersComponent
+    UsersComponent,
+    GroupsComponent,
+    UserDialogComponent,
+    GroupDialogComponent,
+    UsersEditComponent,
+    GroupsEditComponent
   ],
   imports: [
     HttpClientModule,
@@ -62,9 +71,15 @@ export function tokenGetter() {
         whitelistedDomains: ['localhost:8000'],
         blacklistedRoutes: ['localhost:8000/users/login']
       }
-    })
+    }),
+    MatDialogModule
   ],
-  providers: [AuthGuard, AuthService, UsersService],
+  entryComponents: [
+    UserDialogComponent,
+    GroupDialogComponent,
+  ],
+  providers: [AuthGuard, AuthService, UsersService,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 
