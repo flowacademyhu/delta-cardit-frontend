@@ -23,6 +23,7 @@ import { CardListComponent } from './componets/card-list/card-list.component';
 import { SubjectsComponent } from './componets/subjects/subjects.component';
 import { UserListingComponent } from './componets/user-listing/user-listing.component';
 import { UsersService } from './services/users.service';
+import { CardsService } from './services/cards.service';
 import { UsersComponent } from './componets/users/users.component';
 import { GameCardComponent } from './componets/game-card/game-card.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
@@ -68,7 +69,7 @@ export function tokenGetter() {
       }
     })
   ],
-  providers: [AuthGuard, AuthService, UsersService],
+  providers: [AuthGuard, AuthService, UsersService, CardsService],
   bootstrap: [AppComponent]
 })
 

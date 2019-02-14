@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CardModel } from 'src/app/models/group.model';
-import { CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
-import { CardsService } from 'src/app/services/cards-service.service';
+import { CardModel } from 'src/app/models/card.model';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { CardsService } from 'src/app/services/cards.service';
 
 @Component({
   selector: 'app-game-card',
@@ -18,14 +18,14 @@ export class GameCardComponent implements OnInit {
 
   ngOnInit() {
     const cardObservable = this.cardsService.getAllCards();
-        cardObservable.subscribe((cardsData: CardModel[]) => {
-          this.shuffle(cardsData);
-            this.cards = cardsData;
-            this.shuffle(cardsData);
-            this.cardsAnswers = cardsData;
-            console.log(this.cards);
-            console.log(this.cardsAnswers);
-        });
+    cardObservable.subscribe((cardsData: CardModel[]) => {
+      this.cards = [...cardsData];
+      this.shuffle(this.cards);
+      this.cardsAnswers = [...cardsData];
+      this.shuffle(this.cardsAnswers);
+      console.log(this.cards);
+      console.log(this.cardsAnswers);
+    });
   }
 
   shuffle(array) {
