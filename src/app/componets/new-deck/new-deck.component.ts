@@ -16,6 +16,8 @@ export class NewDeckComponent implements OnInit {
 
   public subject: string;
 
+  public cardId: number[] = [];
+
   constructor(private route: ActivatedRoute, private router: Router, private decksService: DecksService) { }
 
   ngOnInit() {
@@ -32,6 +34,7 @@ export class NewDeckComponent implements OnInit {
 
   save() {
     this.subject = this.deck.subject;
+    this.cardId = this.deck.cardId;
     console.log(this.deck);
     this.decksService.save(this.deck).subscribe(result => {
       alert('Sikeres mentés!');
