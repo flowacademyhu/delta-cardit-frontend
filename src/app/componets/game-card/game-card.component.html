@@ -1,0 +1,17 @@
+<div class="container">
+  <!-- <div class="drag-drop-container"> -->
+    <div class="questions">
+      <div cdkDropList #cardList="cdkDropList" class="list" [cdkDropListData]="cards" (cdkDropListDropped)="drop($event)">
+        <div class="box" *ngFor="let card of cards" cdkDrag>{{card.question}}</div>
+      </div>
+    </div>
+
+
+
+    <div class="answers">
+      <div cdkDropList #cardsAnswerList="cdkDropList" class="list" [cdkDropListData]="cardsAnswers" (cdkDropListDropped)="drop2($event)">
+        <div class="box" *ngFor="let cardsAnswer of cardsAnswers" cdkDrag>{{cardsAnswer.answer}}</div>
+      </div>
+    </div>
+  <!-- </div> -->
+</div>

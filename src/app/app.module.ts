@@ -29,6 +29,9 @@ import { GroupDialogComponent } from './components/groups/group-dialog/group-dia
 import { AuthInterceptor } from './services/auth-interceptor';
 import { UsersEditComponent } from './components/users/users-edit/users-edit.component';
 import { GroupsEditComponent } from './components/groups/groups-edit/groups-edit.component';
+import { CardsService } from './services/cards.service';
+import { GameCardComponent } from './componets/game-card/game-card.component';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 
 export function tokenGetter() {
@@ -48,7 +51,8 @@ export function tokenGetter() {
     UserDialogComponent,
     GroupDialogComponent,
     UsersEditComponent,
-    GroupsEditComponent
+    GroupsEditComponent,
+    GameCardComponent
   ],
   imports: [
     HttpClientModule,
@@ -65,6 +69,7 @@ export function tokenGetter() {
     LayoutModule,
     MatCardModule,
     MatButtonModule,
+    DragDropModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
@@ -78,7 +83,7 @@ export function tokenGetter() {
     UserDialogComponent,
     GroupDialogComponent
   ],
-  providers: [AuthGuard, AuthService, UsersService,
+  providers: [AuthGuard, AuthService, UsersService, CardsService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }, MatSnackBar],
   bootstrap: [AppComponent]
 })
