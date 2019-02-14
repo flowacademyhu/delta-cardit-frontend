@@ -13,7 +13,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { NavComponent } from './components/nav/nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatButtonModule, MatDialogModule, MatSnackBar, MatSnackBarContainer } from '@angular/material';
+import { MatButtonModule, MatDialogModule, MatSnackBar, MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule } from '@angular/material';
 import { CardComponent } from './components/card/card.component';
 import { MatCardModule } from '@angular/material/card';
 import { JwtModule } from '@auth0/angular-jwt';
@@ -72,14 +72,16 @@ export function tokenGetter() {
         blacklistedRoutes: ['localhost:8000/users/login']
       }
     }),
-    MatDialogModule
+    MatDialogModule,
+    MatSnackBarModule
   ],
   entryComponents: [
     UserDialogComponent,
     GroupDialogComponent
   ],
   providers: [AuthGuard, AuthService, UsersService,
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }, MatSnackBar],
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}}, MatSnackBar],
   bootstrap: [AppComponent]
 })
 

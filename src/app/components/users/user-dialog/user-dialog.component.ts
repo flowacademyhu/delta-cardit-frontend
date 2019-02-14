@@ -4,6 +4,7 @@ import { UsersService } from 'src/app/services/users.service';
 import { Router } from '@angular/router';
 import { GroupModel } from 'src/app/models/group.model';
 import { GroupsService } from 'src/app/services/groups.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-user-dialog',
@@ -19,7 +20,10 @@ export class UserDialogComponent implements OnInit {
 
   private groups: GroupModel[] = [];
 
-  constructor(private usersService: UsersService, private groupService: GroupsService, private router: Router) { }
+  constructor(private usersService: UsersService,
+    private groupService: GroupsService,
+    private router: Router,
+    private snack: MatSnackBar) { }
 
   ngOnInit() {
     this.getGroups();
@@ -40,12 +44,14 @@ export class UserDialogComponent implements OnInit {
     this.user.role = this.role;
     console.log(this.user);
     this.usersService.newUser(this.user).subscribe(result => {
-      alert('Sikeres mentés!');
-      this.router.navigate(['users']);
+      this.router.navigate(['users']).then(() => {
+        this.snack.open('Sikeres mentés!', 'Ok', { duration : 3000});
+      });
     },
     err => {
-      alert('A mentés sikertelen!');
-      this.router.navigate(['users']);
+      this.router.navigate(['users']).then(() => {
+        this.snack.open('A mentés sikertelen!', 'Ok', { duration : 3000});
+      });
     });
   }
 
