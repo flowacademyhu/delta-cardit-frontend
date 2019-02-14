@@ -1,0 +1,29 @@
+<app-nav></app-nav>
+<div class="conatiner">
+<h1>Kártya módosítása</h1>
+  <mat-form-field>
+    <input type="text" id="question" name="question"  matInput placeholder="Kérdés" [(ngModel)]="card.question">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input type="text" id="answer" name="answer"  matInput placeholder="Válasz" [(ngModel)]="card.answer">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input type="text" id="type" name="type"  matInput placeholder="Típus" [(ngModel)]="card.type">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Nehézség" [(ngModel)]="card.difficulty">
+      <mat-option [value]="1">1</mat-option>
+        <mat-option [value]="2">2</mat-option>
+        <mat-option [value]="3">3</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+      <mat-select placeholder="Pakli" >
+       
+      </mat-select>
+    </mat-form-field>
+</div>
+<button class="btn" mat-raised-button (click)="update()">Módosítás</button>

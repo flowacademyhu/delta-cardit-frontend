@@ -24,9 +24,10 @@ import { SubjectsComponent } from './componets/subjects/subjects.component';
 import { UserListingComponent } from './componets/user-listing/user-listing.component';
 import { UsersService } from './services/users.service';
 import { UsersComponent } from './componets/users/users.component';
-import { EditCardComponent } from './componets/edit-card/edit-card.component';
+import { NewCardComponent } from './componets/new-card/new-card.component';
 import {MatDialogModule} from '@angular/material/dialog';
-import { EditDeckComponent } from './componets/edit-deck/edit-deck.component';
+import { NewDeckComponent } from './componets/new-deck/new-deck.component';
+import { EditCardComponent } from './componets/card-list/edit-card/edit-card.component';
 
 
 
@@ -44,8 +45,9 @@ export function tokenGetter() {
     SubjectsComponent,
     UserListingComponent,
     UsersComponent,
-    EditCardComponent,
-    EditDeckComponent
+    NewCardComponent,
+    NewDeckComponent,
+    EditCardComponent
   ],
   imports: [
     HttpClientModule,
@@ -72,7 +74,7 @@ export function tokenGetter() {
     })
   ],
   entryComponents: [
-    EditCardComponent, EditDeckComponent
+    NewCardComponent, NewDeckComponent
   ],
   providers: [AuthGuard, AuthService, UsersService],
   bootstrap: [AppComponent]

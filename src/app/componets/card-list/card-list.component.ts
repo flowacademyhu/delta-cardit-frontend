@@ -2,8 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CardModel } from 'src/app/models/card.model';
 import { CardsService } from 'src/app/services/cards.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { MatDialog } from '@angular/material';
-import { EditCardComponent } from '../edit-card/edit-card.component';
+import { MatDialog, MatDialogConfig } from '@angular/material';
+import { NewCardComponent } from '../new-card/new-card.component';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -24,9 +24,10 @@ export class CardListComponent implements OnInit {
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(EditCardComponent, {
+    const dialogRef = this.dialog.open(NewCardComponent, {
     });
   }
+
 
   destroy(id: number) {
       if (confirm('Biztos véglegesen törli a kártyát?')) {

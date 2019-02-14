@@ -1,14 +1,15 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, Inject } from '@angular/core';
 import { CardModel } from 'src/app/models/card.model';
 import { CardsService } from 'src/app/services/cards.service';
 import { Router, Params, ActivatedRoute } from '@angular/router';
+import { MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
-  selector: 'app-edit-card',
-  templateUrl: './edit-card.component.html',
-  styleUrls: ['./edit-card.component.scss']
+  selector: 'app-new-card',
+  templateUrl: './new-card.component.html',
+  styleUrls: ['./new-card.component.scss']
 })
-export class EditCardComponent implements OnInit {
+export class NewCardComponent implements OnInit {
 
   public card: CardModel = {};
 
@@ -18,15 +19,10 @@ export class EditCardComponent implements OnInit {
   private type: string;
 
 
-  constructor(private router: Router, private route: ActivatedRoute, private cardsService: CardsService) { }
+  // tslint:disable-next-line:max-line-length
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private router: Router, private route: ActivatedRoute, private cardsService: CardsService) { }
 
   ngOnInit() {
-  }
-
-
-  toInt(value) {
-    console.log(value, parseInt(value, 10));
-    return parseInt(value, 10);
   }
 
 

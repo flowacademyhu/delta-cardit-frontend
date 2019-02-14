@@ -6,11 +6,11 @@ import { Router, Params, ActivatedRoute } from '@angular/router';
 
 
 @Component({
-  selector: 'app-edit-deck',
-  templateUrl: './edit-deck.component.html',
-  styleUrls: ['./edit-deck.component.scss']
+  selector: 'app-new-deck',
+  templateUrl: './new-deck.component.html',
+  styleUrls: ['./new-deck.component.scss']
 })
-export class EditDeckComponent implements OnInit {
+export class NewDeckComponent implements OnInit {
 
   public deck: DeckModel = {};
 

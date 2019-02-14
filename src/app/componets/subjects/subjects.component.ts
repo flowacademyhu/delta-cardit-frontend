@@ -3,7 +3,7 @@ import { DecksService } from 'src/app/services/decks.service';
 import { DeckModel } from 'src/app/models/deck.model';
 import { MatDialog } from '@angular/material';
 import { HttpClient } from '@angular/common/http';
-import { EditDeckComponent } from '../edit-deck/edit-deck.component';
+import { NewDeckComponent } from '../new-deck/new-deck.component';
 
 
 @Component({
@@ -24,7 +24,7 @@ export class SubjectsComponent implements OnInit {
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(EditDeckComponent, {
+    const dialogRef = this.dialog.open(NewDeckComponent, {
     });
   }
 
