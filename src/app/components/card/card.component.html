@@ -5,10 +5,11 @@
     <button mat-fab color="#09b3a7"><i class="material-icons" color="white">arrow_back_ios</i></button>
   </div>
 
-  <div class='card-container'>
+  <div class='card-container' *ngFor="let card of cards" >
     <div class='flippable-card' [ngClass]="{'flipped':flipped}">
       <mat-card class='front'>
         <mat-card-title>Kérdés</mat-card-title>
+<<<<<<< HEAD:src/app/components/card/card.component.html
         <mat-card-content>
             <p>
               The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
@@ -26,6 +27,13 @@
               bred for hunting.
             </p>
             </mat-card-content>
+=======
+        <mat-card-content>{{card.question}}</mat-card-content>
+      </mat-card>
+      <mat-card class='back'>
+        <mat-card-title>Válasz</mat-card-title>
+        <mat-card-content>{{card.answer}}</mat-card-content>
+>>>>>>> feature/card:src/app/card/card.component.html
       </mat-card>
     </div>
   </div>
