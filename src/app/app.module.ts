@@ -29,6 +29,9 @@ import { GroupDialogComponent } from './components/groups/group-dialog/group-dia
 import { AuthInterceptor } from './services/auth-interceptor';
 import { UsersEditComponent } from './components/users/users-edit/users-edit.component';
 import { GroupsEditComponent } from './components/groups/groups-edit/groups-edit.component';
+import { CardModeComponent } from './components/card-mode/card-mode.component';
+import {MatTabsModule} from '@angular/material/tabs';
+
 
 
 export function tokenGetter() {
@@ -48,7 +51,8 @@ export function tokenGetter() {
     UserDialogComponent,
     GroupDialogComponent,
     UsersEditComponent,
-    GroupsEditComponent
+    GroupsEditComponent,
+    CardModeComponent
   ],
   imports: [
     HttpClientModule,
@@ -65,6 +69,7 @@ export function tokenGetter() {
     LayoutModule,
     MatCardModule,
     MatButtonModule,
+    MatTabsModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
