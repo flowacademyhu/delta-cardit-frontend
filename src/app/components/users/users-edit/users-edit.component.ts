@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UserModel } from 'src/app/models/user.model';
 import { UsersService } from 'src/app/services/users.service';
 import { ActivatedRoute, Router, Params } from '@angular/router';
+import { GroupModel } from 'src/app/models/group.model';
+import { GroupsService } from 'src/app/services/groups.service';
 
 @Component({
   selector: 'app-users-edit',
@@ -12,7 +14,12 @@ export class UsersEditComponent implements OnInit {
 
   private user: UserModel = {} as UserModel;
 
-  constructor(private router: Router, private route: ActivatedRoute, private usersService: UsersService) { }
+  private groups: GroupModel[] = [];
+
+  constructor(private router: Router,
+    private route: ActivatedRoute,
+    private usersService: UsersService,
+    private groupService: GroupsService) { }
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
@@ -21,6 +28,13 @@ export class UsersEditComponent implements OnInit {
           this.user = result ? result : {} as UserModel;
         });
       }
+    });
+    this.getGroups();
+  }
+
+  getGroups() {
+    this.groupService.getAllGroups().subscribe(groups => {
+      this.groups = groups;
     });
   }
 
