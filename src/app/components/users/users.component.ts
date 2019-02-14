@@ -3,6 +3,8 @@ import { UserModel } from 'src/app/models/user.model';
 import { UsersService } from 'src/app/services/users.service';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
 import { UserDialogComponent } from './user-dialog/user-dialog.component';
+import { GroupModel } from 'src/app/models/group.model';
+import { GroupsService } from 'src/app/services/groups.service';
 
 @Component({
   selector: 'app-users',
@@ -16,15 +18,23 @@ export class UsersComponent implements OnInit {
   @Output() userDeleted = new EventEmitter<UserModel>();
 
   private users: UserModel[] = [];
+  private groups: GroupModel[] = [];
   private sendedUser: UserModel = {} as UserModel;
   private selectedUser: UserModel;
 
   private userName: string;
 
-  constructor(private usersService: UsersService, private dialog: MatDialog) { }
+  constructor(private usersService: UsersService, private dialog: MatDialog, private groupService: GroupsService) {
+    dialog.afterAllClosed
+    .subscribe(() => {
+      this.ngOnInit();
+    }
+  );
+   }
 
   ngOnInit() {
     this.loadUsers();
+    this.getGroups();
   }
 
   openDialog(): void {
@@ -35,6 +45,12 @@ export class UsersComponent implements OnInit {
   loadUsers() {
     this.usersService.getAllUsers().subscribe(users => {
       this.users = users;
+    });
+  }
+
+  getGroups() {
+    this.groupService.getAllGroups().subscribe(groups => {
+      this.groups = groups;
     });
   }
 
@@ -64,6 +80,7 @@ export class UsersComponent implements OnInit {
     this.usersService.deleteUser(id).subscribe(result => {
       alert('A törlés sikeres!');
       this.userDeleted.next(this.userModel);
+      this.ngOnInit();
     }, error => {
       console.log('Error', error);
     });

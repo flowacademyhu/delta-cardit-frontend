@@ -31,5 +31,4 @@ export class GroupDialogComponent implements OnInit {
       this.router.navigate(['groups']);
     });
   }
-
 }

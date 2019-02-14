@@ -8,18 +8,19 @@ import { AuthService } from './auth.service';
 })
 export class AuthGuard implements CanActivate {
 
-constructor(private router: Router, private auth: AuthService) {}
+  constructor(private router: Router, private auth: AuthService) { }
 
-canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-  const currentUser = this.auth.currentUserValue;
-  if (currentUser) {
-      if (!currentUser.role === route.data.role) {
-          this.router.navigate(['']);
-          return false;
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    let currentUser = localStorage.getItem('current_user');
+    let asd = JSON.parse(currentUser);
+    if (currentUser) {
+      if (route.data.role.includes(asd.role)) {
+        return true;
       }
-      return true;
+      this.router.navigate(['index']);
+      return false;
+    }
+    this.router.navigate(['']);
+    return false;
   }
-  this.router.navigate(['']);
-  return false;
-}
 }

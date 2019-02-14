@@ -8,11 +8,11 @@
     <mat-toolbar>Menü</mat-toolbar>
     <mat-nav-list>
       <ul>
-        <li><button mat-icon-button title="Felhasználók" routerLink="/users" *ngIf="isAdmin"><mat-icon aria-label= "Felhasználók">person</mat-icon></button></li>
-        <li><button mat-icon-button title="Paklik" routerLink="/subjects"><mat-icon aria-label= "Paklik">dashboard</mat-icon></button></li>
-        <li><button mat-icon-button title="Csoportok" routerLink="/groups"><mat-icon aria-label= "Csoportok">group</mat-icon></button></li>
-        <li><button mat-icon-button title="Gyakorlás" routerLink="/subjects"><mat-icon aria-label= "Gyakorlás">play_circle_outline</mat-icon></button></li>
-        <li><button mat-icon-button title="Kijelentkezés" (click)="logout()"><mat-icon aria-label= "Kijelentkezés">power_settings_new</mat-icon></button></li>
+        <li *ngIf="isAdmin"><button mat-icon-button title="Felhasználók" routerLink="/users" *ngIf="isAdmin"><mat-icon aria-label= "Felhasználók">person</mat-icon>Felhasználók</button></li>
+        <li *ngIf="!isStudent"><button mat-icon-button title="Paklik" routerLink="/subjects" *ngIf="!isStudent"><mat-icon aria-label= "Paklik">dashboard</mat-icon>Paklik</button></li>
+        <li *ngIf="!isStudent"><button mat-icon-button title="Csoportok" routerLink="/groups" *ngIf="!isStudent"><mat-icon aria-label= "Csoportok">group</mat-icon>Csoportok</button></li>
+        <li><button mat-icon-button title="Gyakorlás" routerLink="/subjects"><mat-icon aria-label= "Gyakorlás">play_circle_outline</mat-icon>Gyakorlás</button></li>
+        <li><button mat-icon-button title="Kijelentkezés" (click)="logout()"><mat-icon aria-label= "Kijelentkezés">power_settings_new</mat-icon>Kijelentkezés</button></li>
       </ul>
     </mat-nav-list>
   </mat-sidenav>
@@ -21,6 +21,7 @@
       <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
+      <button class="btn" type="button" mat-raised-button routerLink="/index">Főldal</button>
       <span>cardit</span>
     </mat-toolbar>
   </mat-sidenav-content>

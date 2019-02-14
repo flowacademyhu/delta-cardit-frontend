@@ -27,6 +27,10 @@ export class NavComponent {
     return this.currentUser && this.currentUser.role === 'admin';
   }
 
+  get isStudent() {
+    return this.currentUser && this.currentUser.role === 'student';
+  }
+
   logout() {
     this.auth.logout();
     this.router.navigate(['']);

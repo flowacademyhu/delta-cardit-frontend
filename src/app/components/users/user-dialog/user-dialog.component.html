@@ -21,12 +21,13 @@
   </mat-form-field>
   <mat-form-field>
     <mat-select placeholder="Csoport" [(ngModel)]="GroupId">
-      <mat-option [value]="1">Admin</mat-option>
-      <mat-option [value]="2">Contributors</mat-option>
+      <mat-option *ngFor="let group of groups" [value]="group.id">{{group.name}}</mat-option>
     </mat-select>
   </mat-form-field>
+  <div class="both-btn">
   <button class="btn" mat-raised-button (click)="passwordGenerator()">Jelszó generálása</button>
   <div class="btn-position">
-    <button class="btn" mat-raised-button (click)="save()">Felvétel</button>
+    <button class="btn" mat-raised-button md-dialog-close (click)="save()">Felvétel</button>
   </div>
+</div>
 </div>
