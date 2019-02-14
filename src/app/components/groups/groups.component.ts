@@ -62,6 +62,7 @@ export class GroupsComponent implements OnInit {
     this.groupService.deleteGroup(id).subscribe(result => {
       alert('A törlés sikeres!');
       this.groupDeleted.next(this.groupModel);
+      this.ngOnInit();
     }, error => {
       console.log('Error', error);
     });

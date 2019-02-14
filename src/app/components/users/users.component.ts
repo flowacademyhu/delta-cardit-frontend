@@ -21,7 +21,13 @@ export class UsersComponent implements OnInit {
 
   private userName: string;
 
-  constructor(private usersService: UsersService, private dialog: MatDialog) { }
+  constructor(private usersService: UsersService, private dialog: MatDialog) {
+    dialog.afterAllClosed
+    .subscribe(() => {
+      this.ngOnInit();
+    }
+  );
+   }
 
   ngOnInit() {
     this.loadUsers();
@@ -31,6 +37,8 @@ export class UsersComponent implements OnInit {
     const dialogRef = this.dialog.open(UserDialogComponent, {
     });
   }
+
+
 
   loadUsers() {
     this.usersService.getAllUsers().subscribe(users => {
@@ -64,6 +72,7 @@ export class UsersComponent implements OnInit {
     this.usersService.deleteUser(id).subscribe(result => {
       alert('A törlés sikeres!');
       this.userDeleted.next(this.userModel);
+      this.ngOnInit();
     }, error => {
       console.log('Error', error);
     });
