@@ -13,7 +13,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { NavComponent } from './components/nav/nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatButtonModule, MatDialogModule } from '@angular/material';
+import { MatButtonModule, MatDialogModule, MatSnackBar, MatSnackBarContainer } from '@angular/material';
 import { CardComponent } from './components/card/card.component';
 import { MatCardModule } from '@angular/material/card';
 import { JwtModule } from '@auth0/angular-jwt';
@@ -76,10 +76,10 @@ export function tokenGetter() {
   ],
   entryComponents: [
     UserDialogComponent,
-    GroupDialogComponent,
+    GroupDialogComponent
   ],
   providers: [AuthGuard, AuthService, UsersService,
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }, MatSnackBar],
   bootstrap: [AppComponent]
 })
 

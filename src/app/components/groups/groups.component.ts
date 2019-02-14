@@ -19,7 +19,13 @@ export class GroupsComponent implements OnInit {
   private sendedGroup: GroupModel = {} as GroupModel;
   private selectedGroup: GroupModel;
 
-  constructor(private groupService: GroupsService, private dialog: MatDialog) { }
+  constructor(private groupService: GroupsService, private dialog: MatDialog) {
+    dialog.afterAllClosed
+    .subscribe(() => {
+      this.ngOnInit();
+    }
+  );
+   }
 
      ngOnInit() {
        this.loadGroups();
@@ -62,6 +68,7 @@ export class GroupsComponent implements OnInit {
     this.groupService.deleteGroup(id).subscribe(result => {
       alert('A törlés sikeres!');
       this.groupDeleted.next(this.groupModel);
+      this.ngOnInit();
     }, error => {
       console.log('Error', error);
     });
