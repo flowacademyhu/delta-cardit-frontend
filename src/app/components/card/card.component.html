@@ -1,19 +1,20 @@
 <!-- <app-nav></app-nav> -->
-<h4>Deck neve</h4>
+<!-- <h4>Deck neve</h4> -->
+
 <div class="card-button-container">
   <div class="backbutton">
     <button mat-fab color="#09b3a7" (click)="prev()"><i class="material-icons" color="white">arrow_back_ios</i></button>
   </div>
 
-  <div class='card-container' >
+  <div class='card-container'>
     <div class='flippable-card' [ngClass]="{'flipped':flipped}">
       <mat-card class='front'>
         <mat-card-title>Kérdés</mat-card-title>
-        <mat-card-content>{{card.question}}</mat-card-content>
+        <mat-card-content>{{card?.question}}</mat-card-content>
       </mat-card>
       <mat-card class='back'>
         <mat-card-title>Válasz</mat-card-title>
-        <mat-card-content>{{card.answer}}</mat-card-content>
+        <mat-card-content>{{card?.answer}}</mat-card-content>
       </mat-card>
     </div>
   </div>
@@ -25,6 +26,11 @@
 <div class="buttons-container">
   <div></div>
   <button class="x-button" mat-fab color="red"><i class="material-icons" color="red">close</i></button>
-  <button class="flip-button" [ngClass]="{'flipped':flipped}" (click)='flipped = !flipped' mat-fab color="#09b3a7"><i class="material-icons" color="white">360</i></button>
-  <button class="y-button" mat-fab color="green"><i class="material-icons" color="green">done</i></button>
+  <button class="flip-button" [ngClass]="{'flipped':flipped}" (click)='flipped = !flipped' mat-fab color="#09b3a7"><i
+      class="material-icons" color="white">360</i></button>
+  <button class="y-button" mat-fab color="green" (click)="amIRight()"><i class="material-icons" color="green">done</i></button>
+</div>
+
+<div class=answers>
+  <h4>{{answers}}/{{numberOfCards}}</h4>
 </div>

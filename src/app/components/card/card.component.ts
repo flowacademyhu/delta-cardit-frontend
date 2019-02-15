@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CardModel } from 'src/app/models/card.model';
 import { CardsService } from 'src/app/services/cards.service';
+import { all } from 'q';
 
 
 @Component({
@@ -15,6 +16,10 @@ export class CardComponent implements OnInit {
   public card: CardModel;
 
   public id: number;
+
+  public answers: string = null;
+
+  public numberOfCards = null;
 
   constructor(private cardsService: CardsService) { }
 
@@ -42,6 +47,8 @@ export class CardComponent implements OnInit {
     this.cardsService.getOne(this.id).subscribe(card => {
       this.card = card;
     });
+    console.log(this.cards);
+
   }
 
   prev() {
@@ -51,6 +58,11 @@ export class CardComponent implements OnInit {
     this.cardsService.getOne(this.id).subscribe(card => {
       this.card = card;
     });
+  }
+
+  amIRight() {
+    this.numberOfCards = this.cards.length;
+    this.answers += 1;
   }
 
 
