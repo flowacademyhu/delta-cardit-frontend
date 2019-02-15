@@ -4,6 +4,7 @@ import { UsersService } from 'src/app/services/users.service';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { GroupModel } from 'src/app/models/group.model';
 import { GroupsService } from 'src/app/services/groups.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-users-edit',
@@ -18,7 +19,8 @@ export class UsersEditComponent implements OnInit {
   constructor(private router: Router,
     private route: ActivatedRoute,
     private usersService: UsersService,
-    private groupService: GroupsService) { }
+    private groupService: GroupsService,
+    private snack: MatSnackBar) { }
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
@@ -40,11 +42,11 @@ export class UsersEditComponent implements OnInit {
   update() {
     console.log(this.user);
       this.usersService.editUser(this.user).subscribe((result) => {
-        alert('Mentés sikeres');
-        this.router.navigate(['users']);
+        this.router.navigate(['users']).then(() => {
+          this.snack.open('Mentés sikeres!', 'Ok', { duration : 3000});
+        });
       }, (error) => {
-        alert('Mentés sikertelen!');
-        console.log('Error', error);
+        this.snack.open('Mentés sikerertelen!', 'Ok', { duration : 3000});
       });
     }
   }
