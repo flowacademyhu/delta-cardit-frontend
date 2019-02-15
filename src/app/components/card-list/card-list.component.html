@@ -1,26 +1,28 @@
-<app-nav></app-nav>
-<div class="card-list-container">
+<!-- <app-nav></app-nav>-->
+
+<button mat-icon-button id="fab" title="Új" routerLink="/userlist"><mat-icon aria-label= "Új" (click)="openDialog()">add</mat-icon></button>
+
+<div class="card-list-container" *ngFor="let card of cards">
   <div class="two-card-container">
     <mat-card class="card">
       <mat-card-title>Kérdés</mat-card-title>
       <mat-card-content>
         <p>
-          The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-          A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-          bred for hunting.
+          {{card.question}}
         </p>
       </mat-card-content>
     </mat-card>
+
     <div class="space"></div>
     <div class="vl"></div>
     <div class="space"></div>
+
     <mat-card class="card">
       <mat-card-title>Válasz</mat-card-title>
       <mat-card-content>
         <p>
-          The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-          A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-          bred for hunting.
+          {{card.answer}}
+
         </p>
       </mat-card-content>
       <!-- <mat-card-actions>
@@ -28,5 +30,13 @@
         <button mat-button>Nem tudtam</button>
       </mat-card-actions> -->
     </mat-card>
+    
+  </div>
+  
+  <div class="actions">
+      <div></div>
+    <button mat-stroked-button color="primary" class="btn" routerLink="'/editcard' + card.id" >Edit</button>
+    <div></div>
+    <button mat-stroked-button color="warn" class="btn" (click) = "destroy(card.id)">Delete</button>
   </div>
 </div>

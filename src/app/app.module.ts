@@ -13,7 +13,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { NavComponent } from './components/nav/nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatButtonModule, MatDialogModule, MatSnackBar, MatSnackBarContainer } from '@angular/material';
+import { MatButtonModule, MatDialogModule, MatSnackBar, MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule } from '@angular/material';
 import { CardComponent } from './components/card/card.component';
 import { MatCardModule } from '@angular/material/card';
 import { JwtModule } from '@auth0/angular-jwt';
@@ -29,6 +29,16 @@ import { GroupDialogComponent } from './components/groups/group-dialog/group-dia
 import { AuthInterceptor } from './services/auth-interceptor';
 import { UsersEditComponent } from './components/users/users-edit/users-edit.component';
 import { GroupsEditComponent } from './components/groups/groups-edit/groups-edit.component';
+import { GameCardComponent } from './components/game-card/game-card.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { CardModeComponent } from './components/card-mode/card-mode.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { NewCardComponent } from './components/new-card/new-card.component';
+import { NewDeckComponent } from './components/new-deck/new-deck.component';
+import { EditCardComponent } from './components/card-list/edit-card/edit-card.component';
+import { DecksService } from './services/decks.service';
+import { EditDeckComponent } from './components/subjects/edit-deck/edit-deck.component';
+
 
 
 export function tokenGetter() {
@@ -48,10 +58,18 @@ export function tokenGetter() {
     UserDialogComponent,
     GroupDialogComponent,
     UsersEditComponent,
-    GroupsEditComponent
+    GroupsEditComponent,
+    GameCardComponent,
+    CardModeComponent,
+    UsersComponent,
+    NewCardComponent,
+    NewDeckComponent,
+    EditCardComponent,
+    EditDeckComponent
   ],
   imports: [
     HttpClientModule,
+    MatDialogModule,
     MatListModule,
     MatToolbarModule,
     MatIconModule,
@@ -65,6 +83,8 @@ export function tokenGetter() {
     LayoutModule,
     MatCardModule,
     MatButtonModule,
+    DragDropModule,
+    MatTabsModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
@@ -72,14 +92,18 @@ export function tokenGetter() {
         blacklistedRoutes: ['localhost:8000/users/login']
       }
     }),
-    MatDialogModule
+    MatDialogModule,
+    MatSnackBarModule
   ],
   entryComponents: [
     UserDialogComponent,
-    GroupDialogComponent
+    GroupDialogComponent,
+    NewCardComponent,
+    NewDeckComponent
   ],
   providers: [AuthGuard, AuthService, UsersService,
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }, MatSnackBar],
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}}, MatSnackBar],
   bootstrap: [AppComponent]
 })
 

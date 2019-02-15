@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GroupModel } from 'src/app/models/group.model';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { GroupsService } from 'src/app/services/groups.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-groups-edit',
@@ -12,7 +13,10 @@ export class GroupsEditComponent implements OnInit {
 
   private group: GroupModel = {} as GroupModel;
 
-  constructor(private router: Router, private route: ActivatedRoute, private groupService: GroupsService) { }
+  constructor(private router: Router,
+    private route: ActivatedRoute,
+    private groupService: GroupsService,
+    private snack: MatSnackBar) { }
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
@@ -26,11 +30,11 @@ export class GroupsEditComponent implements OnInit {
 
   update() {
     this.groupService.editGroup(this.group).subscribe((result) => {
-      alert('Mentés sikeres');
-      this.router.navigate(['groups']);
+      this.router.navigate(['groups']).then(() => {
+        this.snack.open('A mentés sikeres!', 'Ok', { duration : 3000});
+      });
     }, (error) => {
-      alert('Mentés sikertelen!');
-      console.log('Error', error);
+      this.snack.open('A mentés sikertelen!', 'Ok', { duration : 3000});
     });
   }
 }
