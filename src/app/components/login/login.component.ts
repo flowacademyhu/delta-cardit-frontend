@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
     return this.password.hasError('required') ? 'A jelszó megadása kötelező!' : '';
   }
 
-  constructor(private auth: AuthService, private router: Router) { }
+  constructor(private auth: AuthService, private router: Router, private snack: MatSnackBar) { }
 
   ngOnInit() {
   }
@@ -40,12 +40,17 @@ export class LoginComponent implements OnInit {
     this.auth.login(this.userEmail, this.userPassword)
       .subscribe(
         result => {
-          alert('Sikeres bejelentkezés!');
-          this.router.navigate(['index']);
+          this.router.navigate(['index']).then(() => {
+            this.snack.open('Sikeres bejelentkezés!', 'Ok', {
+              duration: 3000,
+            });
+          });
         },
         err => {
-          alert('Sikertelen bejelentkezés! Próbáld újra!');
           this.error = 'Could not authenticate';
+          this.snack.open('Sikertelen bejejelentkezés!', 'Ok', {
+            duration: 3000,
+          });
         }
       );
   }

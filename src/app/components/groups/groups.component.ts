@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { GroupModel } from 'src/app/models/group.model';
 import { GroupsService } from 'src/app/services/groups.service';
 import { GroupDialogComponent } from './group-dialog/group-dialog.component';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-groups',
@@ -19,7 +19,8 @@ export class GroupsComponent implements OnInit {
   private sendedGroup: GroupModel = {} as GroupModel;
   private selectedGroup: GroupModel;
 
-  constructor(private groupService: GroupsService, private dialog: MatDialog) {
+  constructor(private groupService: GroupsService, private dialog: MatDialog,
+    private snack: MatSnackBar) {
     dialog.afterAllClosed
     .subscribe(() => {
       this.ngOnInit();
@@ -66,10 +67,11 @@ export class GroupsComponent implements OnInit {
 
    deleteGroup(id: number) {
     this.groupService.deleteGroup(id).subscribe(result => {
-      alert('A törlés sikeres!');
+      this.snack.open('A törlés sikeres!', 'Ok', { duration : 3000});
       this.groupDeleted.next(this.groupModel);
       this.ngOnInit();
     }, error => {
+      this.snack.open('A törlés sikertelen!', 'Ok', { duration : 3000});
       console.log('Error', error);
     });
   }

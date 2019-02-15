@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, Inject} from '@angular/core';
 import { UserModel } from 'src/app/models/user.model';
 import { UsersService } from 'src/app/services/users.service';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 import { UserDialogComponent } from './user-dialog/user-dialog.component';
 import { GroupModel } from 'src/app/models/group.model';
 import { GroupsService } from 'src/app/services/groups.service';
@@ -24,7 +24,10 @@ export class UsersComponent implements OnInit {
 
   private userName: string;
 
-  constructor(private usersService: UsersService, private dialog: MatDialog, private groupService: GroupsService) {
+  constructor(private usersService: UsersService,
+    private dialog: MatDialog,
+    private groupService: GroupsService,
+    private snack: MatSnackBar) {
     dialog.afterAllClosed
     .subscribe(() => {
       this.ngOnInit();
@@ -78,11 +81,11 @@ export class UsersComponent implements OnInit {
 
   deleteUser(id: number) {
     this.usersService.deleteUser(id).subscribe(result => {
-      alert('A törlés sikeres!');
+      this.snack.open('A törlés sikeres!', 'Ok', { duration : 3000});
       this.userDeleted.next(this.userModel);
       this.ngOnInit();
     }, error => {
-      console.log('Error', error);
+      this.snack.open('A törlés sikertelen!', 'Ok', { duration : 3000});
     });
   }
 }
