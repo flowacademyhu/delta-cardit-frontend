@@ -32,6 +32,9 @@ import { GroupsEditComponent } from './components/groups/groups-edit/groups-edit
 import { CardsService } from './services/cards.service';
 import { GameCardComponent } from './componets/game-card/game-card.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import { CardModeComponent } from './components/card-mode/card-mode.component';
+import {MatTabsModule} from '@angular/material/tabs';
+
 
 
 export function tokenGetter() {
@@ -52,7 +55,8 @@ export function tokenGetter() {
     GroupDialogComponent,
     UsersEditComponent,
     GroupsEditComponent,
-    GameCardComponent
+    GameCardComponent,
+    CardModeComponent
   ],
   imports: [
     HttpClientModule,
@@ -70,6 +74,7 @@ export function tokenGetter() {
     MatCardModule,
     MatButtonModule,
     DragDropModule,
+    MatTabsModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

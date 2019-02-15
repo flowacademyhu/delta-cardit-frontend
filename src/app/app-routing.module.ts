@@ -10,6 +10,7 @@ import { UsersComponent } from './components/users/users.component';
 import { GroupsComponent } from './components/groups/groups.component';
 import { UsersEditComponent } from './components/users/users-edit/users-edit.component';
 import { GroupsEditComponent } from './components/groups/groups-edit/groups-edit.component';
+import { CardModeComponent } from './components/card-mode/card-mode.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -20,7 +21,9 @@ const routes: Routes = [
   { path: 'users', component: UsersComponent, canActivate: [AuthGuard], data: {role: ['admin']} },
   { path: 'users/edit/:id', component: UsersEditComponent, canActivate: [AuthGuard], data: {role: ['admin']} },
   { path: 'groups', component: GroupsComponent, canActivate: [AuthGuard], data: {role: ['admin', 'contributor']} },
-  { path: 'groups/edit/:id', component: GroupsEditComponent, canActivate: [AuthGuard], data: {role: ['admin', 'contributor']} }
+  { path: 'groups/edit/:id', component: GroupsEditComponent, canActivate: [AuthGuard], data: {role: ['admin', 'contributor']} },
+  { path: 'cardmode', component: CardModeComponent }
+
 ];
 
 @NgModule({
