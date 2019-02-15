@@ -29,6 +29,14 @@ export class CardsService {
 
   delete(card: CardModel) {
     console.log(card.id);
+<<<<<<< HEAD
     return this.httpClient.delete('http://localhost:8000/cards/' + card.id);
   }
 }
+=======
+
+    return this.httpClient.delete('http://localhost:8000/cards/' + card.id);
+  }
+}
+
+>>>>>>> feature/edit-cards-decks

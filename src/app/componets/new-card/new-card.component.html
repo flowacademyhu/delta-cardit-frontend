@@ -1,0 +1,28 @@
+<div class="container">
+
+  
+    <mat-form-field>
+      <textarea matInput placeholder="Kérdés" [(ngModel)]="card.question" required></textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+        <textarea matInput placeholder="Válasz" [(ngModel)]="card.answer" required></textarea>
+      </mat-form-field>
+  
+  
+    <mat-form-field>
+      <mat-select placeholder="Nehézség" [(ngModel)]="card.difficulty" required>
+        <mat-option [value]="1">1</mat-option>
+        <mat-option [value]="2">2</mat-option>
+        <mat-option [value]="3">3</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput placeholder="Típus" [(ngModel)]="card.type" required>
+      </mat-form-field>
+
+      <button mat-stroked-button color="primary" class="btn" (click)="save()">Mentés</button>
+    <div></div>
+    <button mat-stroked-button color="warn" class="btn" routerLink = "/learningcard">Mégsem</button>
+  </div>
