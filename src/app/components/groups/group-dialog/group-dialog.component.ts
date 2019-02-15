@@ -39,7 +39,7 @@ export class GroupDialogComponent implements OnInit {
     });
   } */
 
-  checkValue(event: any) {
+    checkValue(event: any) {
     console.log(event.source.value);
     this.selectedDecks.push(event.source.value);
   }

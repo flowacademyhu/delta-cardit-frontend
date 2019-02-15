@@ -5,10 +5,7 @@
   </mat-form-field>
   <mat-card *ngFor="let deck of decks">
     <mat-checkbox [value]="deck.id"
-      (change)="checkValue($event)"
-      >
-      {{deck.subject}}
-    </mat-checkbox>
+      (change)="checkValue($event)">{{deck.subject}}</mat-checkbox>
   </mat-card>
   <div class="btn-position">
     <button class="btn" mat-raised-button (click)="save()">Felvétel</button>

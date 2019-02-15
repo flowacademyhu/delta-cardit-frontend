@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { GroupModel } from '../models/group.model';
+import { identifierModuleUrl } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,10 @@ export class GroupsService {
 
   getAllGroups(): Observable<any> {
     return this.httpClient.get('http://localhost:8000/groups');
+  }
+
+  getAllGroupDecks(id: number): Observable<any> {
+    return this.httpClient.get('http://localhost:8000/groups/' + id + '/decks');
   }
 
   getOneGroup(id: number): Observable<any> {
