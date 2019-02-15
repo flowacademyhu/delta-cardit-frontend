@@ -12,6 +12,7 @@ import { UsersEditComponent } from './components/users/users-edit/users-edit.com
 import { GroupsEditComponent } from './components/groups/groups-edit/groups-edit.component';
 import { CardModeComponent } from './components/card-mode/card-mode.component';
 import { EditCardComponent } from './components/card-list/edit-card/edit-card.component';
+import { EditDeckComponent } from './components/subjects/edit-deck/edit-deck.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -26,7 +27,7 @@ const routes: Routes = [
   { path: 'cardmode', component: CardModeComponent, canActivate: [AuthGuard], data: {role: ['admin', 'contributor']}  },
   // tslint:disable-next-line:max-line-length
   { path: 'learningcard/edit/:id', component: EditCardComponent, canActivate: [AuthGuard], data: {role: ['admin', 'contributor', 'student']} },
-
+  {path: 'deck/edit/:id', component: EditDeckComponent, canActivate: [AuthGuard], data: {role: ['admin', 'contributor', 'student']} },
 ];
 
 @NgModule({
