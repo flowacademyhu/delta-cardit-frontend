@@ -23,4 +23,8 @@ export class DecksService {
   getOne(id: number) {
     return this.httpClient.get('http://localhost:8000/decks/' + id);
   }
+
+  edit(deck: DeckModel): Observable<any> {
+    return this.httpClient.put('http://localhost:8000/deck/' + deck.id, deck);
+  }
 }

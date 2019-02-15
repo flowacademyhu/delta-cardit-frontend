@@ -4,7 +4,6 @@ import { LoginComponent } from './components/login/login.component';
 import { NavComponent } from './components/nav/nav.component';
 import { CardComponent } from './components/card/card.component';
 import { AuthGuard } from './services/auth.guard';
-<<<<<<< HEAD
 import { CardListComponent } from './components/card-list/card-list.component';
 import { SubjectsComponent } from './components/subjects/subjects.component';
 import { UsersComponent } from './components/users/users.component';
@@ -12,12 +11,7 @@ import { GroupsComponent } from './components/groups/groups.component';
 import { UsersEditComponent } from './components/users/users-edit/users-edit.component';
 import { GroupsEditComponent } from './components/groups/groups-edit/groups-edit.component';
 import { CardModeComponent } from './components/card-mode/card-mode.component';
-=======
-import { CardListComponent } from './componets/card-list/card-list.component';
-import { SubjectsComponent } from './componets/subjects/subjects.component';
-import { UserListingComponent } from './componets/user-listing/user-listing.component';
-import { EditCardComponent } from './componets/card-list/edit-card/edit-card.component';
->>>>>>> feature/edit-cards-decks
+import { EditCardComponent } from './components/card-list/edit-card/edit-card.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -25,16 +19,13 @@ const routes: Routes = [
   { path: 'flashcard', component: CardComponent, canActivate: [AuthGuard], data: {role: ['admin', 'contributor', 'student']} },
   { path: 'learningcard', component: CardListComponent, canActivate: [AuthGuard], data: {role: ['admin', 'contributor', 'student']} },
   { path: 'subjects', component: SubjectsComponent, canActivate: [AuthGuard], data: {role: ['admin', 'contributor', 'student']} },
-<<<<<<< HEAD
   { path: 'users', component: UsersComponent, canActivate: [AuthGuard], data: {role: ['admin']} },
   { path: 'users/edit/:id', component: UsersEditComponent, canActivate: [AuthGuard], data: {role: ['admin']} },
   { path: 'groups', component: GroupsComponent, canActivate: [AuthGuard], data: {role: ['admin', 'contributor']} },
   { path: 'groups/edit/:id', component: GroupsEditComponent, canActivate: [AuthGuard], data: {role: ['admin', 'contributor']} },
-  { path: 'cardmode', component: CardModeComponent }
-=======
+  { path: 'cardmode', component: CardModeComponent, canActivate: [AuthGuard], data: {role: ['admin', 'contributor']}  },
   // tslint:disable-next-line:max-line-length
   { path: 'learningcard/edit/:id', component: EditCardComponent, canActivate: [AuthGuard], data: {role: ['admin', 'contributor', 'student']} },
->>>>>>> feature/edit-cards-decks
 
 ];
 

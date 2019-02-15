@@ -22,7 +22,6 @@ import { AuthService } from './services/auth.service';
 import { CardListComponent } from './components/card-list/card-list.component';
 import { SubjectsComponent } from './components/subjects/subjects.component';
 import { UsersService } from './services/users.service';
-<<<<<<< HEAD
 import { UsersComponent } from './components/users/users.component';
 import { GroupsComponent } from './components/groups/groups.component';
 import { UserDialogComponent } from './components/users/user-dialog/user-dialog.component';
@@ -31,17 +30,15 @@ import { AuthInterceptor } from './services/auth-interceptor';
 import { UsersEditComponent } from './components/users/users-edit/users-edit.component';
 import { GroupsEditComponent } from './components/groups/groups-edit/groups-edit.component';
 import { CardsService } from './services/cards.service';
-import { GameCardComponent } from './componets/game-card/game-card.component';
-import {DragDropModule} from '@angular/cdk/drag-drop';
+import { GameCardComponent } from './components/game-card/game-card.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { CardModeComponent } from './components/card-mode/card-mode.component';
-import {MatTabsModule} from '@angular/material/tabs';
-=======
-import { UsersComponent } from './componets/users/users.component';
-import { NewCardComponent } from './componets/new-card/new-card.component';
-import {MatDialogModule} from '@angular/material/dialog';
-import { NewDeckComponent } from './componets/new-deck/new-deck.component';
-import { EditCardComponent } from './componets/card-list/edit-card/edit-card.component';
->>>>>>> feature/edit-cards-decks
+import { MatTabsModule } from '@angular/material/tabs';
+import { NewCardComponent } from './components/new-card/new-card.component';
+import { NewDeckComponent } from './components/new-deck/new-deck.component';
+import { EditCardComponent } from './components/card-list/edit-card/edit-card.component';
+import { DecksService } from './services/decks.service';
+import { EditDeckComponent } from './components/subjects/edit-deck/edit-deck.component';
 
 
 
@@ -57,7 +54,6 @@ export function tokenGetter() {
     CardComponent,
     CardListComponent,
     SubjectsComponent,
-<<<<<<< HEAD
     UsersComponent,
     GroupsComponent,
     UserDialogComponent,
@@ -65,14 +61,12 @@ export function tokenGetter() {
     UsersEditComponent,
     GroupsEditComponent,
     GameCardComponent,
-    CardModeComponent
-=======
-    UserListingComponent,
+    CardModeComponent,
     UsersComponent,
     NewCardComponent,
     NewDeckComponent,
-    EditCardComponent
->>>>>>> feature/edit-cards-decks
+    EditCardComponent,
+    EditDeckComponent
   ],
   imports: [
     HttpClientModule,
@@ -103,17 +97,12 @@ export function tokenGetter() {
   ],
   entryComponents: [
     UserDialogComponent,
-    GroupDialogComponent
+    GroupDialogComponent,
+    NewCardComponent,
+    NewDeckComponent
   ],
-<<<<<<< HEAD
-  providers: [AuthGuard, AuthService, UsersService, CardsService,
+  providers: [AuthGuard, AuthService, UsersService, CardsService, DecksService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }, MatSnackBar],
-=======
-  entryComponents: [
-    NewCardComponent, NewDeckComponent
-  ],
-  providers: [AuthGuard, AuthService, UsersService],
->>>>>>> feature/edit-cards-decks
   bootstrap: [AppComponent]
 })
 
