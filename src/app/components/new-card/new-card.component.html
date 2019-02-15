@@ -19,6 +19,14 @@
     </mat-form-field>
 
     <mat-form-field>
+      <mat-select placeholder="Pakli" [(ngModel)]="card.deckId" required>
+        <mat-option [value]="1">Java</mat-option>
+        <mat-option [value]="2">Javascript</mat-option>
+        <mat-option [value]="3">Adatbázis</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
         <input matInput placeholder="Típus" [(ngModel)]="card.type" required>
       </mat-form-field>
 

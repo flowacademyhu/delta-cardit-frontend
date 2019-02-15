@@ -28,6 +28,8 @@ const routes: Routes = [
   // tslint:disable-next-line:max-line-length
   { path: 'learningcard/edit/:id', component: EditCardComponent, canActivate: [AuthGuard], data: {role: ['admin', 'contributor', 'student']} },
   {path: 'deck/edit/:id', component: EditDeckComponent, canActivate: [AuthGuard], data: {role: ['admin', 'contributor', 'student']} },
+  // tslint:disable-next-line:max-line-length
+  {path: 'cardmode/card/edit/:id', component: EditCardComponent, canActivate: [AuthGuard], data: {role: ['admin', 'contributor', 'student']} },
 ];
 
 @NgModule({

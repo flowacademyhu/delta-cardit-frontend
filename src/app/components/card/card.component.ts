@@ -41,7 +41,7 @@ export class CardComponent implements OnInit {
 
   next() {
     console.log(this.id);
-    if (this.id <= this.cards.length + 1) {
+    if (this.id < this.cards.length) {
       this.id += 1;
     }
     this.cardsService.getOne(this.id).subscribe(card => {
@@ -52,7 +52,7 @@ export class CardComponent implements OnInit {
   }
 
   prev() {
-    if (this.id >= 1) {
+    if (this.id > 1) {
       this.id -= 1;
     }
     this.cardsService.getOne(this.id).subscribe(card => {

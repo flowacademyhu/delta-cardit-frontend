@@ -4,7 +4,8 @@ export class CardModel {
       public question?: string,
       public answer?: string,
       public difficulty?:  number,
-      public type?: string
+      public type?: string,
+      public deckId?: number
   ) {
   }
 }

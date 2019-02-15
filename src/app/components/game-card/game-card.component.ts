@@ -14,6 +14,9 @@ export class GameCardComponent implements OnInit {
 
   cardsAnswers: CardModel[] = [];
 
+  currentIndex: number;
+  currentIndex2: number;
+
   constructor(private cardsService: CardsService) { }
 
   ngOnInit() {
@@ -42,10 +45,23 @@ export class GameCardComponent implements OnInit {
 
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.cards, event.previousIndex, event.currentIndex);
+    console.log(event.currentIndex);
+    this.currentIndex = event.currentIndex;
+    console.log(this.currentIndex);
   }
 
   drop2(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.cardsAnswers, event.previousIndex, event.currentIndex);
+    console.log(event.currentIndex);
+    this.currentIndex2 = event.currentIndex;
+    console.log(this.cardsAnswers);
+
+  }
+
+  isItRight() {
+    if (this.currentIndex === this.currentIndex2) {
+      console.log('true');
+    }
   }
 
   /* drop(event: CdkDragDrop<string[]>) {

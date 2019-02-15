@@ -1,9 +1,17 @@
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  overflow: hidden;
+}
+
 .container {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   overflow: hidden;
-
+  align-items: center;
+  margin-top: 70px;
 
 }
 
@@ -15,6 +23,8 @@
     background: white;
     border-radius: 4px;
     overflow: hidden;
+    align-items: center;
+
 }
 
 .questions {
