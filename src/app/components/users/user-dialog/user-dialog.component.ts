@@ -45,7 +45,7 @@ export class UserDialogComponent implements OnInit {
     console.log(this.user);
     this.usersService.newUser(this.user).subscribe(result => {
       this.router.navigate(['users']).then(() => {
-        this.snack.open('Sikeres mentés!', 'Ok', { duration : 3000});
+        this.snack.open('A mentés sikeres!', 'Ok', { duration : 3000});
       });
     },
     err => {
