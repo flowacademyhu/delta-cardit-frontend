@@ -18,6 +18,10 @@ export class CardListComponent implements OnInit {
   constructor(private httpClient: HttpClient, public dialog: MatDialog, private cardsService: CardsService) { }
 
   ngOnInit() {
+    this.loadCards();
+  }
+
+  loadCards() {
     this.cardsService.getAllCards().subscribe(cards => {
       this.cards = cards;
     });
@@ -25,6 +29,8 @@ export class CardListComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(NewCardComponent, {
+    }).afterClosed().subscribe(result => {
+      this.loadCards();
     });
   }
 
@@ -34,7 +40,7 @@ export class CardListComponent implements OnInit {
         const url = `${'http://localhost:8000/cards'}/${id}`;
         return this.httpClient.delete(url).toPromise()
           .then(() => {
-          this.ngOnInit();
+            this.loadCards();
           });
       }
     /* this.cardsService.delete(this.cards.id).subscribe((result) => {

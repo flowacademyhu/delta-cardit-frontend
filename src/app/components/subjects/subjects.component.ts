@@ -20,6 +20,7 @@ export class SubjectsComponent implements OnInit {
   ngOnInit() {
     this.decksService.getAllDecks().subscribe(decks => {
       this.decks = decks;
+      console.log(decks);
     });
   }
 
