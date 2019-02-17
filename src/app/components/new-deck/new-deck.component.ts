@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DeckModel } from 'src/app/models/deck.model';
 import { DecksService } from 'src/app/services/decks.service';
 import { Router, Params, ActivatedRoute } from '@angular/router';
+import { MatDialogRef } from '@angular/material';
 
 
 
@@ -16,9 +17,9 @@ export class NewDeckComponent implements OnInit {
 
   public subject: string;
 
-  public cardId: number[] = [];
 
-  constructor(private route: ActivatedRoute, private router: Router, private decksService: DecksService) { }
+  // tslint:disable-next-line:max-line-length
+  constructor(public dialogRef: MatDialogRef<NewDeckComponent>, private route: ActivatedRoute, private router: Router, private decksService: DecksService) { }
 
   ngOnInit() {
     /* this.route.params.subscribe((params: Params) => {
@@ -32,17 +33,26 @@ export class NewDeckComponent implements OnInit {
     }); */
   }
 
+  loadDecks() {
+    this.decksService.getAllDecks().subscribe(decks => {
+      this.deck = decks;
+    });
+  }
+
+
   save() {
     this.subject = this.deck.subject;
-    this.cardId = this.deck.cardId;
     console.log(this.deck);
     this.decksService.save(this.deck).subscribe(result => {
       alert('Sikeres mentés!');
-      this.router.navigate(['decks']);
+      this.router.navigate(['subjects']);
+      this.dialogRef.close();
+      this.loadDecks();
+
     },
     err => {
       alert('Sikertelen mentés!');
-      this.router.navigate(['decks']);
+      this.router.navigate(['subjects']);
     });
   }
 }

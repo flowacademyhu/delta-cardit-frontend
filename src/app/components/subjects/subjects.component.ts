@@ -17,7 +17,12 @@ export class SubjectsComponent implements OnInit {
 
   constructor(private decksService: DecksService, private httpClient: HttpClient, public dialog: MatDialog) { }
 
+
   ngOnInit() {
+    this.loadDecks();
+  }
+
+  loadDecks() {
     this.decksService.getAllDecks().subscribe(decks => {
       this.decks = decks;
       console.log(decks);
@@ -26,11 +31,13 @@ export class SubjectsComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(NewDeckComponent, {
+    }).afterClosed().subscribe(result => {
+      this.loadDecks();
     });
   }
 
   destroy(id: number) {
-    if (confirm('Biztos véglegesen törli a kártyát?')) {
+    if (confirm('Biztos véglegesen törli a paklit?')) {
       const url = `${'http://localhost:8000/decks'}/${id}`;
       return this.httpClient.delete(url).toPromise()
         .then(() => {

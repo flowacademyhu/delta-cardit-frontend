@@ -35,7 +35,7 @@
   
   <div class="actions">
       <div></div>
-    <button mat-stroked-button color="primary" class="btn" routerLink="'editcard' + card.id" >Edit</button>
+    <button mat-stroked-button color="primary" class="btn" routerLink="/learningcard/edit/{{card.id}}" >Edit</button>
     <div></div>
     <button mat-stroked-button color="warn" class="btn" (click) = "destroy(card.id)">Delete</button>
   </div>

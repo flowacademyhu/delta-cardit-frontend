@@ -29,7 +29,7 @@
 
   <div class="actions">
     <div></div>
-    <button mat-stroked-button color="primary" class="btn" routerLink="'/decks/edit/' + deck.id">Edit</button>
+    <button mat-stroked-button color="primary" class="btn" routerLink="/subjects/edit/{{deck.id}}">Edit</button>
     <div></div>
     <button mat-stroked-button color="warn" class="btn" (click)="destroy(deck.id)">Delete</button>
   </div>

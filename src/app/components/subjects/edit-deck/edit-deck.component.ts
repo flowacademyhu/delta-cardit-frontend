@@ -16,6 +16,7 @@ export class EditDeckComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute, private decksService: DecksService) { }
 
   ngOnInit() {
+    console.log(this.deck.id);
     this.route.params.subscribe((params: Params) => {
       if (params.id) {
         this.decksService.getOne(params.id).subscribe((result: DeckModel) => {
