@@ -35,16 +35,11 @@ export class GroupsService {
     return this.httpClient.delete('http://localhost:8000/groups/' + id);
   }
 
-<<<<<<< HEAD
-  deleteGroupDecks(id: number, deckId: number[]) {
-    return this.httpClient.delete('http://localhost:8000/groups/' + id + '/decks/' + deckId);
-=======
   usersByGroupId(id: number) {
     return this.httpClient.get('http://localhost:8000/groups/' + id + '/users', );
   }
 
   decksByGroupId(id: number) {
     return this.httpClient.get('http://localhost:8000/groups/' + id + '/decks', );
->>>>>>> feature/groupPage
   }
 }
