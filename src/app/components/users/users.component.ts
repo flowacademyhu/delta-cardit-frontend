@@ -25,8 +25,7 @@ export class UsersComponent implements OnInit {
   private sendedUser: UserModel = {} as UserModel;
   private selectedUser: UserModel;
   public dataSource;
-  public displayedColumns: string[] = ['id', 'lastName', 'firstName', 'email', 'edit'];
-
+  public displayedColumns: string[] = ['id', 'name', 'email', 'role', 'edit'];
   private userName: string;
 
   constructor(private usersService: UsersService,
