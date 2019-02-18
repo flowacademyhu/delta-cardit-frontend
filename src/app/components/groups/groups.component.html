@@ -23,7 +23,7 @@
       </ng-container>
   
       <ng-container matColumnDef="edit">
-        <th mat-header-cell *matHeaderCellDef> </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Csoport kezelés </th>
         <td mat-cell *matCellDef="let group"> <button class="btn" mat-raised-button
           [routerLink]="'/groups/edit/' + group.id">Szerkesztés</button>
           <button class="btn" mat-raised-button (click)="deleteGroup(group.id)">Törlés</button>

@@ -34,7 +34,7 @@
     </ng-container>
 
     <ng-container matColumnDef="edit">
-      <th mat-header-cell *matHeaderCellDef> </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Felhasználó kezelés </th>
       <td mat-cell *matCellDef="let user"> <button class="btn" mat-raised-button
           [routerLink]="'/users/edit/' + user.id">Szerkesztés</button>
         <button class="btn" mat-raised-button (click)="deleteUser(user.id)">Törlés</button>
