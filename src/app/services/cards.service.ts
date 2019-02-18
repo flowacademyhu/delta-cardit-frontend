@@ -25,7 +25,7 @@ export class CardsService {
   }
 
   save(card: CardModel): Observable<any> {
-    return this.httpClient.post('http://localhost:8000/decks/' + card.deckId + '/cards', card);
+    return this.httpClient.post('http://localhost:8000/cards', card);
   }
 
   edit(card: CardModel): Observable<any> {

@@ -5,7 +5,7 @@ export class CardModel {
       public answer?: string,
       public difficulty?:  number,
       public type?: string,
-      public deckId?: number
+      public deckId?: number[]
   ) {
   }
 }

@@ -5,6 +5,7 @@ import { CardsService } from 'src/app/services/cards.service';
 import { DeckModel } from 'src/app/models/deck.model';
 import { DecksService } from 'src/app/services/decks.service';
 import { MatSnackBar } from '@angular/material';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-edit-card',
@@ -15,6 +16,8 @@ export class EditCardComponent implements OnInit {
 
   private card: CardModel = {} as CardModel;
 
+  private deck: DeckModel = {} as DeckModel;
+
   private decks: DeckModel[] = [];
 
   // tslint:disable-next-line:max-line-length
@@ -22,7 +25,8 @@ export class EditCardComponent implements OnInit {
     private route: ActivatedRoute,
     private cardsService: CardsService,
     private decksService: DecksService,
-    private snack: MatSnackBar) { }
+    private snack: MatSnackBar,
+    private lastLocation: Location) { }
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
@@ -46,7 +50,7 @@ export class EditCardComponent implements OnInit {
     console.log(this.card);
       this.cardsService.edit(this.card).subscribe((result) => {
         this.snack.open('Mentés sikeres');
-        this.router.navigate(['cardmode']);
+        this.router.navigate([this.lastLocation.back()]);
       }, (error) => {
         alert('Mentés sikertelen!');
         console.log('Error', error);

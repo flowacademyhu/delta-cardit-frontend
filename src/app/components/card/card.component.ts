@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CardModel } from 'src/app/models/card.model';
 import { CardsService } from 'src/app/services/cards.service';
-import { all } from 'q';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+//import { all } from 'q';
+import { DecksService } from 'src/app/services/decks.service';
+import { HttpClient } from '@angular/common/http';
+import { DeckModel } from 'src/app/models/deck.model';
+import { getRandomString } from 'selenium-webdriver/safari';
+
 
 
 @Component({
@@ -15,6 +21,8 @@ export class CardComponent implements OnInit {
 
   public card: CardModel;
 
+  public deck: DeckModel = {};
+
   public id: number;
 
   public answers: string = null;
@@ -23,18 +31,56 @@ export class CardComponent implements OnInit {
 
   public isRandom: false;
 
-  constructor(private cardsService: CardsService) { }
+  constructor(private cardsService: CardsService,
+    private decksService: DecksService,
+    private route: ActivatedRoute,
+    private httpClient: HttpClient) { }
 
   ngOnInit() {
-    this.getCards();
+    this.getDeck();
+    //this.getCards();
     /* this.getRandomCards(); */
   }
 
-  getCards() {
-    this.cardsService.getAllCards().subscribe(cards => {
+  getDeck() {
+    this.route.params.subscribe((params: Params) => {
+      console.log(params.id);
+      if (params.id) {
+        this.decksService.getOne(params.id).subscribe((result: DeckModel) => {
+          this.deck = result ? result : {} as DeckModel;
+          this.loadCardsByDeck(this.deck.id);
+          this.getCards();
+          this.randomNoRepeats(this.cards);
+        });
+      }
+    });
+  }
+
+  randomNoRepeats(cards) {
+    let cardsCopy = cards.slice(0);
+    console.log(cardsCopy);
+    return function() {
+      if (cardsCopy.length < 1) { cardsCopy = cards.slice(0); }
+      const index = Math.floor(Math.random() * cardsCopy.length);
+      const card = cardsCopy[index];
+      cardsCopy.splice(index, 1);
+      return card;
+    };
+  }
+
+  loadCardsByDeck(id: number) {
+    console.log(id);
+    this.cardsService.getAllFromDeck(id).subscribe(cards => {
+      console.log(cards);
       this.cards = cards;
     });
-    this.id = 2;
+  }
+
+  getCards() {
+    /* this.cardsService.getAllCards().subscribe(cards => {
+      this.cards = cards;
+    }); */
+    this.id = this.getRandom().id;
     this.cardsService.getOne(this.id).subscribe(card => {
       this.card = card;
     });

@@ -16,11 +16,7 @@
     </mat-select>
   </mat-form-field>
 
-  <mat-form-field>
-    <mat-select placeholder="Pakli" [(ngModel)]="card.deckId" required>
-      <mat-option *ngFor="let deck of decks" [value]="deck.id">{{deck.subject}}</mat-option>
-    </mat-select>
-  </mat-form-field>
+  
 
   <mat-form-field>
     <mat-select placeholder="Típus" [(ngModel)]="card.type" required>
@@ -29,6 +25,12 @@
       <mat-option value="*Több helyes válaszos felelet választós">*Több helyes válaszos felelet választós</mat-option>
       <mat-option value="*Eldöntendő">*Eldöntendő</mat-option>
 
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Pakli" [(ngModel)]="card.deckId" required>
+      <mat-option *ngFor="let deck of decks" [value]="deck.id">{{deck.subject}}</mat-option>
     </mat-select>
   </mat-form-field>
 

@@ -21,7 +21,7 @@ export class NewCardComponent implements OnInit {
   private answer: string;
   private difficulty: number;
   private type: string;
-  private deckId: number;
+  private deckId: number[];
 
 
   // tslint:disable-next-line:max-line-length
@@ -55,15 +55,18 @@ export class NewCardComponent implements OnInit {
     this.answer = this.card.answer;
     this.difficulty = this.card.difficulty;
     this.type = this.card.type;
-    console.log(this.card);
+    const deckId = [];
+    deckId.push(this.card.deckId);
+    this.card.deckId = deckId;
+    console.log(deckId);
     this.cardsService.save(this.card).subscribe(result => {
       this.snack.open('Sikeres mentés!');
-      this.router.navigate(['cardmode']);
+      this.router.navigate(['cardmode/' + this.deckId]);
       this.dialogRef.close();
     },
     err => {
       this.snack.open('Sikertelen mentés!');
-      this.router.navigate(['cardmode']);
+      this.router.navigate(['cardmode/' + this.deckId]);
     });
   }
 
