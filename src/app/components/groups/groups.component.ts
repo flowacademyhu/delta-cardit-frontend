@@ -18,6 +18,7 @@ export class GroupsComponent implements OnInit {
   private groups: GroupModel[] = [];
   private sendedGroup: GroupModel = {} as GroupModel;
   private selectedGroup: GroupModel;
+  private deckIdsOfGroup: number[] = [];
 
   constructor(private groupService: GroupsService, private dialog: MatDialog,
     private snack: MatSnackBar) {

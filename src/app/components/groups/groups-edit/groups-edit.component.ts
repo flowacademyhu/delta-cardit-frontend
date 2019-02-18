@@ -5,6 +5,7 @@ import { GroupsService } from 'src/app/services/groups.service';
 import { MatSnackBar, MatCheckboxModule } from '@angular/material';
 import { DecksService } from 'src/app/services/decks.service';
 import { DeckModel } from 'src/app/models/deck.model';
+import { preserveWhitespacesDefault } from '@angular/compiler';
 
 @Component({
   selector: 'app-groups-edit',
@@ -14,9 +15,12 @@ import { DeckModel } from 'src/app/models/deck.model';
 export class GroupsEditComponent implements OnInit {
 
   private group: GroupModel = {} as GroupModel;
-  private preSelecteddecks: DeckModel[] = [];
-  private selectableDecks: DeckModel[] = [];
-  private selectedDecks: number[];
+  private selectableDecks: DeckModel = {} as DeckModel;
+  private selectableIds: number[] = [];
+  private preSelectedDecks: number[] = [];
+  private refreshedDecks: number[] = [];
+  private checked = true;
+  private isInTheArray: boolean;
 
   constructor(private router: Router,
     private route: ActivatedRoute,
@@ -32,34 +36,53 @@ export class GroupsEditComponent implements OnInit {
           this.group = result ? result : {} as GroupModel;
         });
         this.groupService.getAllGroupDecks(params.id).subscribe(decks => {
-          this.selectedDecks = decks;
+          this.preSelectedDecks = decks;
         });
       }
-      this.groupService.getAllGroups().subscribe(decks => {
-        this.selectableDecks = decks;
+      this.deckService.getAllDecks().subscribe(selectable => {
+        this.selectableDecks = selectable;
+        this.selectableIds.push(this.selectableDecks.id);
       });
     });
-    console.log(this.selectableDecks);
+    this.checkIsItInTheArray();
   }
 
-  checkValue(event: any) {
-    console.log(event.source.value);
-    console.log(this.selectedDecks);
-    if (this.selectableDecks.includes(event.source.value)) {
-      this.selectedDecks.splice(event.source.value);
-    } else {
-      this.selectedDecks.push(event.source.value);
+  /* checkValue(event: any) {
+     console.log(event.source.value);
+     console.log(this.selectedDecks);
+     if (this.selectableDecks.includes(event.source.value)) {
+       this.selectedDecks.splice(event.source.value);
+     } else {
+       this.refreshedDecks.push(event.source.value);
+     }
+    } */
+
+  checkIsItInTheArray() {
+    console.log(this.selectableDecks);
+    console.log(this.selectableIds);
+    console.log(this.preSelectedDecks);
+    for (let i = 0; i < this.selectableIds.length; i++) {
+      if (this.preSelectedDecks.includes(this.selectableIds[i])) {
+        const index = this.selectableIds.indexOf(i);
+        this.selectableIds.slice(index, 1);
+      }
     }
   }
 
-update() {
-  this.group.deckId = this.selectedDecks;
-  this.groupService.editGroup(this.group).subscribe((result) => {
-    this.router.navigate(['groups']).then(() => {
-      this.snack.open('A mentés sikeres!', 'Ok', { duration: 3000 });
+  checkValue(event: any) {
+    console.log(this.preSelectedDecks);
+    this.refreshedDecks.push(event.source.value);
+    console.log(this.refreshedDecks);
+  }
+
+  update() {
+    this.group.deckId = this.refreshedDecks;
+    this.groupService.editGroup(this.group).subscribe((result) => {
+      this.router.navigate(['groups']).then(() => {
+        this.snack.open('A mentés sikeres!', 'Ok', { duration: 3000 });
+      });
+    }, (error) => {
+      this.snack.open('A mentés sikertelen!', 'Ok', { duration: 3000 });
     });
-  }, (error) => {
-    this.snack.open('A mentés sikertelen!', 'Ok', { duration: 3000 });
-  });
-}
+  }
 }
