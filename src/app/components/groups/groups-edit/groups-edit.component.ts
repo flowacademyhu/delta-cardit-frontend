@@ -15,7 +15,7 @@ import { preserveWhitespacesDefault } from '@angular/compiler';
 export class GroupsEditComponent implements OnInit {
 
   private group: GroupModel = {} as GroupModel;
-  private selectableDecks: DeckModel = {} as DeckModel;
+  private selectableDecks: number[] = [];
   private selectableIds: number[] = [];
   private preSelectedDecks: number[] = [];
   private refreshedDecks: number[] = [];
@@ -38,11 +38,10 @@ export class GroupsEditComponent implements OnInit {
         this.groupService.getAllGroupDecks(params.id).subscribe(decks => {
           this.preSelectedDecks = decks;
         });
+        this.deckService.getAllDecks().subscribe(selectable => {
+          this.selectableDecks = selectable;
+        });
       }
-      this.deckService.getAllDecks().subscribe(selectable => {
-        this.selectableDecks = selectable;
-        this.selectableIds.push(this.selectableDecks.id);
-      });
     });
   }
 
@@ -56,21 +55,22 @@ export class GroupsEditComponent implements OnInit {
      }
     } */
 
+    checkValue(event: any) {
+      console.log(this.preSelectedDecks);
+      this.refreshedDecks.push(event.source.value);
+      console.log(this.refreshedDecks);
+    }
 
-  checkValue(event: any) {
-    console.log(this.preSelectedDecks);
-    this.refreshedDecks.push(event.source.value);
-    console.log(this.refreshedDecks);
-  }
-
-  update() {
-    this.group.deckId = this.refreshedDecks;
-    this.groupService.editGroup(this.group).subscribe((result) => {
-      this.router.navigate(['groups']).then(() => {
-        this.snack.open('A mentés sikeres!', 'Ok', { duration: 3000 });
+    update() {
+      console.log(this.refreshedDecks);
+      this.group.deckId = this.refreshedDecks;
+      console.log(this.group.deckId);
+      this.groupService.editGroup(this.group).subscribe((result) => {
+        this.router.navigate(['groups']).then(() => {
+          this.snack.open('A mentés sikeres!', 'Ok', { duration: 3000 });
+        });
+      }, (error) => {
+        this.snack.open('A mentés sikertelen!', 'Ok', { duration: 3000 });
       });
-    }, (error) => {
-      this.snack.open('A mentés sikertelen!', 'Ok', { duration: 3000 });
-    });
+    }
   }
-}
