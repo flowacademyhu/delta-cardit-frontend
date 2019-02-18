@@ -1,0 +1,7 @@
+<h3>Új Pakli hozzáadása</h3>
+<mat-form-field>
+  <mat-select placeholder="Pakli" [(ngModel)]="deckIds">
+    <mat-option *ngFor="let deck of decks" [value]="deck.id">{{deck.subject}}</mat-option>
+  </mat-select>
+</mat-form-field>
+<button class="btn" mat-raised-button (click)="save()">Hozzáadás</button>
