@@ -13,7 +13,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { NavComponent } from './components/nav/nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatButtonModule, MatDialogModule, MatSnackBar, MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule } from '@angular/material';
+import { MatButtonModule, MatDialogModule, MatSnackBar, MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule, MatSlideToggleModule } from '@angular/material';
 import { CardComponent } from './components/card/card.component';
 import { MatCardModule } from '@angular/material/card';
 import { JwtModule } from '@auth0/angular-jwt';
@@ -38,6 +38,7 @@ import { NewDeckComponent } from './components/new-deck/new-deck.component';
 import { EditCardComponent } from './components/card-list/edit-card/edit-card.component';
 import { DecksService } from './services/decks.service';
 import { EditDeckComponent } from './components/subjects/edit-deck/edit-deck.component';
+import { GroupsDataComponent } from './components/groups/groups-data/groups-data.component';
 
 
 
@@ -65,7 +66,8 @@ export function tokenGetter() {
     NewCardComponent,
     NewDeckComponent,
     EditCardComponent,
-    EditDeckComponent
+    EditDeckComponent,
+    GroupsDataComponent
   ],
   imports: [
     HttpClientModule,
@@ -85,6 +87,8 @@ export function tokenGetter() {
     MatButtonModule,
     DragDropModule,
     MatTabsModule,
+    ReactiveFormsModule,
+    MatSlideToggleModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
