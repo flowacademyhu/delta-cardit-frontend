@@ -44,7 +44,6 @@ export class GroupsEditComponent implements OnInit {
         this.selectableIds.push(this.selectableDecks.id);
       });
     });
-    this.checkIsItInTheArray();
   }
 
   /* checkValue(event: any) {
@@ -57,17 +56,6 @@ export class GroupsEditComponent implements OnInit {
      }
     } */
 
-  checkIsItInTheArray() {
-    console.log(this.selectableDecks);
-    console.log(this.selectableIds);
-    console.log(this.preSelectedDecks);
-    for (let i = 0; i < this.selectableIds.length; i++) {
-      if (this.preSelectedDecks.includes(this.selectableIds[i])) {
-        const index = this.selectableIds.indexOf(i);
-        this.selectableIds.slice(index, 1);
-      }
-    }
-  }
 
   checkValue(event: any) {
     console.log(this.preSelectedDecks);

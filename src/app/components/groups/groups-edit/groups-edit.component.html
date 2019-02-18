@@ -7,8 +7,8 @@
   <mat-card *ngFor="let deck of preSelectedDecks">
     <mat-checkbox [value]="deck.id" [(ngModel)]="checked" (change)="checkValue($event)">{{deck.subject}}</mat-checkbox>
   </mat-card>
-  <mat-card *ngFor="let selectable of selectableDecks">
-    <mat-checkbox [value]="selectable.id" (change)="checkValue($event)">{{selectable.subject}}</mat-checkbox>
+  <mat-card *ngFor="let selectable of selectableIds">
+    <mat-checkbox [value]="selectable" (change)="checkValue($event)">{{selectable}}</mat-checkbox>
   </mat-card>
 </div>
 <button class="btn" mat-raised-button (click)="update()">Módosítás</button>
