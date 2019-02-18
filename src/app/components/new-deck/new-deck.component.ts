@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DeckModel } from 'src/app/models/deck.model';
 import { DecksService } from 'src/app/services/decks.service';
 import { Router, Params, ActivatedRoute } from '@angular/router';
-import { MatDialogRef } from '@angular/material';
+import { MatDialogRef, MatSnackBar } from '@angular/material';
 
 
 
@@ -19,7 +19,10 @@ export class NewDeckComponent implements OnInit {
 
 
   // tslint:disable-next-line:max-line-length
-  constructor(public dialogRef: MatDialogRef<NewDeckComponent>, private route: ActivatedRoute, private router: Router, private decksService: DecksService) { }
+  constructor(public dialogRef: MatDialogRef<NewDeckComponent>,
+    private route: ActivatedRoute, private router: Router,
+    private decksService: DecksService,
+    private snack: MatSnackBar) { }
 
   ngOnInit() {
     /* this.route.params.subscribe((params: Params) => {
@@ -44,14 +47,14 @@ export class NewDeckComponent implements OnInit {
     this.subject = this.deck.subject;
     console.log(this.deck);
     this.decksService.save(this.deck).subscribe(result => {
-      alert('Sikeres mentés!');
+      this.snack.open('Sikeres mentés!');
       this.router.navigate(['subjects']);
       this.dialogRef.close();
       this.loadDecks();
 
     },
     err => {
-      alert('Sikertelen mentés!');
+      this.snack.open('Sikertelen mentés!');
       this.router.navigate(['subjects']);
     });
   }

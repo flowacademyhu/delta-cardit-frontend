@@ -4,6 +4,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { CardsService } from 'src/app/services/cards.service';
 import { DeckModel } from 'src/app/models/deck.model';
 import { DecksService } from 'src/app/services/decks.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-edit-card',
@@ -17,7 +18,11 @@ export class EditCardComponent implements OnInit {
   private decks: DeckModel[] = [];
 
   // tslint:disable-next-line:max-line-length
-  constructor(private router: Router, private route: ActivatedRoute, private cardsService: CardsService, private decksService: DecksService) { }
+  constructor(private router: Router,
+    private route: ActivatedRoute,
+    private cardsService: CardsService,
+    private decksService: DecksService,
+    private snack: MatSnackBar) { }
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
@@ -40,7 +45,7 @@ export class EditCardComponent implements OnInit {
   update() {
     console.log(this.card);
       this.cardsService.edit(this.card).subscribe((result) => {
-        alert('Mentés sikeres');
+        this.snack.open('Mentés sikeres');
         this.router.navigate(['cardmode']);
       }, (error) => {
         alert('Mentés sikertelen!');

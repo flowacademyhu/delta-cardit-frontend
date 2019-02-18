@@ -31,16 +31,16 @@ export class GameCardComponent implements OnInit {
     });
   }
 
-  shuffle(array) {
-    let m = array.length, t, i;
+  shuffle(cards) {
+    let m = cards.length, t, i;
 
     while (m) {
       i = Math.floor(Math.random() * m--);
-      t = array[m];
-      array[m] = array[i];
-      array[i] = t;
+      t = cards[m];
+      cards[m] = cards[i];
+      cards[i] = t;
     }
-    return array;
+    return cards;
   }
 
   drop(event: CdkDragDrop<string[]>) {

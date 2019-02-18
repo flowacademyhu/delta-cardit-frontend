@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { DeckModel } from 'src/app/models/deck.model';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { DecksService } from 'src/app/services/decks.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-edit-deck',
@@ -13,7 +14,10 @@ export class EditDeckComponent implements OnInit {
 
   private deck: DeckModel = {} as DeckModel;
 
-  constructor(private router: Router, private route: ActivatedRoute, private decksService: DecksService) { }
+  constructor(private router: Router,
+    private route: ActivatedRoute,
+    private decksService: DecksService,
+    private snack: MatSnackBar) { }
 
   ngOnInit() {
     console.log(this.deck.id);
@@ -24,15 +28,16 @@ export class EditDeckComponent implements OnInit {
         });
       }
     });
+    console.log(this.deck.id);
   }
 
   update() {
     console.log(this.deck);
       this.decksService.edit(this.deck).subscribe((result) => {
-        alert('Mentés sikeres');
-        this.router.navigate(['decks']);
+        this.snack.open('Mentés sikeres');
+        this.router.navigate(['subjects']);
       }, (error) => {
-        alert('Mentés sikertelen!');
+        this.snack.open('Mentés sikertelen!');
         console.log('Error', error);
       });
     }

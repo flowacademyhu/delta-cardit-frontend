@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, Inject } from '@angular/core';
 import { CardModel } from 'src/app/models/card.model';
 import { CardsService } from 'src/app/services/cards.service';
 import { Router, Params, ActivatedRoute } from '@angular/router';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef, MatSnackBar } from '@angular/material';
 import { DeckModel } from 'src/app/models/deck.model';
 import { DecksService } from 'src/app/services/decks.service';
 
@@ -25,7 +25,12 @@ export class NewCardComponent implements OnInit {
 
 
   // tslint:disable-next-line:max-line-length
-  constructor(public dialogRef: MatDialogRef<NewCardComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private router: Router, private route: ActivatedRoute, private cardsService: CardsService, private decksService: DecksService) { }
+  constructor(public dialogRef: MatDialogRef<NewCardComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private router: Router, private route: ActivatedRoute,
+    private cardsService: CardsService,
+    private decksService: DecksService,
+    private snack: MatSnackBar) { }
 
   ngOnInit() {
     this.decksService.getAllDecks().subscribe(decks => {
@@ -52,12 +57,12 @@ export class NewCardComponent implements OnInit {
     this.type = this.card.type;
     console.log(this.card);
     this.cardsService.save(this.card).subscribe(result => {
-      alert('Sikeres mentés!');
+      this.snack.open('Sikeres mentés!');
       this.router.navigate(['cardmode']);
       this.dialogRef.close();
     },
     err => {
-      alert('Sikertelen mentés!');
+      this.snack.open('Sikertelen mentés!');
       this.router.navigate(['cardmode']);
     });
   }
