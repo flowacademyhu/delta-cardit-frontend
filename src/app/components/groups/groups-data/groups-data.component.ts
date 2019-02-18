@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GroupsService } from 'src/app/services/groups.service';
-import { Router, ActivatedRoute } from '@angular/router';
-import { group } from '@angular/animations';
-import { forEach } from '@angular/router/src/utils/collection';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import { GroupModel } from 'src/app/models/group.model';
 
 @Component({
   selector: 'app-groups-data',
@@ -12,9 +11,7 @@ import { forEach } from '@angular/router/src/utils/collection';
 export class GroupsDataComponent implements OnInit {
   usersData: any = [];
   deckData: any = [];
-  groups: any = [];
-  groupName: string = "name";
-  myModel: number = 1;
+  group: GroupModel = {} as GroupModel;
 
   constructor(
     private groupService: GroupsService,
@@ -24,19 +21,11 @@ export class GroupsDataComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    var id = this.route.snapshot.params['id'];
+    const id = this.route.snapshot.params['id'];
     console.log(id);
     this.getUsersByGroup(id);
     this.getDecksByGroup(id);
-    this.loadGroups();
-    this.groups.forEach(group => {
-      if (group.id = id) {
-        this.groupName = group.name;
-      } else {
-        this.groupName = id;
-      }
-      this.groups.fi
-    });
+    this.loadGroup();
   }
 
   getUsersByGroup(id: number) {
@@ -53,13 +42,13 @@ export class GroupsDataComponent implements OnInit {
     });
   }
 
-  loadGroups() {
-    this.groupService.getAllGroups().subscribe(groups => {
-      this.groups = groups;
+  loadGroup() {
+    this.route.params.subscribe((params: Params) => {
+      if (params.id) {
+        this.groupService.getOneGroup(params.id).subscribe((result: GroupModel) => {
+          this.group = result ? result : {} as GroupModel;
+        });
+      }
     });
-  }
-
-  groupData(data: number) {
-    this.myModel = data;
   }
 }
