@@ -20,7 +20,6 @@ export class GroupsEditComponent implements OnInit {
   private preSelectedDecks: number[] = [];
   private refreshedDecks: number[] = [];
   private checked = true;
-  private isInTheArray: boolean;
 
   constructor(private router: Router,
     private route: ActivatedRoute,
@@ -44,22 +43,6 @@ export class GroupsEditComponent implements OnInit {
       }
     });
   }
-
-  /* checkValue(event: any) {
-     console.log(event.source.value);
-     console.log(this.selectedDecks);
-     if (this.selectableDecks.includes(event.source.value)) {
-       this.selectedDecks.splice(event.source.value);
-     } else {
-       this.refreshedDecks.push(event.source.value);
-     }
-    } */
-
-    checkValue(event: any) {
-      console.log(this.preSelectedDecks);
-      this.refreshedDecks.push(event.source.value);
-      console.log(this.refreshedDecks);
-    }
 
     update() {
       console.log(this.refreshedDecks);

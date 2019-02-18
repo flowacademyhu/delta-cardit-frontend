@@ -25,6 +25,10 @@ export class DecksService {
   }
 
   edit(deck: DeckModel): Observable<any> {
-    return this.httpClient.put('http://localhost:8000/deck/' + deck.id, deck);
+    return this.httpClient.put('http://localhost:8000/decks/' + deck.id, deck);
+  }
+
+  deleteGroupDecks(groupId: number, deckId: number) {
+    return this.httpClient.delete('http://localhost:8000/groups/' + groupId + '/decks/' + deckId);
   }
 }

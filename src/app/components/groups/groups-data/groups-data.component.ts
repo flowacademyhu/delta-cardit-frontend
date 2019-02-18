@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GroupsService } from 'src/app/services/groups.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { GroupModel } from 'src/app/models/group.model';
+import { DecksService } from 'src/app/services/decks.service';
 
 @Component({
   selector: 'app-groups-data',
@@ -17,7 +18,7 @@ export class GroupsDataComponent implements OnInit {
     private groupService: GroupsService,
     private route: ActivatedRoute,
     private router: Router,
-
+    private decksService: DecksService
   ) { }
 
   ngOnInit() {
@@ -49,6 +50,16 @@ export class GroupsDataComponent implements OnInit {
           this.group = result ? result : {} as GroupModel;
         });
       }
+    });
+  }
+
+  deleteDeck(deckId: number) {
+    const groupId = this.group.id;
+    this.decksService.deleteGroupDecks(groupId, deckId).subscribe(result => {
+      console.log('Mink vagyunk a legjobbak tesó!');
+      this.ngOnInit();
+    }, err => {
+      console.log('Nooooooooooo');
     });
   }
 }
