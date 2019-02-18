@@ -20,6 +20,7 @@
       <h4 mat-line>{{ deck.subject }}</h4>
       <button mat-raised-button class="btn" (click)="deleteDeck(deck.id)">Törlés</button>
     </mat-list-item>
+    <button mat-icon-button id="fab" title="Új" ><mat-icon aria-label= "Új" (click)="openDialog()">add</mat-icon></button>
   </div>
   </mat-tab>
 </mat-tab-group>
