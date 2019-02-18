@@ -3,8 +3,12 @@
   <h3 mat-subheader>Csoportok</h3>
   <mat-list-item *ngFor="let group of groups">
     <mat-icon mat-list-icon>user</mat-icon>
+<<<<<<< HEAD
     <h4 mat-line>{{group.name}}</h4>
     <h4>{{group.deckId}}</h4>
+=======
+    <h4 type="link" mat-line type [routerLink]="'/groups/' + group.id + '/users'">{{group.name}} </h4>
+>>>>>>> feature/groupPage
     <button mat-raised-button class="btn" [routerLink]="'/groups/edit/' + group.id">Szerkesztés</button>
     <button mat-raised-button class="btn" (click)="deleteGroup(group.id)" (groupDeleted)="handleGroupDeleted($event)">Törlés</button>
   </mat-list-item>
