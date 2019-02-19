@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { GroupsService } from 'src/app/services/groups.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { GroupModel } from 'src/app/models/group.model';
 import { DecksService } from 'src/app/services/decks.service';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { DeckModel } from 'src/app/models/deck.model';
 import { group } from '@angular/animations';
 import { FooterRowOutlet } from '@angular/cdk/table';
+import { UserModel } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-groups-data',
@@ -14,9 +15,15 @@ import { FooterRowOutlet } from '@angular/cdk/table';
   styleUrls: ['./groups-data.component.scss']
 })
 export class GroupsDataComponent implements OnInit {
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+
   usersData: any = [];
   deckData: any = [];
   group: GroupModel = {} as GroupModel;
+  public dataSource;
+  public displayedColumns: string[] = ['name', 'email', 'role'];
 
   constructor(
     private groupService: GroupsService,
@@ -41,7 +48,10 @@ export class GroupsDataComponent implements OnInit {
 
   getUsersByGroup(id: number) {
     this.groupService.usersByGroupId(id).subscribe(result => {
-      this.usersData = result;
+    //  this.usersData = result;
+      this.dataSource = new MatTableDataSource<UserModel>(result);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
       console.log(this.usersData);
     });
   }
