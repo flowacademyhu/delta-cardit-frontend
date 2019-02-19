@@ -39,6 +39,7 @@ import { EditCardComponent } from './components/card-list/edit-card/edit-card.co
 import { DecksService } from './services/decks.service';
 import { EditDeckComponent } from './components/subjects/edit-deck/edit-deck.component';
 import { GroupsDataComponent } from './components/groups/groups-data/groups-data.component';
+import { MainPageComponent } from './components/main-page/main-page.component';
 
 
 
@@ -67,7 +68,8 @@ export function tokenGetter() {
     NewDeckComponent,
     EditCardComponent,
     EditDeckComponent,
-    GroupsDataComponent
+    GroupsDataComponent,
+    MainPageComponent
   ],
   imports: [
     HttpClientModule,

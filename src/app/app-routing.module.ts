@@ -14,10 +14,11 @@ import { CardModeComponent } from './components/card-mode/card-mode.component';
 import { EditCardComponent } from './components/card-list/edit-card/edit-card.component';
 import { EditDeckComponent } from './components/subjects/edit-deck/edit-deck.component';
 import { GroupsDataComponent } from './components/groups/groups-data/groups-data.component';
+import { MainPageComponent } from './components/main-page/main-page.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
-  { path: 'index', component: NavComponent, canActivate: [AuthGuard], data: {role: ['admin', 'contributor', 'student'] } },
+  { path: 'index', component: MainPageComponent, canActivate: [AuthGuard], data: {role: ['admin', 'contributor', 'student'] } },
   { path: 'flashcard', component: CardComponent, canActivate: [AuthGuard], data: {role: ['admin', 'contributor', 'student']} },
   { path: 'learningcard', component: CardListComponent, canActivate: [AuthGuard], data: {role: ['admin', 'contributor', 'student']} },
   { path: 'subjects', component: SubjectsComponent, canActivate: [AuthGuard], data: {role: ['admin', 'contributor', 'student']} },
