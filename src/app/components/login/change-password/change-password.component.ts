@@ -25,7 +25,7 @@ export class ChangePasswordComponent implements OnInit {
       console.log(result);
     }, err => {
       console.log(err);
-    })
+    });
   }
 
 }
