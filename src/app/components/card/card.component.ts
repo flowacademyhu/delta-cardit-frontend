@@ -76,6 +76,7 @@ export class CardComponent implements OnInit {
       }
       console.log(this.cards);
       this.getFirstCard();
+      this.numberOfCards = this.cards.length;
     });
   }
 
@@ -128,9 +129,14 @@ export class CardComponent implements OnInit {
   }
 
   amIRight() {
-    this.numberOfCards = this.cards.length;
+    const index = (this.cards.indexOf(this.card));
+    this.cards.splice(index, 1);
+    console.log(this.cards);
     this.answers += 1;
+    this.next();
   }
 
-
+  iWasWrong() {
+    this.next();
+  }
 }
