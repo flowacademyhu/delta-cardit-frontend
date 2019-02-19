@@ -46,7 +46,6 @@ export class GroupDialogComponent implements OnInit {
 
   save() {
     this.group.name = this.name;
-    this.group.deckId = this.selectedDecks;
     console.log(this.group);
     this.groupsService.newGroup(this.group).subscribe(result => {
       this.router.navigate(['groups']).then(() => {
