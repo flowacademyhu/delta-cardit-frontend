@@ -31,15 +31,15 @@ export class GroupsService {
     return this.httpClient.put('http://localhost:8000/groups/' + group.id, group);
   }
 
-  deleteGroup(id: number) {
+  deleteGroup(id: number): Observable<any>{
     return this.httpClient.delete('http://localhost:8000/groups/' + id);
   }
 
-  usersByGroupId(id: number) {
+  usersByGroupId(id: number): Observable<any> {
     return this.httpClient.get('http://localhost:8000/groups/' + id + '/users', );
   }
 
-  decksByGroupId(id: number) {
+  decksByGroupId(id: number): Observable<any> {
     return this.httpClient.get('http://localhost:8000/groups/' + id + '/decks', );
   }
 }

@@ -45,9 +45,6 @@ export class GroupsEditComponent implements OnInit {
   }
 
     update() {
-      console.log(this.refreshedDecks);
-      this.group.deckId = this.refreshedDecks;
-      console.log(this.group.deckId);
       this.groupService.editGroup(this.group).subscribe((result) => {
         this.router.navigate(['groups']).then(() => {
           this.snack.open('A mentés sikeres!', 'Ok', { duration: 3000 });
