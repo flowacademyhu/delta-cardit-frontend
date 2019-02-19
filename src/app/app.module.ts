@@ -13,7 +13,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { NavComponent } from './components/nav/nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatButtonModule, MatDialogModule, MatSnackBar, MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule, MatSlideToggleModule, MatCheckboxModule, MAT_CHECKBOX_CLICK_ACTION } from '@angular/material';
+import { MatButtonModule, MatDialogModule, MatSnackBar,
+MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule,
+MatSlideToggleModule, MatCheckboxModule, MAT_CHECKBOX_CLICK_ACTION, MatSortModule, MatTableModule } from '@angular/material';
 import { CardComponent } from './components/card/card.component';
 import { MatCardModule } from '@angular/material/card';
 import { JwtModule } from '@auth0/angular-jwt';
@@ -38,8 +40,9 @@ import { NewDeckComponent } from './components/new-deck/new-deck.component';
 import { EditCardComponent } from './components/card-list/edit-card/edit-card.component';
 import { DecksService } from './services/decks.service';
 import { EditDeckComponent } from './components/subjects/edit-deck/edit-deck.component';
-import { GroupsDataComponent } from './components/groups/groups-data/groups-data.component';
 import { ChangePasswordComponent } from './components/login/change-password/change-password.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { GroupsDataComponent, GroupDataDialogComponent } from './components/groups/groups-data/groups-data.component';
 
 
 
@@ -69,7 +72,8 @@ export function tokenGetter() {
     EditCardComponent,
     EditDeckComponent,
     GroupsDataComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    GroupDataDialogComponent
   ],
   imports: [
     HttpClientModule,
@@ -100,15 +104,19 @@ export function tokenGetter() {
     }),
     MatDialogModule,
     MatSnackBarModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatSortModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
   entryComponents: [
     UserDialogComponent,
     GroupDialogComponent,
     NewCardComponent,
-    NewDeckComponent
+    NewDeckComponent,
+    GroupDataDialogComponent
   ],
-  providers: [AuthGuard, AuthService, UsersService, DecksService,
+  providers: [AuthGuard, AuthService, UsersService, DecksService, GroupsDataComponent,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}},
     { provide: MAT_CHECKBOX_CLICK_ACTION, useValue: 'check'}, MatSnackBar],
