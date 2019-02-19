@@ -36,10 +36,10 @@ export class GroupsService {
   }
 
   usersByGroupId(id: number): Observable<any> {
-    return this.httpClient.get('http://localhost:8000/groups/' + id + '/users', );
+    return this.httpClient.get('http://localhost:8000/groups/' + id + '/users');
   }
 
   decksByGroupId(id: number): Observable<any> {
-    return this.httpClient.get('http://localhost:8000/groups/' + id + '/decks', );
+    return this.httpClient.get('http://localhost:8000/groups/' + id + '/decks');
   }
 }

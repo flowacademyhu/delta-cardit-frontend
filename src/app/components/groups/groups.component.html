@@ -15,12 +15,12 @@
   
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
-        <td mat-cell *matCellDef="let group"> {{group.id}} </td>
+        <td mat-cell *matCellDef="let group"> {{group.id}}</td>
       </ng-container>
   
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Név </th>
-        <td mat-cell *matCellDef="let group" type="link" [routerLink]="'/groups/' + group.id + '/users'"> {{group.name}}</td>
+        <td mat-cell *matCellDef="let group" [routerLink]="'/groups/' + group.id + '/users'"> <a type="link"> {{group.name}} </a></td>
       </ng-container>
   
       <ng-container matColumnDef="edit">
