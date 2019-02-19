@@ -20,7 +20,7 @@ export class DecksService {
     return this.httpClient.post('http://localhost:8000/decks/', deck);
   }
 
-  addingDecks(groupId: number, deckId: number[]): Observable<any> {
+  addingDecks(groupId: number, deckId: number): Observable<any> {
     return this.httpClient.post('http://localhost:8000/groups/' + groupId + '/decks', deckId);
   }
 

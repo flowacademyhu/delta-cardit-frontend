@@ -42,7 +42,8 @@ import { DecksService } from './services/decks.service';
 import { EditDeckComponent } from './components/subjects/edit-deck/edit-deck.component';
 import { ChangePasswordComponent } from './components/login/change-password/change-password.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { GroupsDataComponent, GroupDataDialogComponent } from './components/groups/groups-data/groups-data.component';
+import { GroupsDataComponent } from './components/groups/groups-data/groups-data.component';
+import { GroupsDataDialogComponent } from './components/groups/groups-data/groups-data-dialog/groups-data-dialog.component';
 
 
 
@@ -73,7 +74,7 @@ export function tokenGetter() {
     EditDeckComponent,
     GroupsDataComponent,
     ChangePasswordComponent,
-    GroupDataDialogComponent
+    GroupsDataDialogComponent
   ],
   imports: [
     HttpClientModule,
@@ -114,7 +115,7 @@ export function tokenGetter() {
     GroupDialogComponent,
     NewCardComponent,
     NewDeckComponent,
-    GroupDataDialogComponent
+    GroupsDataDialogComponent
   ],
   providers: [AuthGuard, AuthService, UsersService, DecksService, GroupsDataComponent,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

@@ -1,6 +1,6 @@
 <h3>Új Pakli hozzáadása</h3>
 <mat-form-field>
-  <mat-select placeholder="Pakli" [(ngModel)]="deckIds">
+  <mat-select placeholder="Pakli" [(ngModel)]="deckId">
     <mat-option *ngFor="let deck of decks" [value]="deck.id">{{deck.subject}}</mat-option>
   </mat-select>
 </mat-form-field>

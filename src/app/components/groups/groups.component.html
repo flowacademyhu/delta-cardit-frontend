@@ -20,7 +20,7 @@
   
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Név </th>
-        <td mat-cell *matCellDef="let group" [routerLink]="'/groups/' + group.id + '/users'"> <a type="link"> {{group.name}} </a></td>
+        <td mat-cell *matCellDef="let group" [routerLink]="'/groups/' + group.id + '/decks'"> <a type="link"> {{group.name}} </a></td>
       </ng-container>
   
       <ng-container matColumnDef="edit">

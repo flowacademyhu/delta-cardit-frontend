@@ -8,6 +8,7 @@ import { DeckModel } from 'src/app/models/deck.model';
 import { group } from '@angular/animations';
 import { FooterRowOutlet } from '@angular/cdk/table';
 import { UserModel } from 'src/app/models/user.model';
+import { GroupsDataDialogComponent } from './groups-data-dialog/groups-data-dialog.component';
 
 @Component({
   selector: 'app-groups-data',
@@ -44,7 +45,7 @@ export class GroupsDataComponent implements OnInit {
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(GroupDataDialogComponent, {
+    const dialogRef = this.dialog.open(GroupsDataDialogComponent, {
     });
   }
 
@@ -87,39 +88,4 @@ export class GroupsDataComponent implements OnInit {
       console.log('Nooooooooooo');
     });
   }
-}
-
-@Component({
-  selector: 'app-groups-data-dialog',
-  templateUrl: 'groups-data-dialog.html',
-  styleUrls: ['groups-data-dialog.scss'],
-})
-export class GroupDataDialogComponent implements OnInit {
-
-  private decks: DeckModel[] = [];
-  private deckIds: number[];
-  private deckId: number;
-
-  constructor(private dialog: MatDialog,
-    private decksService: DecksService,
-    private route: ActivatedRoute,
-    private groupService: GroupsService,
-    private groupData: GroupsDataComponent) { }
-
-    ngOnInit() {
-      this.decksService.getAllDecks().subscribe(decks => {
-        this.decks = decks;
-      });
-    }
-
-    save() {
-      const currentGroup = this.groupData.group;
-      console.log(currentGroup);
-      this.decksService.addingDecks(currentGroup.id, this.deckIds).subscribe(result => {
-        console.log('Mink vagyunk a legjobbak tesó!');
-        this.ngOnInit();
-      }, err => {
-        console.log('Szoppantyú!');
-      });
-    }
 }
