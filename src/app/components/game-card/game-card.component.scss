@@ -20,7 +20,7 @@
     border: solid 1px #ccc;
     min-height: 60px;
     display: flex;
-    background: white;
+    background: grey;
     border-radius: 4px;
     overflow: hidden;
     align-items: center;
@@ -38,7 +38,7 @@
 .list {
   border: solid 1px #ccc;
   min-height: 60px;
-  background: white;
+  background: rgb(73, 112, 107);
   border-radius: 4px;
   overflow: hidden;
   display: block;
@@ -49,13 +49,13 @@
   border-bottom: solid 1px #ccc;
   color: rgba(0, 0, 0, 0.87);
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
   cursor: move;
-  background: white;
+  background: rgb(8, 226, 215);
   font-size: 14px;
+  text-align: center;
 }
 
 .cdk-drag-preview {

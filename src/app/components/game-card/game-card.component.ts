@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { CardModel } from 'src/app/models/card.model';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { CardsService } from 'src/app/services/cards.service';
+import { DecksService } from 'src/app/services/decks.service';
+import { ActivatedRoute, Params } from '@angular/router';
+import { DeckModel } from 'src/app/models/deck.model';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-game-card',
@@ -12,24 +16,49 @@ export class GameCardComponent implements OnInit {
 
   cards: CardModel[] = [];
 
+  deck: DeckModel = {};
+
   cardsAnswers: CardModel[] = [];
+
+  currentQuestionCard: CardModel = {};
+
+  currentAnswerCard: CardModel = {};
 
   currentIndex: number;
   currentIndex2: number;
 
-  constructor(private cardsService: CardsService) { }
+  constructor(private cardsService: CardsService,
+    private decksService: DecksService,
+    private route: ActivatedRoute,
+    private snack: MatSnackBar) { }
 
   ngOnInit() {
-    const cardObservable = this.cardsService.getAllCards();
+    this.getDeck();
+  }
+
+  fillGameCards(id: number) {
+    const cardObservable = this.cardsService.getAllFromDeck(id);
     cardObservable.subscribe((cardsData: CardModel[]) => {
       this.cards = [...cardsData];
       this.shuffle(this.cards);
       this.cardsAnswers = [...cardsData];
       this.shuffle(this.cardsAnswers);
-      console.log(this.cards);
-      console.log(this.cardsAnswers);
     });
   }
+
+  getDeck() {
+    this.route.params.subscribe((params: Params) => {
+      console.log(params.id);
+      if (params.id) {
+        this.decksService.getOne(params.id).subscribe((result: DeckModel) => {
+          this.deck = result ? result : {} as DeckModel;
+          this.fillGameCards(this.deck.id);
+        });
+      }
+    });
+  }
+
+
 
   shuffle(cards) {
     let m = cards.length, t, i;
@@ -47,31 +76,41 @@ export class GameCardComponent implements OnInit {
     moveItemInArray(this.cards, event.previousIndex, event.currentIndex);
     console.log(event.currentIndex);
     this.currentIndex = event.currentIndex;
+    this.currentQuestionCard = (this.cardsAnswers[event.currentIndex]);
     console.log(this.currentIndex);
+    console.log(this.currentQuestionCard);
+    this.isItRight();
   }
 
   drop2(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.cardsAnswers, event.previousIndex, event.currentIndex);
     console.log(event.currentIndex);
+    this.currentAnswerCard = (this.cardsAnswers[event.currentIndex]);
     this.currentIndex2 = event.currentIndex;
-    console.log(this.cardsAnswers);
-
+    console.log(this.currentAnswerCard);
+    this.isItRight();
   }
+
+  /* dropCardAnswer(index: num){
+    this.currentAnswerCard = (this.cardsAnswers[event.currentIndex]);
+    this.currentIndex2 = event.currentIndex;
+    console.log(this.currentAnswerCard);
+    this.isItRight();
+  } */
 
   isItRight() {
-    if (this.currentIndex === this.currentIndex2) {
+    /*  const dragCardAnswer = this.cardsAnswers[event.currentIndex]
+     const dragCArdQuestion = this.cardQuestion[event.currentIndex]
+     const answer = this.cards.filter(card => card.answer === this.cardAnswer);
+     const question = this.cards.filter(card => card.question === this.cardQuestion); */
+
+    if (this.currentQuestionCard === this.currentAnswerCard) {
       console.log('true');
+      this.openSnackBar();
     }
   }
 
-  /* drop(event: CdkDragDrop<string[]>) {
-    if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    } else {
-      transferArrayItem(event.previousContainer.data,
-                        event.container.data,
-                        event.previousIndex,
-                        event.currentIndex);
-    }
-  } */
+  openSnackBar() {
+    this.snack.open('Helyes megoldás!');
+  }
 }

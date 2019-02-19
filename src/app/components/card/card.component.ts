@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { CardModel } from 'src/app/models/card.model';
 import { CardsService } from 'src/app/services/cards.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-// import { all } from 'q';
 import { DecksService } from 'src/app/services/decks.service';
 import { HttpClient } from '@angular/common/http';
 import { DeckModel } from 'src/app/models/deck.model';
@@ -28,7 +27,7 @@ export class CardComponent implements OnInit {
 
   public numberOfCards: number = null;
 
-  public isRandom = true;
+  public isRandom = false;
 
   public oneRound = true;
 
@@ -39,8 +38,6 @@ export class CardComponent implements OnInit {
 
   ngOnInit() {
     this.getDeck();
-    // this.getCards();
-    /* this.getRandomCards(); */
   }
 
   getDeck() {
@@ -50,23 +47,11 @@ export class CardComponent implements OnInit {
         this.decksService.getOne(params.id).subscribe((result: DeckModel) => {
           this.deck = result ? result : {} as DeckModel;
           this.loadCardsByDeck(this.deck.id);
-          // this.randomNoRepeats(this.cards);
         });
       }
     });
   }
 
-  /* randomNoRepeats(cards) {
-    let cardsCopy = cards.slice(0);
-    console.log(cardsCopy);
-    return function() {
-      if (cardsCopy.length < 1) { cardsCopy = cards.slice(0); }
-      const index = Math.floor(Math.random() * cardsCopy.length);
-      const card = cardsCopy[index];
-      cardsCopy.splice(index, 1);
-      return card;
-    };
-  } */
 
   loadCardsByDeck(id: number) {
     console.log(id);
@@ -114,28 +99,12 @@ export class CardComponent implements OnInit {
   }
 
 
-  /* console.log(this.id);
-  if (this.id < this.cards.length) {
-    this.id += 1;
-  }
-  this.cardsService.getOne(this.id).subscribe(card => {
-    this.card = card;
-  });
-  console.log(this.cards); */
-
-
   prev() {
     let index = this.cards.indexOf(this.card);
     console.log(index);
     if (!(this.card === this.cards[0])) {
       this.card = this.cards[index -= 1];
     }
-    /* if (this.id > 1) {
-      this.id -= 1;
-    }
-    this.cardsService.getOne(this.id).subscribe(card => {
-      this.card = card;
-    }); */
   }
 
   amIRight() {
