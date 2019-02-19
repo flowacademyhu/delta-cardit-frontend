@@ -1,7 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter, Inject} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, Inject, ViewChild} from '@angular/core';
 import { UserModel } from 'src/app/models/user.model';
 import { UsersService } from 'src/app/services/users.service';
-import { MatDialog, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
+import { MatDialog, MAT_DIALOG_DATA, MatSnackBar, MatPaginator, MatTableDataSource, MatSort } from '@angular/material';
 import { UserDialogComponent } from './user-dialog/user-dialog.component';
 import { GroupModel } from 'src/app/models/group.model';
 import { GroupsService } from 'src/app/services/groups.service';
@@ -17,11 +17,15 @@ export class UsersComponent implements OnInit {
 
   @Output() userDeleted = new EventEmitter<UserModel>();
 
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+
   private users: UserModel[] = [];
   private groups: GroupModel[] = [];
   private sendedUser: UserModel = {} as UserModel;
   private selectedUser: UserModel;
-
+  public dataSource;
+  public displayedColumns: string[] = ['id', 'name', 'email', 'role', 'edit'];
   private userName: string;
 
   constructor(private usersService: UsersService,
@@ -47,7 +51,10 @@ export class UsersComponent implements OnInit {
 
   loadUsers() {
     this.usersService.getAllUsers().subscribe(users => {
-      this.users = users;
+   // this.users = users;
+    this.dataSource = new MatTableDataSource<UserModel>(users);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
     });
   }
 

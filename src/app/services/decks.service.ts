@@ -20,7 +20,11 @@ export class DecksService {
     return this.httpClient.post('http://localhost:8000/decks/', deck);
   }
 
-  getOne(id: number) {
+  addingDecks(groupId: number, deckId: number[]): Observable<any> {
+    return this.httpClient.post('http://localhost:8000/groups/' + groupId + '/decks', deckId);
+  }
+
+  getOne(id: number): Observable<any> {
     return this.httpClient.get('http://localhost:8000/decks/' + id);
   }
 
@@ -28,7 +32,7 @@ export class DecksService {
     return this.httpClient.put('http://localhost:8000/decks/' + deck.id, deck);
   }
 
-  deleteGroupDecks(groupId: number, deckId: number) {
+  deleteGroupDecks(groupId: number, deckId: number): Observable<any> {
     return this.httpClient.delete('http://localhost:8000/groups/' + groupId + '/decks/' + deckId);
   }
 }
