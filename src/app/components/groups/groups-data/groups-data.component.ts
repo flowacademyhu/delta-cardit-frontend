@@ -23,7 +23,9 @@ export class GroupsDataComponent implements OnInit {
   deckData: any = [];
   group: GroupModel = {} as GroupModel;
   public dataSource;
+  public deckDataSource;
   public displayedColumns: string[] = ['name', 'email', 'role'];
+  public deckDisplayedColumns: string[] = ['name', 'edit'];
 
   constructor(
     private groupService: GroupsService,
@@ -58,7 +60,10 @@ export class GroupsDataComponent implements OnInit {
 
   getDecksByGroup(id: number) {
     this.groupService.decksByGroupId(id).subscribe(result => {
-      this.deckData = result;
+    //  this.deckData = result;
+      this.deckDataSource = new MatTableDataSource<DeckModel>(result);
+      this.deckDataSource.paginator = this.paginator;
+      this.deckDataSource.sort = this.sort;
       console.log(this.deckData);
     });
   }

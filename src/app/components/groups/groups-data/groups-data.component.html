@@ -31,13 +31,34 @@
 
   <mat-tab label="Paklik">
      <br>
-  <div>
+ <!-- <div>
       <h2 mat-subheader></h2>
       <mat-list-item *ngFor="let deck of deckData">
       <h4 mat-line>{{ deck.subject }}</h4>
       <button mat-raised-button class="btn" (click)="deleteDeck(deck.id)">Törlés</button>
     </mat-list-item>
     <button mat-icon-button id="fab" title="Új" ><mat-icon aria-label= "Új" (click)="openDialog()">add</mat-icon></button>
+  </div>   -->
+  <div class="container">
+    <table mat-table [dataSource]="deckDataSource" matSort class="table-size">
+  
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Pakli neve </th>
+        <td mat-cell *matCellDef="let deck"> {{deck.subject}}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Pakli kezelés </th>
+        <td mat-cell *matCellDef="let deck"> <button class="btn" mat-raised-button
+          (click)="deleteDeck(deck.id)">Törlés</button>
+      </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="deckDisplayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: deckDisplayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
   </div>
+  <button mat-icon-button id="fab" title="Új" ><mat-icon aria-label= "Új" (click)="openDialog()">add</mat-icon></button>
   </mat-tab>
 </mat-tab-group>
