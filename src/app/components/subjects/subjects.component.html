@@ -1,7 +1,7 @@
 <app-nav></app-nav>
 
 <button mat-icon-button id="fab" title="Új">
-  <mat-icon aria-label="Új" (click)="openDialog()">add</mat-icon>
+  <mat-icon aria-label="Új" (click)="openDialog()" *ngIf="!isStudent" >add</mat-icon>
 </button>
 
 <div class="subject-list-container" *ngFor="let deck of decks">
@@ -23,8 +23,8 @@
 
   <div class="actions">
     <div></div>
-    <button mat-stroked-button color="primary" class="btn" routerLink="/subjects/edit/{{deck.id}}">Edit</button>
+    <button mat-stroked-button color="primary" class="btn" routerLink="/subjects/edit/{{deck.id}}" *ngIf="!isStudent" >Edit</button>
     <div></div>
-    <button mat-stroked-button color="warn" class="btn" (click)="destroy(deck.id)">Delete</button>
+    <button mat-stroked-button color="warn" class="btn" (click)="destroy(deck.id)" *ngIf="!isStudent" >Delete</button>
   </div>
 </div>

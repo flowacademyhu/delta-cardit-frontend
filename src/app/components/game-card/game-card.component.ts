@@ -77,8 +77,8 @@ export class GameCardComponent implements OnInit {
     console.log(event.currentIndex);
     this.currentIndex = event.currentIndex;
     this.currentQuestionCard = (this.cardsAnswers[event.currentIndex]);
-    console.log(this.currentIndex);
-    console.log(this.currentQuestionCard);
+    // console.log(this.currentIndex);
+    // console.log(this.currentQuestionCard);
     this.isItRight();
   }
 
@@ -87,7 +87,7 @@ export class GameCardComponent implements OnInit {
     console.log(event.currentIndex);
     this.currentAnswerCard = (this.cardsAnswers[event.currentIndex]);
     this.currentIndex2 = event.currentIndex;
-    console.log(this.currentAnswerCard);
+    // console.log(this.currentAnswerCard);
     this.isItRight();
   }
 
@@ -104,8 +104,11 @@ export class GameCardComponent implements OnInit {
      const answer = this.cards.filter(card => card.answer === this.cardAnswer);
      const question = this.cards.filter(card => card.question === this.cardQuestion); */
 
-    if (this.currentQuestionCard === this.currentAnswerCard) {
-      console.log('true');
+    if (this.currentQuestionCard === this.currentAnswerCard && this.currentIndex2 === this.currentIndex) {
+      console.log(this.currentQuestionCard);
+      console.log(this.currentAnswerCard);
+      console.log(this.currentIndex2);
+      console.log(this.currentIndex);
       this.openSnackBar();
     }
   }

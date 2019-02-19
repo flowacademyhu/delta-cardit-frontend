@@ -5,6 +5,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { DecksService } from 'src/app/services/decks.service';
 import { HttpClient } from '@angular/common/http';
 import { DeckModel } from 'src/app/models/deck.model';
+import { MatSnackBar } from '@angular/material';
 
 
 
@@ -34,7 +35,8 @@ export class CardComponent implements OnInit {
   constructor(private cardsService: CardsService,
     private decksService: DecksService,
     private route: ActivatedRoute,
-    private httpClient: HttpClient) { }
+    private httpClient: HttpClient,
+    private snack: MatSnackBar) { }
 
   ngOnInit() {
     this.getDeck();
@@ -64,6 +66,7 @@ export class CardComponent implements OnInit {
       console.log(this.cards);
       this.getFirstCard();
       this.numberOfCards = this.cards.length;
+      this.answers = 0;
     });
   }
 
@@ -111,8 +114,11 @@ export class CardComponent implements OnInit {
     const index = (this.cards.indexOf(this.card));
     this.cards.splice(index, 1);
     console.log(this.cards);
-    if (this.answers < this.numberOfCards) {
+    if (this.answers < this.numberOfCards - 1 ) {
       this.answers += 1;
+    } else if (this.answers < this.numberOfCards) {
+      this.answers += 1;
+      this.snack.open('Gratulálok, az összes választ tudtad!');
     }
     this.next();
   }

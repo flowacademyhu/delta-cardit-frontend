@@ -4,6 +4,7 @@ import { DeckModel } from 'src/app/models/deck.model';
 import { MatDialog } from '@angular/material';
 import { HttpClient } from '@angular/common/http';
 import { NewDeckComponent } from '../new-deck/new-deck.component';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({
@@ -15,7 +16,11 @@ export class SubjectsComponent implements OnInit {
 
   public decks: DeckModel[] = [];
 
-  constructor(private decksService: DecksService, private httpClient: HttpClient, public dialog: MatDialog) { }
+  private currentUser;
+
+  constructor(private decksService: DecksService, private httpClient: HttpClient, public dialog: MatDialog, private auth: AuthService) {
+    this.auth.currentUser.subscribe(result => this.currentUser = result);
+   }
 
 
   ngOnInit() {
@@ -44,5 +49,13 @@ export class SubjectsComponent implements OnInit {
           this.ngOnInit();
         });
     }
+  }
+
+  get isAdmin() {
+    return this.currentUser && this.currentUser.role === 'admin';
+  }
+
+  get isStudent() {
+    return this.currentUser && this.currentUser.role === 'student';
   }
 }

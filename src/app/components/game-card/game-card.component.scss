@@ -11,7 +11,7 @@
   justify-content: space-around;
   overflow: hidden;
   align-items: center;
-  margin-top: 70px;
+  margin-top: 30px;
 
 }
 
@@ -24,7 +24,6 @@
     border-radius: 4px;
     overflow: hidden;
     align-items: center;
-
 }
 
 .questions {
@@ -36,6 +35,8 @@
 }
 
 .list {
+  width: 200px;
+  max-width: 100%;
   border: solid 1px #ccc;
   min-height: 60px;
   background: rgb(73, 112, 107);
