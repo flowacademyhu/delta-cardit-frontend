@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CardModel } from 'src/app/models/card.model';
 import { CardsService } from 'src/app/services/cards.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-//import { all } from 'q';
+// import { all } from 'q';
 import { DecksService } from 'src/app/services/decks.service';
 import { HttpClient } from '@angular/common/http';
 import { DeckModel } from 'src/app/models/deck.model';
@@ -19,7 +19,7 @@ export class CardComponent implements OnInit {
 
   public cards: CardModel[] = [];
 
-  public card: CardModel;
+  public card: CardModel = {};
 
   public deck: DeckModel = {};
 
@@ -38,7 +38,7 @@ export class CardComponent implements OnInit {
 
   ngOnInit() {
     this.getDeck();
-    //this.getCards();
+    // this.getCards();
     /* this.getRandomCards(); */
   }
 
@@ -49,8 +49,7 @@ export class CardComponent implements OnInit {
         this.decksService.getOne(params.id).subscribe((result: DeckModel) => {
           this.deck = result ? result : {} as DeckModel;
           this.loadCardsByDeck(this.deck.id);
-          this.getCards();
-          this.randomNoRepeats(this.cards);
+          // this.randomNoRepeats(this.cards);
         });
       }
     });
@@ -73,17 +72,12 @@ export class CardComponent implements OnInit {
     this.cardsService.getAllFromDeck(id).subscribe(cards => {
       console.log(cards);
       this.cards = cards;
+      this.getFirstCard();
     });
   }
 
-  getCards() {
-    /* this.cardsService.getAllCards().subscribe(cards => {
-      this.cards = cards;
-    }); */
-    this.id = this.getRandom().id;
-    this.cardsService.getOne(this.id).subscribe(card => {
-      this.card = card;
-    });
+  getFirstCard() {
+    this.card = this.cards[0];
   }
 
  /*  getRandomCards() {
@@ -94,7 +88,7 @@ export class CardComponent implements OnInit {
   getRandom() {
     /* const min = 1;
     const max = this.cards.length; */
-    //Math.floor(Math.random() * (max - min + 1)) + min;
+    // Math.floor(Math.random() * (max - min + 1)) + min;
     return this.cards[Math.floor(Math.random() * this.cards.length)];
   }
 
@@ -111,24 +105,35 @@ export class CardComponent implements OnInit {
   }
 
   next() {
-    console.log(this.id);
+    let index = this.cards.indexOf(this.card);
+    console.log(index);
+    if (!(this.card === this.cards.pop)) {
+      this.card = this.cards[index += 1];
+    }
+
+    /* console.log(this.id);
     if (this.id < this.cards.length) {
       this.id += 1;
     }
     this.cardsService.getOne(this.id).subscribe(card => {
       this.card = card;
     });
-    console.log(this.cards);
+    console.log(this.cards); */
 
   }
 
   prev() {
-    if (this.id > 1) {
+    let index = this.cards.indexOf(this.card);
+    console.log(index);
+    if (!(this.card === this.cards[0])) {
+      this.card = this.cards[index -= 1];
+    }
+    /* if (this.id > 1) {
       this.id -= 1;
     }
     this.cardsService.getOne(this.id).subscribe(card => {
       this.card = card;
-    });
+    }); */
   }
 
   amIRight() {

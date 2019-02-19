@@ -13,7 +13,6 @@ export class CardModeComponent implements OnInit {
 
   public deck: DeckModel = {} as DeckModel;
 
-  public deckId: number;
 
   constructor(
     private httpClient: HttpClient,
@@ -29,8 +28,6 @@ export class CardModeComponent implements OnInit {
         });
       }
     });
-    console.log(this.deck);
-    console.log(this.deck.id);
     /* this.route.params.subscribe((params: Params) => {
       if (params.id) {
         this.decksService.getOne(params.id).subscribe((result: DeckModel) => {
@@ -43,6 +40,5 @@ export class CardModeComponent implements OnInit {
   }
 
   consoleLog() {
-    console.log(this.deck);
     }
 }
