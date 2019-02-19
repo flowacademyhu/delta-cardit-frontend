@@ -3,10 +3,9 @@
   <mat-form-field>
     <input matInput placeholder="Csoport neve" [(ngModel)]="name" required>
   </mat-form-field>
-  <mat-card *ngFor="let deck of decks">
-    <mat-checkbox [value]="deck.id"
-      (change)="checkValue($event)">{{deck.subject}}</mat-checkbox>
-  </mat-card>
+    <mat-select placeholder="Pakli" [(ngModel)]="group.deckId">
+      <mat-option *ngFor="let deck of decks" [value]="deck.id">{{deck.subject}}</mat-option>
+    </mat-select>
   <div class="btn-position">
     <button class="btn" mat-raised-button (click)="save()">Felvétel</button>
   </div>

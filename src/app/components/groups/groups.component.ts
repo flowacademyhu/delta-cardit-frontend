@@ -1,8 +1,8 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { GroupModel } from 'src/app/models/group.model';
 import { GroupsService } from 'src/app/services/groups.service';
 import { GroupDialogComponent } from './group-dialog/group-dialog.component';
-import { MatDialog, MatSnackBar } from '@angular/material';
+import { MatDialog, MatSnackBar, MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 
 @Component({
   selector: 'app-groups',
@@ -15,10 +15,15 @@ export class GroupsComponent implements OnInit {
 
   @Output() groupDeleted = new EventEmitter<GroupModel>();
 
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+
   private groups: GroupModel[] = [];
   private sendedGroup: GroupModel = {} as GroupModel;
   private selectedGroup: GroupModel;
   private deckIdsOfGroup: number[] = [];
+  public dataSource;
+  public displayedColumns: string[] = ['id', 'name', 'edit'];
 
   constructor(private groupService: GroupsService, private dialog: MatDialog,
     private snack: MatSnackBar) {
@@ -40,8 +45,11 @@ export class GroupsComponent implements OnInit {
 
   loadGroups() {
     this.groupService.getAllGroups().subscribe(groups => {
-      this.groups = groups;
-    });
+     // this.groups = groups;
+      this.dataSource = new MatTableDataSource<GroupModel>(groups);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+      });
   }
 
   getUser(id: number) {
