@@ -1,6 +1,11 @@
 .answers {
   display: flex;
   justify-content: center;
+  
+}
+
+.select {
+  width: 110px;
 }
 
 .card-button-container {
@@ -54,9 +59,17 @@
 .buttons-container {
   display: grid;
   grid-template-rows: 165px 1fr;
-  grid-template-columns: 1fr 4fr 1fr 1fr 1fr 5fr;
+  grid-template-columns: 5fr 1fr 1fr 1fr 5fr;
 }
 
-.randomSlider, .x-button, .y-button, .flip-button {
+.x-button, .y-button, .flip-button {
   align-self: end;
+}
+
+.options {
+  display: flex;
+  justify-content: space-evenly;
+  background-color:lightgray;
+  height: 30px;
+  align-items: center;
 }

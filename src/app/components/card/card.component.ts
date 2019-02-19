@@ -24,11 +24,13 @@ export class CardComponent implements OnInit {
 
   public id: number;
 
-  public answers: string = null;
+  public answers: number = null;
 
   public numberOfCards: number = null;
 
   public isRandom = true;
+
+  public oneRound = true;
 
   constructor(private cardsService: CardsService,
     private decksService: DecksService,
@@ -99,20 +101,28 @@ export class CardComponent implements OnInit {
   next() {
     let index = this.cards.indexOf(this.card);
     console.log(index);
-    if (!(this.card === this.cards.pop)) {
+    if (this.oneRound) {
+      if (index !== this.cards.length - 1) {
+        this.card = this.cards[index += 1];
+      }
+    } else if (index !== this.cards.length - 1) {
       this.card = this.cards[index += 1];
+    } else {
+      this.card = this.cards[0];
     }
-
-    /* console.log(this.id);
-    if (this.id < this.cards.length) {
-      this.id += 1;
-    }
-    this.cardsService.getOne(this.id).subscribe(card => {
-      this.card = card;
-    });
-    console.log(this.cards); */
-
+    console.log(this.oneRound);
   }
+
+
+  /* console.log(this.id);
+  if (this.id < this.cards.length) {
+    this.id += 1;
+  }
+  this.cardsService.getOne(this.id).subscribe(card => {
+    this.card = card;
+  });
+  console.log(this.cards); */
+
 
   prev() {
     let index = this.cards.indexOf(this.card);
@@ -132,7 +142,9 @@ export class CardComponent implements OnInit {
     const index = (this.cards.indexOf(this.card));
     this.cards.splice(index, 1);
     console.log(this.cards);
-    this.answers += 1;
+    if (this.answers < this.numberOfCards) {
+      this.answers += 1;
+    }
     this.next();
   }
 
