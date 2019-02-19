@@ -23,6 +23,8 @@ export class GroupsDataComponent implements OnInit {
   usersData: any = [];
   deckData: any = [];
   group: GroupModel = {} as GroupModel;
+
+  groupId: number;
   public dataSource;
   public deckDataSource;
   public displayedColumns: string[] = ['name', 'email', 'role'];
@@ -37,15 +39,26 @@ export class GroupsDataComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const id = this.route.snapshot.params['id'];
-    console.log(id);
-    this.getUsersByGroup(id);
-    this.getDecksByGroup(id);
-    this.loadGroup();
+    this.route.params.subscribe((params: Params) => {
+      if (params.id) {
+        this.groupId = params.id;
+        this.loadGroup(this.groupId);
+        this.getUsersByGroup(this.groupId);
+        this.getDecksByGroup(this.groupId);
+      }
+    });
   }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(GroupsDataDialogComponent, {
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('Teso, elado result (lopott...) : ' + result);
+
+      this.loadGroup(this.groupId);
+      this.getUsersByGroup(this.groupId);
+      this.getDecksByGroup(this.groupId);
     });
   }
 
@@ -69,14 +82,10 @@ export class GroupsDataComponent implements OnInit {
     });
   }
 
-  loadGroup() {
-    this.route.params.subscribe((params: Params) => {
-      if (params.id) {
-        this.groupService.getOneGroup(params.id).subscribe((result: GroupModel) => {
+  loadGroup(groupId: number) {
+        this.groupService.getOneGroup(groupId).subscribe((result: GroupModel) => {
           this.group = result ? result : {} as GroupModel;
         });
-      }
-    });
   }
 
   deleteDeck(deckId: number) {

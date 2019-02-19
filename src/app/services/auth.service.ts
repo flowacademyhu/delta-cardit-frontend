@@ -18,6 +18,7 @@ export class AuthService {
   constructor(private httpClient: HttpClient) {
     this.currentUserSubject = new BehaviorSubject<UserModel>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
+    this.token = localStorage.getItem('jwt_token');
   }
 
   public get currentUserValue(): UserModel {
@@ -35,6 +36,7 @@ export class AuthService {
           const decodedToken = helper.decodeToken(this.token);
           if (result && result.token) {
             localStorage.setItem('current_user', JSON.stringify(decodedToken));
+            localStorage.setItem('jwt_token', result.token);
             this.currentUserSubject.next(decodedToken);
           }
           return result;

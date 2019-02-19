@@ -21,7 +21,7 @@ export class DecksService {
   }
 
   addingDecks(groupId: number, deckId: number): Observable<any> {
-    return this.httpClient.post('http://localhost:8000/groups/' + groupId + '/decks', deckId);
+    return this.httpClient.post('http://localhost:8000/groups/' + groupId + '/decks', {deckId: deckId});
   }
 
   getOne(id: number): Observable<any> {
