@@ -14,6 +14,7 @@ import { CardModeComponent } from './components/card-mode/card-mode.component';
 import { EditCardComponent } from './components/card-list/edit-card/edit-card.component';
 import { EditDeckComponent } from './components/subjects/edit-deck/edit-deck.component';
 import { GroupsDataComponent } from './components/groups/groups-data/groups-data.component';
+import { ChangePasswordComponent } from './components/login/change-password/change-password.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -32,7 +33,8 @@ const routes: Routes = [
   // tslint:disable-next-line:max-line-length
   {path: 'cardmode/card/edit/:id', component: EditCardComponent, canActivate: [AuthGuard], data: {role: ['admin', 'contributor', 'student']} },
   {path: 'groups/:id/users', component: GroupsDataComponent  },
-  {path: 'groups/:id/decks', component: GroupsDataComponent  }
+  {path: 'groups/:id/decks', component: GroupsDataComponent  },
+  {path: 'users/login/password', component: ChangePasswordComponent  },
 ];
 
 @NgModule({

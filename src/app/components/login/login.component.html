@@ -15,8 +15,12 @@
         </mat-error>
       </mat-form-field>
       <div class="btn-position">
-      <button mat-raised-button class="btn" (click)="submit()">Bejelentkezés</button>
+      <button mat-raised-button class="btn" (click)="submit()">Bejelentkezés</button>  
       </div>
-    </div>
+    <h4 type="link" class="forget-password"
+    [routerLink]="'/users/login/password'"
+    >Elfelejtettem a jelszavam!</h4>
+  </div>
   </div>
 </div>
+  

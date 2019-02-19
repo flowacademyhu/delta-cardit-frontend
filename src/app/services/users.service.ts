@@ -30,4 +30,7 @@ export class UsersService {
     return this.httpClient.delete('http://localhost:8000/users/' + id);
   }
 
+  changePassword(email: string) {
+    return this.httpClient.put('http://localhost:8000/users/login/password', email);
+  }
 }
