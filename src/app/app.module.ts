@@ -38,6 +38,8 @@ import { NewDeckComponent } from './components/new-deck/new-deck.component';
 import { EditCardComponent } from './components/card-list/edit-card/edit-card.component';
 import { DecksService } from './services/decks.service';
 import { EditDeckComponent } from './components/subjects/edit-deck/edit-deck.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+
 
 
 
@@ -85,6 +87,7 @@ export function tokenGetter() {
     MatButtonModule,
     DragDropModule,
     MatTabsModule,
+    MatSlideToggleModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
@@ -103,7 +106,7 @@ export function tokenGetter() {
   ],
   providers: [AuthGuard, AuthService, UsersService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-    { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}}, MatSnackBar],
+    { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } }, MatSnackBar],
   bootstrap: [AppComponent]
 })
 

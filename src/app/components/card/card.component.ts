@@ -6,7 +6,6 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { DecksService } from 'src/app/services/decks.service';
 import { HttpClient } from '@angular/common/http';
 import { DeckModel } from 'src/app/models/deck.model';
-import { getRandomString } from 'selenium-webdriver/safari';
 
 
 
@@ -29,7 +28,7 @@ export class CardComponent implements OnInit {
 
   public numberOfCards: number = null;
 
-  public isRandom: false;
+  public isRandom = true;
 
   constructor(private cardsService: CardsService,
     private decksService: DecksService,
@@ -55,7 +54,7 @@ export class CardComponent implements OnInit {
     });
   }
 
-  randomNoRepeats(cards) {
+  /* randomNoRepeats(cards) {
     let cardsCopy = cards.slice(0);
     console.log(cardsCopy);
     return function() {
@@ -65,13 +64,17 @@ export class CardComponent implements OnInit {
       cardsCopy.splice(index, 1);
       return card;
     };
-  }
+  } */
 
   loadCardsByDeck(id: number) {
     console.log(id);
     this.cardsService.getAllFromDeck(id).subscribe(cards => {
       console.log(cards);
       this.cards = cards;
+      if (this.isRandom) {
+        this.shuffle(this.cards);
+      }
+      console.log(this.cards);
       this.getFirstCard();
     });
   }
@@ -80,28 +83,16 @@ export class CardComponent implements OnInit {
     this.card = this.cards[0];
   }
 
- /*  getRandomCards() {
-    console.log(222);
-    console.log(this.getRandom());
-  }
- */
-  getRandom() {
-    /* const min = 1;
-    const max = this.cards.length; */
-    // Math.floor(Math.random() * (max - min + 1)) + min;
-    return this.cards[Math.floor(Math.random() * this.cards.length)];
-  }
-
-  shuffle(array) {
-    let m = array.length, t, i;
-
-    while (m) {
-      i = Math.floor(Math.random() * m--);
-      t = array[m];
-      array[m] = array[i];
-      array[i] = t;
+  shuffle(cards) {
+    for (let i = cards.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [cards[i], cards[j]] = [cards[j], cards[i]];
     }
-    return array;
+    console.log(cards);
+  }
+
+  reloadCards() {
+    this.loadCardsByDeck(this.deck.id);
   }
 
   next() {
