@@ -39,6 +39,7 @@ import { EditCardComponent } from './components/card-list/edit-card/edit-card.co
 import { DecksService } from './services/decks.service';
 import { EditDeckComponent } from './components/subjects/edit-deck/edit-deck.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { DeckStatisticsComponent } from './components/deck-statistics/deck-statistics.component';
 
 
 
@@ -67,7 +68,8 @@ export function tokenGetter() {
     NewCardComponent,
     NewDeckComponent,
     EditCardComponent,
-    EditDeckComponent
+    EditDeckComponent,
+    DeckStatisticsComponent
   ],
   imports: [
     HttpClientModule,
