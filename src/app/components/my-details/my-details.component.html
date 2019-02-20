@@ -1,0 +1,15 @@
+<app-nav></app-nav>
+<div id="loginBackground">
+  <div class="login-container">
+    <div class="form-box">
+      <mat-form-field>
+        <div>
+  <input type="password" [(ngModel)]="userPassword" matInput placeholder="Új jelszó">
+        </div>
+      </mat-form-field>
+      <div>
+      <button mat-raised-button class="btn" (click)="submit()">Küldés</button>  
+      </div>
+  </div>
+  </div>
+</div>

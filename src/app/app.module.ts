@@ -40,6 +40,7 @@ import { DecksService } from './services/decks.service';
 import { EditDeckComponent } from './components/subjects/edit-deck/edit-deck.component';
 import { GroupsDataComponent } from './components/groups/groups-data/groups-data.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
+import { MyDetailsComponent } from './components/my-details/my-details.component';
 
 
 
@@ -69,7 +70,8 @@ export function tokenGetter() {
     EditCardComponent,
     EditDeckComponent,
     GroupsDataComponent,
-    MainPageComponent
+    MainPageComponent,
+    MyDetailsComponent
   ],
   imports: [
     HttpClientModule,
