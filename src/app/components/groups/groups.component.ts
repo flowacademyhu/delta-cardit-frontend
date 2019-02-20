@@ -62,9 +62,9 @@ export class GroupsComponent implements OnInit {
   updateUser() {
     this.selectedGroup = this.sendedGroup;
     this.groupService.editGroup(this.sendedGroup).subscribe(result => {
-      alert('A mentés sikeres!');
+      this.snack.open('A mentés sikeres!', 'Ok', { duration : 3000});
     }, err => {
-      alert('A mentés sikertelen!');
+      this.snack.open('A mentés sikertelen!', 'Ok', { duration : 3000});
     });
   }
 

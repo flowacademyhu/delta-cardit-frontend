@@ -5,6 +5,7 @@ import { ActivatedRoute, Params, ParamMap, Router } from '@angular/router';
 import { GroupsService } from 'src/app/services/groups.service';
 import { DeckModel } from 'src/app/models/deck.model';
 import { GroupModel } from 'src/app/models/group.model';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-groups-data-dialog',
@@ -20,7 +21,8 @@ export class GroupsDataDialogComponent implements OnInit {
 
   constructor(private decksService: DecksService,
     private route: ActivatedRoute,
-    public dialogRef: MatDialogRef<GroupsDataDialogComponent>) { }
+    public dialogRef: MatDialogRef<GroupsDataDialogComponent>,
+    private snack: MatSnackBar) { }
 
   ngOnInit() {
     this.getDecks();
@@ -38,10 +40,10 @@ export class GroupsDataDialogComponent implements OnInit {
   save() {
     console.log(this.paramId);
     this.decksService.addingDecks(this.paramId, this.deckId).subscribe(result => {
-      console.log('Mink vagyunk a legjobbak tesó!');
+      this.snack.open('A hozzáadás sikeres!', 'Ok', { duration : 3000});
       this.dialogRef.close();
     }, err => {
-      console.log('Szoppantyú!');
+      this.snack.open('A hozzáadás sikertelen!', 'Ok', { duration : 3000});
     });
   }
 }

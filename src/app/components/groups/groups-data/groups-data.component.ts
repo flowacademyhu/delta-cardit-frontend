@@ -3,7 +3,7 @@ import { GroupsService } from 'src/app/services/groups.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { GroupModel } from 'src/app/models/group.model';
 import { DecksService } from 'src/app/services/decks.service';
-import { MatDialog, MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { MatDialog, MatPaginator, MatSort, MatTableDataSource, MatSnackBar } from '@angular/material';
 import { DeckModel } from 'src/app/models/deck.model';
 import { group } from '@angular/animations';
 import { FooterRowOutlet } from '@angular/cdk/table';
@@ -35,7 +35,8 @@ export class GroupsDataComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private decksService: DecksService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private snack: MatSnackBar
   ) { }
 
   ngOnInit() {
@@ -91,10 +92,10 @@ export class GroupsDataComponent implements OnInit {
   deleteDeck(deckId: number) {
     const groupId = this.group.id;
     this.decksService.deleteGroupDecks(groupId, deckId).subscribe(result => {
-      console.log('Mink vagyunk a legjobbak tesó!');
+      this.snack.open('A törlés sikeres!', 'Ok', { duration : 3000});
       this.ngOnInit();
     }, err => {
-      console.log('Nooooooooooo');
+      this.snack.open('A törlés sikertelen!', 'Ok', { duration : 3000});
     });
   }
 }

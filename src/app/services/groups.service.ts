@@ -31,7 +31,7 @@ export class GroupsService {
     return this.httpClient.put('http://localhost:8000/groups/' + group.id, group);
   }
 
-  deleteGroup(id: number): Observable<any>{
+  deleteGroup(id: number): Observable<any> {
     return this.httpClient.delete('http://localhost:8000/groups/' + id);
   }
 

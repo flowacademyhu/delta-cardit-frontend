@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { UsersService } from 'src/app/services/users.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-change-password',
@@ -13,7 +14,7 @@ export class ChangePasswordComponent implements OnInit {
   private userEmail: string;
   email = new FormControl('', [Validators.required, Validators.email]);
 
-  constructor(private userService: UsersService, private router: Router
+  constructor(private userService: UsersService, private router: Router, private snack: MatSnackBar
     ) { }
 
   ngOnInit() {
@@ -21,9 +22,11 @@ export class ChangePasswordComponent implements OnInit {
 
   public submit() {
     this.userService.changePassword(this.userEmail).subscribe(result => {
+      this.snack.open('A jelszó módosítása sikeres!', 'Ok', { duration : 3000});
       this.router.navigate(['']);
       console.log(result);
     }, err => {
+      this.snack.open('A jelszót nem sikerült módosítani!', 'Ok', { duration : 3000});
       console.log(err);
     });
   }
