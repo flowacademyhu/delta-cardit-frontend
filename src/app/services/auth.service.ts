@@ -37,6 +37,7 @@ export class AuthService {
           if (result && result.token) {
             localStorage.setItem('current_user', JSON.stringify(decodedToken));
             localStorage.setItem('jwt_token', result.token);
+            localStorage.setItem('role', decodedToken.role);
             this.currentUserSubject.next(decodedToken);
           }
           return result;
@@ -49,6 +50,8 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('current_user');
+    localStorage.removeItem('jwt_token');
+    localStorage.removeItem('role');
     this.currentUserSubject.next(null);
     this.token = null;
   }

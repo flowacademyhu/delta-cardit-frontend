@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth.service';
 import { RouterLink, Router } from '@angular/router';
+import { UsersService } from 'src/app/services/users.service';
+import { UserModel } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-nav',
@@ -13,13 +15,15 @@ import { RouterLink, Router } from '@angular/router';
 export class NavComponent {
 
   private currentUser;
+  private loggedInUser: UserModel = {} as UserModel;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches)
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, private auth: AuthService, private router: Router) {
+  constructor(private breakpointObserver: BreakpointObserver, private auth: AuthService, private router: Router,
+    private userService: UsersService) {
     this.auth.currentUser.subscribe(result => this.currentUser = result);
   }
 
@@ -29,6 +33,15 @@ export class NavComponent {
 
   get isStudent() {
     return this.currentUser && this.currentUser.role === 'student';
+  }
+
+  getLoggedInUserName(): string {
+    const userId = this.currentUser.id;
+    this.userService.getOneUser(userId).subscribe(user => {
+      this.loggedInUser = user;
+    });
+    const userName = this.loggedInUser.lastName + ' ' + this.loggedInUser.firstName;
+    return userName;
   }
 
   logout() {

@@ -15,10 +15,12 @@ import { EditCardComponent } from './components/card-list/edit-card/edit-card.co
 import { EditDeckComponent } from './components/subjects/edit-deck/edit-deck.component';
 import { GroupsDataComponent } from './components/groups/groups-data/groups-data.component';
 import { ChangePasswordComponent } from './components/login/change-password/change-password.component';
+import { MainPageComponent } from './components/main-page/main-page.component';
+import { MyDetailsComponent } from './components/my-details/my-details.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
-  { path: 'index', component: NavComponent, canActivate: [AuthGuard], data: {role: ['admin', 'contributor', 'student'] } },
+  { path: 'index', component: MainPageComponent, canActivate: [AuthGuard], data: {role: ['admin', 'contributor', 'student'] } },
   { path: 'flashcard', component: CardComponent, canActivate: [AuthGuard], data: {role: ['admin', 'contributor', 'student']} },
   { path: 'learningcard', component: CardListComponent, canActivate: [AuthGuard], data: {role: ['admin', 'contributor', 'student']} },
   { path: 'subjects', component: SubjectsComponent, canActivate: [AuthGuard], data: {role: ['admin', 'contributor', 'student']} },
@@ -29,12 +31,14 @@ const routes: Routes = [
   { path: 'cardmode', component: CardModeComponent, canActivate: [AuthGuard], data: {role: ['admin', 'contributor', 'student']}  },
   // tslint:disable-next-line:max-line-length
   { path: 'learningcard/edit/:id', component: EditCardComponent, canActivate: [AuthGuard], data: {role: ['admin', 'contributor', 'student']} },
-  {path: 'deck/edit/:id', component: EditDeckComponent, canActivate: [AuthGuard], data: {role: ['admin', 'contributor', 'student']} },
+  { path: 'deck/edit/:id', component: EditDeckComponent, canActivate: [AuthGuard], data: {role: ['admin', 'contributor', 'student']} },
   // tslint:disable-next-line:max-line-length
-  {path: 'cardmode/card/edit/:id', component: EditCardComponent, canActivate: [AuthGuard], data: {role: ['admin', 'contributor', 'student']} },
-  {path: 'groups/:id/users', component: GroupsDataComponent  },
-  {path: 'groups/:id/decks', component: GroupsDataComponent  },
-  {path: 'users/login/password', component: ChangePasswordComponent  },
+  { path: 'users/login/password', component: ChangePasswordComponent  },
+  { path: 'cardmode/card/edit/:id', component: EditCardComponent,
+  canActivate: [AuthGuard], data: {role: ['admin', 'contributor', 'student']} },
+  { path: 'groups/:id/users', component: GroupsDataComponent  },
+  { path: 'groups/:id/decks', component: GroupsDataComponent  },
+  { path: 'users/:id/me', component: MyDetailsComponent  }
 ];
 
 @NgModule({
