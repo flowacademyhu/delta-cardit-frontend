@@ -44,6 +44,7 @@ import { ChangePasswordComponent } from './components/login/change-password/chan
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { GroupsDataComponent } from './components/groups/groups-data/groups-data.component';
 import { GroupsDataDialogComponent } from './components/groups/groups-data/groups-data-dialog/groups-data-dialog.component';
+import { MainPageComponent } from './components/main-page/main-page.component';
 
 
 
@@ -74,7 +75,8 @@ export function tokenGetter() {
     EditDeckComponent,
     GroupsDataComponent,
     ChangePasswordComponent,
-    GroupsDataDialogComponent
+    GroupsDataDialogComponent,
+    MainPageComponent
   ],
   imports: [
     HttpClientModule,
