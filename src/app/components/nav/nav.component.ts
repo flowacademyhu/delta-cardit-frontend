@@ -15,7 +15,6 @@ import { UserModel } from 'src/app/models/user.model';
 export class NavComponent {
 
   private currentUser;
-  private loggedInUser: UserModel = {} as UserModel;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -33,15 +32,6 @@ export class NavComponent {
 
   get isStudent() {
     return this.currentUser && this.currentUser.role === 'student';
-  }
-
-  getLoggedInUserName(): string {
-    const userId = this.currentUser.id;
-    this.userService.getOneUser(userId).subscribe(user => {
-      this.loggedInUser = user;
-    });
-    const userName = this.loggedInUser.lastName + ' ' + this.loggedInUser.firstName;
-    return userName;
   }
 
   logout() {

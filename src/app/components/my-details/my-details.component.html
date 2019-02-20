@@ -1,15 +1,21 @@
 <app-nav></app-nav>
-<div id="loginBackground">
-  <div class="login-container">
-    <div class="form-box">
-      <mat-form-field>
+  <div id="loginBackground">
+    <!--<div>
+      <h2>Adataid</h2>
+      <li>Néved: {{currentUser.lastName}} {{currentUser.firstName}}</li>
+      <li>Email-címed: {{currentUser.email}}</li>
+      <li>Szerepköröd: {{currentUser.role}}</li>
+    </div>  -->
+    <div class="login-container">
+      <div class="form-box">
+        <mat-form-field>
+          <div>
+            <input type="password" [(ngModel)]="userPassword" matInput placeholder="Új jelszó">
+          </div>
+        </mat-form-field>
         <div>
-  <input type="password" [(ngModel)]="userPassword" matInput placeholder="Új jelszó">
+          <button mat-raised-button class="btn" (click)="submit()">Küldés</button>
         </div>
-      </mat-form-field>
-      <div>
-      <button mat-raised-button class="btn" (click)="submit()">Küldés</button>  
       </div>
+    </div>
   </div>
-  </div>
-</div>
