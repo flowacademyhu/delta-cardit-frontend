@@ -33,4 +33,8 @@ export class UsersService {
   changePassword(email: string): Observable<any> {
     return this.httpClient.put('http://localhost:8000/users/login/password', {email} );
   }
+  changeOwnPassword(id: number, password: string)  {
+    return this.httpClient.put('http://localhost:8000/users/' + id + '/me', {password});
+  }
+
 }

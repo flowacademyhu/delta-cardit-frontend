@@ -16,6 +16,7 @@ import { EditDeckComponent } from './components/subjects/edit-deck/edit-deck.com
 import { GroupsDataComponent } from './components/groups/groups-data/groups-data.component';
 import { ChangePasswordComponent } from './components/login/change-password/change-password.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
+import { MyDetailsComponent } from './components/my-details/my-details.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -32,10 +33,12 @@ const routes: Routes = [
   { path: 'learningcard/edit/:id', component: EditCardComponent, canActivate: [AuthGuard], data: {role: ['admin', 'contributor', 'student']} },
   { path: 'deck/edit/:id', component: EditDeckComponent, canActivate: [AuthGuard], data: {role: ['admin', 'contributor', 'student']} },
   // tslint:disable-next-line:max-line-length
-  { path: 'cardmode/card/edit/:id', component: EditCardComponent, canActivate: [AuthGuard], data: {role: ['admin', 'contributor', 'student']} },
+  { path: 'users/login/password', component: ChangePasswordComponent  },
+  { path: 'cardmode/card/edit/:id', component: EditCardComponent,
+  canActivate: [AuthGuard], data: {role: ['admin', 'contributor', 'student']} },
   { path: 'groups/:id/users', component: GroupsDataComponent  },
   { path: 'groups/:id/decks', component: GroupsDataComponent  },
-  { path: 'users/login/password', component: ChangePasswordComponent  },
+  { path: 'users/:id/me', component: MyDetailsComponent  }
 ];
 
 @NgModule({
