@@ -40,6 +40,8 @@ import { DecksService } from './services/decks.service';
 import { EditDeckComponent } from './components/subjects/edit-deck/edit-deck.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { DeckStatisticsComponent } from './components/deck-statistics/deck-statistics.component';
+import {MatTableModule} from '@angular/material/table';
+
 
 
 
@@ -90,6 +92,7 @@ export function tokenGetter() {
     DragDropModule,
     MatTabsModule,
     MatSlideToggleModule,
+    MatTableModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

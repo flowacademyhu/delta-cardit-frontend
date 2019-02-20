@@ -5,6 +5,9 @@ import { MatDialog } from '@angular/material';
 import { HttpClient } from '@angular/common/http';
 import { NewDeckComponent } from '../new-deck/new-deck.component';
 import { AuthService } from 'src/app/services/auth.service';
+import { GroupsService } from 'src/app/services/groups.service';
+import { GroupModel } from 'src/app/models/group.model';
+import { UserModel } from 'src/app/models/user.model';
 
 
 @Component({
@@ -16,15 +19,25 @@ export class SubjectsComponent implements OnInit {
 
   public decks: DeckModel[] = [];
 
-  private currentUser;
+  private currentUser: any = {};
 
-  constructor(private decksService: DecksService, private httpClient: HttpClient, public dialog: MatDialog, private auth: AuthService) {
-    this.auth.currentUser.subscribe(result => this.currentUser = result);
-   }
+  private group: GroupModel = {};
+
+  constructor(private decksService: DecksService,
+    private httpClient: HttpClient,
+    public dialog: MatDialog,
+    private auth: AuthService,
+    private groupsService: GroupsService) {
+    this.auth.currentUser.subscribe(result => {
+      this.currentUser = result;
+      // this.getGroup();
+    });
+  }
 
 
   ngOnInit() {
-    this.loadDecks();
+     // this.getGroup();
+      this.loadDecks();
   }
 
   loadDecks() {
@@ -57,5 +70,20 @@ export class SubjectsComponent implements OnInit {
 
   get isStudent() {
     return this.currentUser && this.currentUser.role === 'student';
+  }
+
+  getGroup() {
+    console.log(this.currentUser);
+    this.groupsService.getOneGroup(this.currentUser.groupId).subscribe(group => {
+      this.group = group;
+      this.getUserDecks();
+    });
+  }
+
+  getUserDecks() {
+    this.decksService.getByGroup(this.group.id).subscribe(decks => {
+      this.decks = decks;
+    });
+    console.log(this.group.id);
   }
 }

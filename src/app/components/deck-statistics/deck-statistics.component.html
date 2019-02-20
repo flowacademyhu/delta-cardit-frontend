@@ -1,7 +1,7 @@
 <app-nav></app-nav>
-<p >
+<!-- <h4 >
   Pakli neve: {{deck.subject}}
-</p>
+</h4>
 <hr>
 <p >
   Kártyák száma: {{this.cardCount}}
@@ -23,4 +23,39 @@
 
 <p>
   Nehéz nehézségű kártyák száma: {{this.difficultyThreeCount}}
-</p>
+</p> -->
+
+<table mat-table class="table">
+
+  
+  <ng-container matColumnDef="position">
+    <th mat-header-cell *matHeaderCellDef > Pakli neve </th>
+    <td mat-cell > {{deck.subject}} </td>
+  </ng-container>
+
+  
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Kártyák száma: </th>
+    <td mat-cell > {{this.cardCount}} </td>
+  </ng-container>
+
+ 
+  <ng-container matColumnDef="weight">
+    <th mat-header-cell *matHeaderCellDef> Künnyű nehézségű kártyák száma: </th>
+    <td mat-cell > {{this.difficultyOneCount}}} </td>
+  </ng-container>
+
+  
+  <ng-container matColumnDef="symbol">
+    <th mat-header-cell *matHeaderCellDef> Közepes nehézségű kártyák száma: </th>
+    <td mat-cell > {{this.difficultyTwoCount}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="dfsd">
+    <th mat-header-cell *matHeaderCellDef> Nehéz nehézségű kártyák száma: </th>
+    <td mat-cell> {{this.difficultyThreeCount}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

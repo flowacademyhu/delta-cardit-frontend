@@ -1,31 +1,33 @@
 <app-nav></app-nav>
 
 <button mat-icon-button id="fab" title="Új">
-  <mat-icon aria-label="Új" (click)="openDialog()" *ngIf="!isStudent" >add</mat-icon>
+  <mat-icon aria-label="Új" (click)="openDialog()" *ngIf="!isStudent">add</mat-icon>
 </button>
+<div class="container">
+  <div class="subject-list-container" *ngFor="let deck of decks">
+    <div class="subject-container">
+      <mat-card class="card">
+        <mat-card-title>{{deck.subject}}</mat-card-title>
+        <br>
+        <img class="card-img" mat-card-image src="https://sdtimes.com/wp-content/uploads/2018/03/jW4dnFtA_400x400.jpg"
+          alt="{{deck.subject}}">
 
-<div class="subject-list-container" *ngFor="let deck of decks">
-  <div class="subject-container">
-    <mat-card class="card">
-      <mat-card-title>{{deck.subject}}</mat-card-title>
-      <br>
-      <img class="card-img" mat-card-image src="https://sdtimes.com/wp-content/uploads/2018/03/jW4dnFtA_400x400.jpg"
-        alt="{{deck.subject}}">
-
-      <mat-card-actions class="stat">
-        <button mat-button color="primary" routerLink="/cardmode/{{deck.id}}">Megnyitás</button>
-        <button mat-stroked-button color="primary" class="btn" routerLink="/subjects/statistics/{{deck.id}}" *ngIf="!isStudent" >Statistics</button>
-      </mat-card-actions>
-    </mat-card>
-    <!-- <div class="space"></div>
+        <mat-card-actions class="stat">
+          <button mat-stroked-button color="primary" routerLink="/cardmode/{{deck.id}}">Megnyitás</button>
+          <hr>
+          <button mat-stroked-button color="primary" class="btn" routerLink="/subjects/statistics/{{deck.id}}" *ngIf="!isStudent">Statisztika</button>
+        </mat-card-actions>
+      </mat-card>
+      <!-- <div class="space"></div>
     <div class="vl"></div>
     <div class="space"></div> -->
-  </div>
+    </div>
 
-  <div class="actions">
-    <div></div>
-    <button mat-stroked-button color="primary" class="btn" routerLink="/subjects/edit/{{deck.id}}" *ngIf="!isStudent" >Edit</button>
-    <div></div>
-    <button mat-stroked-button color="warn" class="btn" (click)="destroy(deck.id)" *ngIf="!isStudent" >Delete</button>
+    <div class="actions">
+      <div></div>
+      <button mat-stroked-button color="primary" class="btn" routerLink="/subjects/edit/{{deck.id}}" *ngIf="!isStudent">Edit</button>
+      <div></div>
+      <button mat-stroked-button color="warn" class="btn" (click)="destroy(deck.id)" *ngIf="!isStudent">Delete</button>
+    </div>
   </div>
 </div>
