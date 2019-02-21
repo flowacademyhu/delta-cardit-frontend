@@ -13,7 +13,7 @@
           alt="{{deck.subject}}">
 
         <mat-card-actions class="stat">
-          <button mat-stroked-button color="primary" routerLink="/cardmode/{{deck.id}}">Megnyitás</button>
+          <button mat-stroked-button color="primary" class="color" routerLink="/cardmode/{{deck.id}}">Megnyitás</button>
           <hr>
           <button mat-stroked-button color="primary" class="btn" routerLink="/subjects/statistics/{{deck.id}}" *ngIf="!isStudent">Statisztika</button>
         </mat-card-actions>
