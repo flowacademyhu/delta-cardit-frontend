@@ -1,31 +1,28 @@
 <app-nav></app-nav>
-<!-- <h4 >
-  Pakli neve: {{deck.subject}}
-</h4>
-<hr>
-<p >
-  Kártyák száma: {{this.cardCount}}
-</p>
+<div class="stats">
+  <h4>
+    Pakli neve: {{deck.subject}}
+  </h4>
+  <hr>
+  <p>
+    Kártyák száma: {{this.cardCount}}
+  </p>
+  <hr>
+  <p>
+    Künnyű nehézségű kártyák száma: {{this.difficultyOneCount}}
+  </p>
+  <hr>
+  <p>
+    Közepes nehézségű kártyák száma: {{this.difficultyTwoCount}}
+  </p>
+  <hr>
+  <p>
+    Nehéz nehézségű kártyák száma: {{this.difficultyThreeCount}}
+  </p>
+  <hr>
+</div>
 
-<hr>
-
-<p>
-  Künnyű nehézségű kártyák száma: {{this.difficultyOneCount}}
-</p>
-
-<hr>
-
-<p>
-  Közepes nehézségű kártyák száma: {{this.difficultyTwoCount}}
-</p>
-
-<hr>
-
-<p>
-  Nehéz nehézségű kártyák száma: {{this.difficultyThreeCount}}
-</p> -->
-
-<table mat-table class="table" [dataSource]="dataSource">
+<!-- <table mat-table class="table" [dataSource]="dataSource">
 
 
 
@@ -60,7 +57,7 @@
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+</table> -->
 
 
 

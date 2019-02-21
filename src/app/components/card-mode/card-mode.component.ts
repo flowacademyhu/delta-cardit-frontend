@@ -15,9 +15,6 @@ import { GameCardComponent } from '../game-card/game-card.component';
 })
 export class CardModeComponent implements OnInit {
 
-  @ViewChild(CardComponent) oneCard: CardComponent;
-  @ViewChild(GameCardComponent) game: GameCardComponent;
-
   public deck: DeckModel = {} as DeckModel;
 
 
@@ -37,11 +34,6 @@ export class CardModeComponent implements OnInit {
     });
 }
 
-onTabChanged(event: MatTabChangeEvent) {
-  this.oneCard.getDeck();
-  this.game.getDeck();
-}
-
 
     /* this.route.params.subscribe((params: Params) => {
       if (params.id) {
@@ -52,4 +44,4 @@ onTabChanged(event: MatTabChangeEvent) {
     });
     console.log(this.deck.subject);
   } */
-  }
+}

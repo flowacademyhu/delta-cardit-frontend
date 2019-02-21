@@ -68,8 +68,8 @@ export class CardListComponent implements OnInit {
     const dialogRef = this.dialog.open(NewCardComponent, {
     }).afterClosed().subscribe(result => {
       this.loadCardsByDeck(this.deck.id);
-      this.gameCardComponent.getDeck();
-      this.cardComponent.getDeck();
+      this.gameCardComponent.fillGameCards(this.deck.id);
+      this.cardComponent.loadCardsByDeck(this.deck.id);
     });
   }
 
