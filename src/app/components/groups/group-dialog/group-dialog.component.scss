@@ -1,8 +1,29 @@
 .btn {
-  background-color:  #00bfb2;
+  margin-top: 2%;
+  background-color: #00bfb2;
   color: white;
+  width: 60%;
 }
 
 .btn-position {
-  padding-top: 5%;
+  margin-top: 2%;
+  padding-left: 28%;
+}
+
+.h4-container {
+  display: flex;
+  justify-content: center;
+}
+
+.pos {
+  width: 30vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

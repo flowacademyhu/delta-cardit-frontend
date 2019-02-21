@@ -1,11 +1,15 @@
+<div class="conatiner">
+    <div class="h4-container">
 <h4>Új Csoport adatai</h4>
-<div class="style">
+</div>
+<div class="pos">
   <mat-form-field>
     <input matInput placeholder="Csoport neve" [(ngModel)]="name" required>
   </mat-form-field>
     <mat-select placeholder="Pakli" [(ngModel)]="group.deckId">
       <mat-option *ngFor="let deck of decks" [value]="deck.id">{{deck.subject}}</mat-option>
     </mat-select>
+  </div> 
   <div class="btn-position">
     <button class="btn" mat-raised-button (click)="save()">Felvétel</button>
   </div>

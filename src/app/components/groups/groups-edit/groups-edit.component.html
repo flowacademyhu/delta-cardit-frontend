@@ -1,10 +1,14 @@
 <app-nav></app-nav>
 <div class="container">
-  <h1>Csoport adatainak módosítása</h1>
-  <mat-form-field>
-    <input type="text" matInput placeholder="Csoport neve" [(ngModel)]="group.name">
-  </mat-form-field>
+  <div class="h4-container">
+    <p>Csoport adatainak módosítása</p>
+  </div>
+  <div class="pos">
+    <mat-form-field>
+      <input type="text" matInput placeholder="Csoport neve" [(ngModel)]="group.name">
+    </mat-form-field>
+  </div>
 </div>
-<div class="container">
-<button class="btn" mat-raised-button (click)="update()">Módosítás</button>
+<div class="new-btn">
+  <button class="btn" mat-raised-button (click)="update()">Módosítás</button>
 </div>
