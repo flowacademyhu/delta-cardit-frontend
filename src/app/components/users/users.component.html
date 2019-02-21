@@ -46,7 +46,7 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
   <mat-paginator [pageSizeOptions]="[5, 10, 20]"
-        showFirstLastButtons></mat-paginator>
+        showFirstLastButtons class="pag-pos"></mat-paginator>
 </div>
   <div class="new-btn-position">
     <button class="new-btn" mat-raised-button (click)="openDialog()">Új felhasználó</button>
