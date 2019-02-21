@@ -22,7 +22,7 @@ export class ChangePasswordComponent implements OnInit {
 
   public submit() {
     this.userService.changePassword(this.userEmail).subscribe(result => {
-      this.snack.open('A jelszó módosítása sikeres!', 'Ok', { duration : 3000});
+      this.snack.open('Új jelszót küldtünk az e-mail címedre!', 'Ok', { duration : 3000});
       this.router.navigate(['']);
       console.log(result);
     }, err => {
