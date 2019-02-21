@@ -40,7 +40,7 @@ const routes: Routes = [
   { path: 'groups/:id/users', component: GroupsDataComponent  },
   { path: 'cardmode/:id', component: CardModeComponent, canActivate: [AuthGuard], data: { role: ['admin', 'contributor', 'student'] } },
   { path: 'groups/:id/decks', component: GroupsDataComponent  },
-  { path: 'users/:id/me', component: MyDetailsComponent  },
+  { path: 'users/me', component: MyDetailsComponent  },
   { path: 'learningcard/edit/:id', component: EditCardComponent, canActivate: [AuthGuard], data: { role: ['admin', 'contributor'] } },
   { path: 'subjects/edit/:id', component: EditDeckComponent, canActivate: [AuthGuard], data: { role: ['admin', 'contributor'] } },
   { path: 'subjects/statistics/:id', component: DeckStatisticsComponent,

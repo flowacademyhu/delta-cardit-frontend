@@ -8,6 +8,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { GroupsService } from 'src/app/services/groups.service';
 import { GroupModel } from 'src/app/models/group.model';
 import { UserModel } from 'src/app/models/user.model';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -59,7 +60,7 @@ export class SubjectsComponent implements OnInit {
   }
 
   destroy(id: number) {
-      const url = `${'http://localhost:8000/decks'}/${id}`;
+      const url = `${environment.apiUrl}/decks/${id}`;
       return this.httpClient.delete(url).toPromise()
         .then(() => {
           this.snack.open('A törlés sikeres!', 'Ok', { duration : 3000});

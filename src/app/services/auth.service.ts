@@ -5,6 +5,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import { Token } from '@angular/compiler';
 import { UserModel } from '../models/user.model';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +29,8 @@ export class AuthService {
 
   login(email: string, password: string) {
     console.log(email, password);
-    return this.httpClient.post<any>('http://localhost:8000/users/login', { email: email, password: password })
+
+    return this.httpClient.post<any>(`${environment.apiUrl}/users/login`, { email: email, password: password })
       .pipe(
         map(result => {
           this.token = result.token;

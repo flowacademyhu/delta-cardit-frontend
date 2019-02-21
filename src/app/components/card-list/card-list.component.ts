@@ -10,6 +10,7 @@ import { DecksService } from 'src/app/services/decks.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { GameCardComponent } from '../game-card/game-card.component';
 import { CardComponent } from '../card/card.component';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-card-list',
@@ -75,7 +76,7 @@ export class CardListComponent implements OnInit {
 
 
   destroy(id: number) {
-      const url = `${'http://localhost:8000/cards'}/${id}`;
+      const url = `${environment.apiUrl}/cards/${id}`;
       return this.httpClient.delete(url).toPromise()
         .then(() => {
           this.loadCardsByDeck(this.deck.id);
