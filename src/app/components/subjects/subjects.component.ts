@@ -30,14 +30,18 @@ export class SubjectsComponent implements OnInit {
     private groupsService: GroupsService) {
     this.auth.currentUser.subscribe(result => {
       this.currentUser = result;
-      // this.getGroup();
+      if (this.currentUser.role === 'student') {
+      this.getGroup();
+      } else {
+        this.loadDecks();
+      }
     });
   }
 
 
   ngOnInit() {
      // this.getGroup();
-      this.loadDecks();
+      // this.loadDecks();
   }
 
   loadDecks() {

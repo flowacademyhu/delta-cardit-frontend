@@ -1,6 +1,6 @@
 <!-- <app-nav></app-nav>-->
 
-<button mat-icon-button id="fab" title="Új" ><mat-icon aria-label= "Új" (click)="openDialog()" *ngIf="!isStudent" >add</mat-icon></button>
+<button mat-icon-button id="fab" title="Új" *ngIf="!isStudent" ><mat-icon aria-label= "Új" (click)="openDialog()"  >add</mat-icon></button>
 
 <div class="card-list-container" *ngFor="let card of cards">
   <div class="two-card-container">

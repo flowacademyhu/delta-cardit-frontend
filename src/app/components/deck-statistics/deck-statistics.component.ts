@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DeckModel } from 'src/app/models/deck.model';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { DecksService } from 'src/app/services/decks.service';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar, MatTableDataSource } from '@angular/material';
 import { CardModel } from 'src/app/models/card.model';
 import { CardsService } from 'src/app/services/cards.service';
 
@@ -25,6 +25,9 @@ export class DeckStatisticsComponent implements OnInit {
 
   public difficultyThreeCount: number;
 
+  public dataSource;
+  public displayedColumns: string[] = ['name', 'count', 'easy', 'medium', 'hard'];
+
   constructor(private router: Router,
     private route: ActivatedRoute,
     private decksService: DecksService,
@@ -32,19 +35,21 @@ export class DeckStatisticsComponent implements OnInit {
     private cardsService: CardsService) { }
 
   ngOnInit() {
-    console.log(this.deck.id);
     this.route.params.subscribe((params: Params) => {
       if (params.id) {
         this.decksService.getOne(params.id).subscribe((result: DeckModel) => {
           this.deck = result ? result : {} as DeckModel;
           this.loadCardsByDeck(this.deck.id);
+          this.dataSource = new MatTableDataSource();
         });
       }
     });
     console.log(this.deck.id);
   }
 
-
+  loadData() {
+    // const data = [this.deck.subject, this.cardCount, this.difficultyOneCount, this.difficultyTwoCount,this.]
+  }
 
   loadCardsByDeck(id: number) {
     console.log(this.deck.id);

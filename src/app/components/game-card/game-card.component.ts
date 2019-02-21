@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CardModel } from 'src/app/models/card.model';
-import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray, transferArrayItem, CdkDropListContainer } from '@angular/cdk/drag-drop';
 import { CardsService } from 'src/app/services/cards.service';
 import { DecksService } from 'src/app/services/decks.service';
 import { ActivatedRoute, Params } from '@angular/router';
@@ -89,6 +89,11 @@ export class GameCardComponent implements OnInit {
     this.currentIndex2 = event.currentIndex;
     // console.log(this.currentAnswerCard);
     this.isItRight();
+  }
+
+  getAnswerCard(event: CdkDropListContainer) {
+
+
   }
 
   /* dropCardAnswer(index: num){
