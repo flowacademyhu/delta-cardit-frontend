@@ -109,12 +109,19 @@ export class GameCardComponent implements OnInit {
      const answer = this.cards.filter(card => card.answer === this.cardAnswer);
      const question = this.cards.filter(card => card.question === this.cardQuestion); */
 
-    if (this.currentQuestionCard === this.currentAnswerCard && this.currentIndex2 === this.currentIndex) {
+    /* if (this.currentQuestionCard === this.currentAnswerCard && this.currentIndex2 === this.currentIndex) {
       console.log(this.currentQuestionCard);
       console.log(this.currentAnswerCard);
       console.log(this.currentIndex2);
       console.log(this.currentIndex);
       this.openSnackBar();
+    } */
+
+
+    for (let i = 0; i < this.cards.length; i++) {
+    if (this.cards[i] === this.cardsAnswers[i]) {
+      this.openSnackBar();
+    }
     }
   }
 
