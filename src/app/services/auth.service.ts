@@ -16,9 +16,10 @@ export class AuthService {
   private token: string;
 
   constructor(private httpClient: HttpClient) {
-    this.currentUserSubject = new BehaviorSubject<UserModel>(JSON.parse(localStorage.getItem('currentUser')));
+    this.currentUserSubject = new BehaviorSubject<UserModel>(JSON.parse(localStorage.getItem('current_user')));
     this.currentUser = this.currentUserSubject.asObservable();
     this.token = localStorage.getItem('jwt_token');
+    console.log(this.token);
   }
 
   public get currentUserValue(): UserModel {
@@ -30,7 +31,6 @@ export class AuthService {
     return this.httpClient.post<any>('http://localhost:8000/users/login', { email: email, password: password })
       .pipe(
         map(result => {
-          console.log(result);
           this.token = result.token;
           const helper = new JwtHelperService();
           const decodedToken = helper.decodeToken(this.token);

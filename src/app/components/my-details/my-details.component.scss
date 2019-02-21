@@ -3,7 +3,7 @@
     flex-direction: column;
     flex-wrap: wrap;
     padding-left: 30%;
-    padding-top: 12%;
+    padding-top: 5%;
   }
   
   .form-box {
@@ -34,6 +34,11 @@
   }
 
   .details-container {
-    display: flex;
-    flex-direction: row;
+    align-content: center;
+  }
+
+  .details {
+    text-align: center;
+    padding-bottom: 5%;
+    font-family: Arial, Helvetica, sans-serif;
   }

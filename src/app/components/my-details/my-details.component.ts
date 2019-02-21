@@ -17,6 +17,7 @@ export class MyDetailsComponent implements OnInit {
   constructor(private userService: UsersService, private router: Router, private auth: AuthService, private snack: MatSnackBar) {
     this.auth.currentUser.subscribe(result => {
       this.currentUser = result;
+      console.log(this.currentUser);
     });
   }
 

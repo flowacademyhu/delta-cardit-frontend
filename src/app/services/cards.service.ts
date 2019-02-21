@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { CardModel } from 'src/app/models/card.model';
+import { DeckModel } from '../models/deck.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,10 @@ export class CardsService {
 
   getAllCards(): Observable<any> {
     return this.httpClient.get('http://localhost:8000/cards');
+  }
+
+  getAllFromDeck(id: number): Observable<any> {
+    return this.httpClient.get('http://localhost:8000/decks/' + id + '/cards');
   }
 
   getOne(id: number) {

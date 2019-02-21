@@ -14,7 +14,7 @@ import { UserModel } from 'src/app/models/user.model';
 })
 export class NavComponent {
 
-  private currentUser;
+  private currentUser = {} as UserModel;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -23,7 +23,9 @@ export class NavComponent {
 
   constructor(private breakpointObserver: BreakpointObserver, private auth: AuthService, private router: Router,
     private userService: UsersService) {
-    this.auth.currentUser.subscribe(result => this.currentUser = result);
+    this.auth.currentUser.subscribe(result => {
+      this.currentUser = result;
+      });
   }
 
   get isAdmin() {
