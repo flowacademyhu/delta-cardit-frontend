@@ -126,7 +126,7 @@ export function tokenGetter() {
     NewDeckComponent,
     GroupsDataDialogComponent
   ],
-  providers: [AuthGuard, AuthService, UsersService, DecksService, GroupsDataComponent,
+  providers: [AuthGuard, AuthService, UsersService, DecksService, GroupsDataComponent, GameCardComponent, CardComponent,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}},
     { provide: MAT_CHECKBOX_CLICK_ACTION, useValue: 'check'}, MatSnackBar],

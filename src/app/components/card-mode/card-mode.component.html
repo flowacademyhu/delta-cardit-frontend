@@ -1,6 +1,6 @@
 <app-nav></app-nav>
 <mat-tab-group mat-align-tabs="center">
-  <mat-tab label="Tanuló mód"> <app-card-list></app-card-list> </mat-tab>
-  <mat-tab label="Flashcard mód"> <app-card></app-card> </mat-tab>
-  <mat-tab label="Játék mód"> <app-game-card></app-game-card> </mat-tab>
+  <mat-tab label="Tanuló mód" (change)="onTabChanged($event)"> <app-card-list></app-card-list> </mat-tab>
+  <mat-tab label="Flashcard mód" (change)="onTabChanged($event)"> <app-card></app-card> </mat-tab>
+  <mat-tab label="Játék mód" (change)="onTabChanged($event)"> <app-game-card></app-game-card> </mat-tab>
 </mat-tab-group>

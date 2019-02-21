@@ -12,7 +12,6 @@ constructor(private auth: AuthService) {}
  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
   // add authorization header with jwt token if available
   const token = this.auth.getToken();
-  console.log(token);
   if (token) {
       request = request.clone({
           setHeaders: {

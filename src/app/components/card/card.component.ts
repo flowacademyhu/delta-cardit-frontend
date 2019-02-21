@@ -49,6 +49,7 @@ export class CardComponent implements OnInit {
         this.decksService.getOne(params.id).subscribe((result: DeckModel) => {
           this.deck = result ? result : {} as DeckModel;
           this.loadCardsByDeck(this.deck.id);
+          console.log(222222);
         });
       }
     });

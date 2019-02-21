@@ -3,6 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { DecksService } from 'src/app/services/decks.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { DeckModel } from 'src/app/models/deck.model';
+import { ViewChild } from '@angular/core';
+import { MatTabChangeEvent } from '@angular/material';
+import { CardComponent } from '../card/card.component';
+import { GameCardComponent } from '../game-card/game-card.component';
 
 @Component({
   selector: 'app-card-mode',
@@ -10,6 +14,9 @@ import { DeckModel } from 'src/app/models/deck.model';
   styleUrls: ['./card-mode.component.scss']
 })
 export class CardModeComponent implements OnInit {
+
+  @ViewChild(CardComponent) oneCard: CardComponent;
+  @ViewChild(GameCardComponent) game: GameCardComponent;
 
   public deck: DeckModel = {} as DeckModel;
 
@@ -28,6 +35,14 @@ export class CardModeComponent implements OnInit {
         });
       }
     });
+}
+
+onTabChanged(event: MatTabChangeEvent) {
+  this.oneCard.getDeck();
+  this.game.getDeck();
+}
+
+
     /* this.route.params.subscribe((params: Params) => {
       if (params.id) {
         this.decksService.getOne(params.id).subscribe((result: DeckModel) => {
@@ -38,7 +53,3 @@ export class CardModeComponent implements OnInit {
     console.log(this.deck.subject);
   } */
   }
-
-  consoleLog() {
-    }
-}

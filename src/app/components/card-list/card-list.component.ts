@@ -8,6 +8,8 @@ import { HttpClient } from '@angular/common/http';
 import { DeckModel } from 'src/app/models/deck.model';
 import { DecksService } from 'src/app/services/decks.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { GameCardComponent } from '../game-card/game-card.component';
+import { CardComponent } from '../card/card.component';
 
 @Component({
   selector: 'app-card-list',
@@ -29,7 +31,9 @@ export class CardListComponent implements OnInit {
     private decksService: DecksService,
     private route: ActivatedRoute,
     private auth: AuthService,
-    private snack: MatSnackBar) {
+    private snack: MatSnackBar,
+    private gameCardComponent: GameCardComponent,
+    private cardComponent: CardComponent) {
     this.auth.currentUser.subscribe(result => this.currentUser = result);
   }
 
@@ -64,6 +68,8 @@ export class CardListComponent implements OnInit {
     const dialogRef = this.dialog.open(NewCardComponent, {
     }).afterClosed().subscribe(result => {
       this.loadCardsByDeck(this.deck.id);
+      this.gameCardComponent.getDeck();
+      this.cardComponent.getDeck();
     });
   }
 
