@@ -1,8 +1,12 @@
 <div class="container">
   <!-- <div class="drag-drop-container"> -->
   <div class="questions">
+    <h4>Kérdések</h4>
     <div cdkDropList #cardList="cdkDropList" class="list" [cdkDropListData]="cards" (cdkDropListDropped)="drop($event)">
-      <div class="box" *ngFor="let card of cards" cdkDrag>{{card.question}}</div>
+      <div class="box" *ngFor="let card of cards" title="{{card.question}}" cdkDrag>
+        <h4>?</h4>
+        <h4 *cdkDragPreview> {{card.question}}</h4>
+      </div>
     </div>
   </div>
 
@@ -13,8 +17,12 @@
 
 
   <div class="answers">
+      <h4>Válaszok</h4>
     <div cdkDropList #cardsAnswerList="cdkDropList" class="list" [cdkDropListData]="cardsAnswers" (cdkDropListDropped)="drop2($event)">
-      <div class="box" *ngFor="let cardsAnswer of cardsAnswers" cdkDrag>{{cardsAnswer.answer}}</div>
+      <div class="box" *ngFor="let cardsAnswer of cardsAnswers" title={{cardsAnswer.answer}} cdkDrag>
+        <h4>!</h4>
+        <h4 *cdkDragPreview> {{cardsAnswer.question}}</h4>
+      </div>
     </div>
   </div>
   <!-- </div> -->

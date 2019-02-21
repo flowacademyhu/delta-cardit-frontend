@@ -1,36 +1,40 @@
 <div class="container">
 
+  <mat-form-field>
+    <textarea matInput placeholder="Kérdés" [(ngModel)]="question" required></textarea>
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea matInput placeholder="Válasz" [(ngModel)]="answer" required></textarea>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Nehézség" [(ngModel)]="difficulty" required>
+      <mat-option [value]="1">1</mat-option>
+      <mat-option [value]="2">2</mat-option>
+      <mat-option [value]="3">3</mat-option>
+    </mat-select>
+  </mat-form-field>
+
   
-    <mat-form-field>
-      <textarea matInput placeholder="Kérdés" [(ngModel)]="card.question" required></textarea>
-    </mat-form-field>
 
-    <mat-form-field>
-        <textarea matInput placeholder="Válasz" [(ngModel)]="card.answer" required></textarea>
-      </mat-form-field>
-  
-  
-    <mat-form-field>
-      <mat-select placeholder="Nehézség" [(ngModel)]="card.difficulty" required>
-        <mat-option [value]="1">1</mat-option>
-        <mat-option [value]="2">2</mat-option>
-        <mat-option [value]="3">3</mat-option>
-      </mat-select>
-    </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="Típus" [(ngModel)]="type" required>
+      <mat-option value="Szabad szavas válasz">Szabad szavas válasz</mat-option>
+      <mat-option value="*Felelet választós">*Felelet választós</mat-option>
+      <mat-option value="*Több helyes válaszos felelet választós">*Több helyes válaszos felelet választós</mat-option>
+      <mat-option value="*Eldöntendő">*Eldöntendő</mat-option>
 
-    <mat-form-field>
-      <mat-select placeholder="Pakli" [(ngModel)]="card.deckId" required>
-        <mat-option [value]="1">Java</mat-option>
-        <mat-option [value]="2">Javascript</mat-option>
-        <mat-option [value]="3">Adatbázis</mat-option>
-      </mat-select>
-    </mat-form-field>
+    </mat-select>
+  </mat-form-field>
 
-    <mat-form-field>
-        <input matInput placeholder="Típus" [(ngModel)]="card.type" required>
-      </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="Pakli" [(ngModel)]="deckId" required>
+      <mat-option *ngFor="let deck of decks" [value]="deck.id">{{deck.subject}}</mat-option>
+    </mat-select>
+  </mat-form-field>
 
-      <button mat-stroked-button color="primary" class="btn" (click)="save()">Mentés</button>
-    <div></div>
-    <button mat-stroked-button color="warn" class="btn" routerLink = "/learningcard">Mégsem</button>
-  </div>
+  <button mat-stroked-button color="primary" class="btn" (click)="save()">Mentés</button>
+  <div></div>
+  <button mat-stroked-button color="warn" class="btn" routerLink="/learningcard">Mégsem</button>
+</div>

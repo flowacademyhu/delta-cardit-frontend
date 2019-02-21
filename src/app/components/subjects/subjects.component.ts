@@ -4,6 +4,10 @@ import { DeckModel } from 'src/app/models/deck.model';
 import { MatDialog } from '@angular/material';
 import { HttpClient } from '@angular/common/http';
 import { NewDeckComponent } from '../new-deck/new-deck.component';
+import { AuthService } from 'src/app/services/auth.service';
+import { GroupsService } from 'src/app/services/groups.service';
+import { GroupModel } from 'src/app/models/group.model';
+import { UserModel } from 'src/app/models/user.model';
 
 
 @Component({
@@ -15,9 +19,32 @@ export class SubjectsComponent implements OnInit {
 
   public decks: DeckModel[] = [];
 
-  constructor(private decksService: DecksService, private httpClient: HttpClient, public dialog: MatDialog) { }
+  private currentUser: any = {};
+
+  private group: GroupModel = {};
+
+  constructor(private decksService: DecksService,
+    private httpClient: HttpClient,
+    public dialog: MatDialog,
+    private auth: AuthService,
+    private groupsService: GroupsService) {
+    this.auth.currentUser.subscribe(result => {
+      this.currentUser = result;
+      if (this.currentUser.role === 'student') {
+      this.getGroup();
+      } else {
+        this.loadDecks();
+      }
+    });
+  }
+
 
   ngOnInit() {
+     // this.getGroup();
+      // this.loadDecks();
+  }
+
+  loadDecks() {
     this.decksService.getAllDecks().subscribe(decks => {
       this.decks = decks;
       console.log(decks);
@@ -26,16 +53,41 @@ export class SubjectsComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(NewDeckComponent, {
+    }).afterClosed().subscribe(result => {
+      this.loadDecks();
     });
   }
 
   destroy(id: number) {
-    if (confirm('Biztos véglegesen törli a kártyát?')) {
+    if (confirm('Biztos véglegesen törli a paklit?')) {
       const url = `${'http://localhost:8000/decks'}/${id}`;
       return this.httpClient.delete(url).toPromise()
         .then(() => {
           this.ngOnInit();
         });
     }
+  }
+
+  get isAdmin() {
+    return this.currentUser && this.currentUser.role === 'admin';
+  }
+
+  get isStudent() {
+    return this.currentUser && this.currentUser.role === 'student';
+  }
+
+  getGroup() {
+    console.log(this.currentUser);
+    this.groupsService.getOneGroup(this.currentUser.groupId).subscribe(group => {
+      this.group = group;
+      this.getUserDecks();
+    });
+  }
+
+  getUserDecks() {
+    this.decksService.getByGroup(this.group.id).subscribe(decks => {
+      this.decks = decks;
+    });
+    console.log(this.group.id);
   }
 }

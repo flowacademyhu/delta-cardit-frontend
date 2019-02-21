@@ -1,6 +1,11 @@
 .answers {
   display: flex;
   justify-content: center;
+  
+}
+
+.select {
+  width: 110px;
 }
 
 .card-button-container {
@@ -57,14 +62,14 @@
   grid-template-columns: 5fr 1fr 1fr 1fr 5fr;
 }
 
-.x-button {
+.x-button, .y-button, .flip-button {
   align-self: end;
 }
 
-.y-button {
-  align-self: end;
-}
-
-.flip-button {
-  align-self: end;
+.options {
+  display: flex;
+  justify-content: space-evenly;
+  background-color:lightgray;
+  height: 30px;
+  align-items: center;
 }

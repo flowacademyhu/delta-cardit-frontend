@@ -46,6 +46,8 @@ import { GroupsDataComponent } from './components/groups/groups-data/groups-data
 import { GroupsDataDialogComponent } from './components/groups/groups-data/groups-data-dialog/groups-data-dialog.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { MyDetailsComponent } from './components/my-details/my-details.component';
+import { DeckStatisticsComponent } from './components/deck-statistics/deck-statistics.component';
+
 
 
 
@@ -78,7 +80,8 @@ export function tokenGetter() {
     ChangePasswordComponent,
     GroupsDataDialogComponent,
     MainPageComponent,
-    MyDetailsComponent
+    MyDetailsComponent,
+    DeckStatisticsComponent
   ],
   imports: [
     HttpClientModule,
@@ -100,6 +103,8 @@ export function tokenGetter() {
     MatTabsModule,
     ReactiveFormsModule,
     MatSlideToggleModule,
+    MatSlideToggleModule,
+    MatTableModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

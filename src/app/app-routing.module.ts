@@ -17,6 +17,7 @@ import { GroupsDataComponent } from './components/groups/groups-data/groups-data
 import { ChangePasswordComponent } from './components/login/change-password/change-password.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { MyDetailsComponent } from './components/my-details/my-details.component';
+import { DeckStatisticsComponent } from './components/deck-statistics/deck-statistics.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -37,8 +38,13 @@ const routes: Routes = [
   { path: 'cardmode/card/edit/:id', component: EditCardComponent,
   canActivate: [AuthGuard], data: {role: ['admin', 'contributor', 'student']} },
   { path: 'groups/:id/users', component: GroupsDataComponent  },
+  { path: 'cardmode/:id', component: CardModeComponent, canActivate: [AuthGuard], data: { role: ['admin', 'contributor', 'student'] } },
   { path: 'groups/:id/decks', component: GroupsDataComponent  },
-  { path: 'users/:id/me', component: MyDetailsComponent  }
+  { path: 'users/:id/me', component: MyDetailsComponent  },
+  { path: 'learningcard/edit/:id', component: EditCardComponent, canActivate: [AuthGuard], data: { role: ['admin', 'contributor'] } },
+  { path: 'subjects/edit/:id', component: EditDeckComponent, canActivate: [AuthGuard], data: { role: ['admin', 'contributor'] } },
+  { path: 'subjects/statistics/:id', component: DeckStatisticsComponent,
+   canActivate: [AuthGuard], data: { role: ['admin', 'contributor'] } }
 ];
 
 @NgModule({
