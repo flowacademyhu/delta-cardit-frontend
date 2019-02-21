@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DecksService } from 'src/app/services/decks.service';
 import { DeckModel } from 'src/app/models/deck.model';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatSnackBar } from '@angular/material';
 import { HttpClient } from '@angular/common/http';
 import { NewDeckComponent } from '../new-deck/new-deck.component';
 import { AuthService } from 'src/app/services/auth.service';
@@ -27,7 +27,8 @@ export class SubjectsComponent implements OnInit {
     private httpClient: HttpClient,
     public dialog: MatDialog,
     private auth: AuthService,
-    private groupsService: GroupsService) {
+    private groupsService: GroupsService,
+    private snack: MatSnackBar) {
     this.auth.currentUser.subscribe(result => {
       this.currentUser = result;
       if (this.currentUser.role === 'student') {
@@ -40,8 +41,7 @@ export class SubjectsComponent implements OnInit {
 
 
   ngOnInit() {
-     // this.getGroup();
-      // this.loadDecks();
+    // this.loadDecks();
   }
 
   loadDecks() {
@@ -59,13 +59,16 @@ export class SubjectsComponent implements OnInit {
   }
 
   destroy(id: number) {
-    if (confirm('Biztos véglegesen törli a paklit?')) {
       const url = `${'http://localhost:8000/decks'}/${id}`;
       return this.httpClient.delete(url).toPromise()
         .then(() => {
-          this.ngOnInit();
+          this.snack.open('A törlés sikeres!', 'Ok', { duration : 3000});
+          if (this.currentUser.role === 'student') {
+            this.getGroup();
+            } else {
+              this.loadDecks();
+            }
         });
-    }
   }
 
   get isAdmin() {

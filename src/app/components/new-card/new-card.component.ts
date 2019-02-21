@@ -17,11 +17,11 @@ export class NewCardComponent implements OnInit {
 
   public card: CardModel = {};
 
-  private question: string;
-  private answer: string;
-  private difficulty: number;
-  private type: string;
-  private deckId: number;
+  private question: string = null;
+  private answer: string = null;
+  private difficulty: number = null;
+  private type: string = null;
+  private deckId: number = null;
 
 
   // tslint:disable-next-line:max-line-length
