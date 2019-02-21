@@ -1,8 +1,11 @@
 <app-nav></app-nav>
 <div class="conatiner">
-  <h1>Felhasználó adatainak módosítása</h1>
+  <div class="h4-container">
+    <p>Felhasználó adatainak módosítása</p>
+  </div>
+  <div class="pos">
   <mat-form-field>
-    <input type="text" id="lastName" name="lastName" matInput placeholder="Vezetáknév" [(ngModel)]="user.lastName">
+    <input type="text" id="lastName" name="lastName" matInput placeholder="Vezetéknév" [(ngModel)]="user.lastName">
   </mat-form-field>
 
   <mat-form-field>
@@ -16,8 +19,8 @@
   <mat-form-field>
     <mat-select placeholder="Szerepkör" [(ngModel)]="user.role">
       <mat-option value="admin">Admin</mat-option>
-      <mat-option value="contributor">Mentor</mat-option>
-      <mat-option value="student">Hallgató</mat-option>
+      <mat-option value="contributor">Contributor</mat-option>
+      <mat-option value="student">Student</mat-option>
     </mat-select>
   </mat-form-field>
   <mat-form-field>
@@ -26,4 +29,7 @@
     </mat-select>
   </mat-form-field>
 </div>
+</div>
+<div class="new-btn">
 <button class="btn" mat-raised-button (click)="update()">Módosítás</button>
+</div>

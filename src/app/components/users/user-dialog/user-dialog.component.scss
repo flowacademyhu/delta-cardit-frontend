@@ -1,17 +1,31 @@
-.style {
-  justify-content: center;
-}
-
 .btn {
   background-color: #00bfb2;
   color: white;
-  width: 50%;
+  width: 60%;
 }
 
 .btn-position {
-  margin-top: 7%;
+  margin-top: 2%;
 }
 
 .both-btn {
-  align-content: center;
+  padding-left: 30%;
+}
+
+.h4-container {
+  display: flex;
+  justify-content: center;
+}
+
+.pos {
+  width: 30vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
