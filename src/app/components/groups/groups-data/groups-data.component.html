@@ -49,7 +49,7 @@
   
       <ng-container matColumnDef="edit">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Pakli kezelés </th>
-        <td mat-cell *matCellDef="let deck"> <button class="btn" mat-raised-button
+        <td mat-cell *matCellDef="let deck"> <button class="del-btn" mat-raised-button
           (click)="deleteDeck(deck.id)">Törlés</button>
       </td>
       </ng-container>

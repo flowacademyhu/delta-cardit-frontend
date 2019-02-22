@@ -9,7 +9,7 @@
       <mat-card class="card">
         <mat-card-title>{{deck.subject}}</mat-card-title>
         <br>
-        <img class="card-img" mat-card-image src="https://sdtimes.com/wp-content/uploads/2018/03/jW4dnFtA_400x400.jpg"
+        <img class="card-img" mat-card-image src="assets/images/flow.png"
           alt="{{deck.subject}}">
 
         <mat-card-actions class="stat">
@@ -25,9 +25,9 @@
 
     <div class="actions">
       <div></div>
-      <button mat-stroked-button color="primary" class="btn" routerLink="/subjects/edit/{{deck.id}}" *ngIf="!isStudent">Edit</button>
+      <button mat-stroked-button color="primary" class="btn" routerLink="/subjects/edit/{{deck.id}}" *ngIf="!isStudent">Szerkesztés</button>
       <div></div>
-      <button mat-stroked-button color="warn" class="btn" (click)="destroy(deck.id)" *ngIf="!isStudent">Delete</button>
+      <button mat-stroked-button color="warn" class="btn" (click)="destroy(deck.id)" *ngIf="!isStudent">Törlés</button>
     </div>
   </div>
 </div>

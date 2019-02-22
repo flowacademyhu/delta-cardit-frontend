@@ -19,7 +19,7 @@
             {{getErrorMessagePassword()}}
           </mat-error>
         </mat-form-field>
-        <div class="btn-position">
+        <div class="btn-position" (keydown)="keyDownFunction($event)">
           <button mat-raised-button class="btn" (click)="submit()">Bejelentkezés</button>
         </div>
         <a type="link" class="forget-password" [routerLink]="'/users/login/password'">Elfelejtettem a jelszavam!</a>
