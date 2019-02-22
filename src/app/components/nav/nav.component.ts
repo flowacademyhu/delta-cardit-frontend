@@ -15,6 +15,7 @@ import { UserModel } from 'src/app/models/user.model';
 export class NavComponent {
 
   private currentUser = {} as UserModel;
+  private isVisible = true;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
