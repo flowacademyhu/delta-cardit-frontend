@@ -2,12 +2,16 @@
 <div class="conatiner">
 <h1>Kártya módosítása</h1>
   <mat-form-field>
-    <input type="text" id="question" name="question"  matInput placeholder="Kérdés" [(ngModel)]="card.question">
+    <textarea type="text" id="question" name="question" matInput placeholder="Kérdés" [(ngModel)]="card.question"></textarea>
   </mat-form-field>
 
+  <br>
+
   <mat-form-field>
-    <input type="text" id="answer" name="answer"  matInput placeholder="Válasz" [(ngModel)]="card.answer">
+    <textarea type="text" id="answer" name="answer" matInput placeholder="Válasz" [(ngModel)]="card.answer"></textarea>
   </mat-form-field>
+
+  <br>
 
   <mat-form-field>
     <mat-select placeholder="Nehézség" [(ngModel)]="card.difficulty">
@@ -16,6 +20,8 @@
         <mat-option [value]="3">3</mat-option>
     </mat-select>
   </mat-form-field>
+
+  <br>
 
 <!--       <mat-form-field>
           <mat-select placeholder="Pakli" [(ngModel)]="card.deckId" required>

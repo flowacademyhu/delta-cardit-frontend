@@ -1,6 +1,7 @@
 .answers {
   display: flex;
   justify-content: center;
+  
 }
 
 .select {
@@ -13,10 +14,8 @@
   align-items: baseline;
 }
 
-.backbutton {
-}
-
-.nextbutton {
+.backbutton, nextbutton{
+  color: #09b3a7;
 }
 
 .card-container {
@@ -58,11 +57,23 @@
 .buttons-container {
   display: grid;
   grid-template-rows: 165px 1fr;
-  grid-template-columns: 5fr 1fr 1fr 1fr 5fr;
+  grid-template-columns: 6fr 1fr 1fr 1fr 6fr;
 }
 
 .x-button, .y-button, .flip-button {
   align-self: end;
+}
+
+.y-button {
+  color:green;
+}
+
+.x-button {
+  color: red;
+}
+
+.flip-button {
+  color: #09b3a7;
 }
 
 .options {

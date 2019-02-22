@@ -1,4 +1,38 @@
-.stats {
+/* .stats {
   padding-left: 10px;
   padding-right: 10px;
+} */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+table { 
+  color: #333;
+  font-family: Helvetica, Arial, sans-serif;
+  width: 640px;
+  border-collapse: collapse; 
+  border-spacing: 0; 
+  
+}
+		
+td, th {  
+  border: 0 none; 
+  height: 30px; 
+}
+			
+th {
+	background: linear-gradient(#333 0%,#444 100%);
+  color: #FFF; 
+  font-weight: bold;
+	height: 40px;
+}
+		
+td {
+  background: #09b3a7;
+  color: white; 
+  text-align: center; 
 }

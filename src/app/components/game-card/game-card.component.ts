@@ -119,7 +119,7 @@ export class GameCardComponent implements OnInit {
 
 
     for (let i = 0; i < this.cards.length; i++) {
-    if (this.cards[i] === this.cardsAnswers[i]) {
+    if (this.cards[i] === this.cardsAnswers[i] && (this.cards[i] === this.currentQuestionCard || this.cardsAnswers[i] === this.currentAnswerCard)) {
       this.openSnackBar();
     }
     }
