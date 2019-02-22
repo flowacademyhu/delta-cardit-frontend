@@ -35,8 +35,8 @@
   
   <div class="actions">
       <div></div>
-    <button mat-stroked-button color="primary" class="btn" routerLink="/learningcard/edit/{{card.id}}" *ngIf="!isStudent" >Edit</button>
+    <button mat-stroked-button color="primary" class="btn" routerLink="/learningcard/edit/{{card.id}}" *ngIf="!isStudent" >Szerkesztés</button>
     <div></div>
-    <button mat-stroked-button color="warn" class="btn" (click) = "destroy(card.id)" *ngIf="!isStudent" >Delete</button>
+    <button mat-stroked-button color="warn" class="btn" (click) = "destroy(card.id)" *ngIf="!isStudent" >Törlés</button>
   </div>
 </div>
