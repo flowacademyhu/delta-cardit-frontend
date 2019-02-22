@@ -1,26 +1,49 @@
 <app-nav></app-nav>
-<div class="stats">
-  <h4>
-    Pakli neve: {{deck.subject}}
-  </h4>
-  <hr>
-  <p>
-    Kártyák száma: {{this.cardCount}}
-  </p>
-  <hr>
-  <p>
-    Künnyű nehézségű kártyák száma: {{this.difficultyOneCount}}
-  </p>
-  <hr>
-  <p>
-    Közepes nehézségű kártyák száma: {{this.difficultyTwoCount}}
-  </p>
-  <hr>
-  <p>
-    Nehéz nehézségű kártyák száma: {{this.difficultyThreeCount}}
-  </p>
-  <hr>
+<div class=container>
+  <div class="stats">
+    <h4>
+      Pakli neve: {{deck.subject}}
+    </h4>
+    <hr>
+    <p>
+      Kártyák száma: {{this.cardCount}}
+    </p>
+    <hr>
+    <p>
+      Könnyű nehézségű kártyák száma: {{this.difficultyOneCount}}
+    </p>
+    <hr>
+    <p>
+      Közepes nehézségű kártyák száma: {{this.difficultyTwoCount}}
+    </p>
+    <hr>
+    <p>
+      Nehéz nehézségű kártyák száma: {{this.difficultyThreeCount}}
+    </p>
+    <hr>
+  </div>
+
 </div>
+
+<!-- <div class="container"> -->
+<!-- <table>
+  <tr>
+    <th>Pakli neve</th>
+    <th>Kártyák száma</th>
+    <th>Könnyű nehézségű kártyák</th>
+    <th>Közepes nehézségű kártyák</th>
+    <th>Nehéz nehézségű kártyák</th>
+  </tr>
+  <tr>
+    <td>{{deck.subject}}</td>
+    <td>{{this.cardCount}}</td>
+    <td>{{this.difficultyOneCount}}</td>
+    <td>{{this.difficultyTwoCount}}</td>
+    <td>{{this.difficultyThreeCount}}</td>
+  </tr>
+</table> -->
+<!-- </div> -->
+
 
 <!-- <table mat-table class="table" [dataSource]="dataSource">
 

@@ -1,0 +1,32 @@
+h3 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-bottom: 10px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+} 
+.btn {
+  background-color:  #00bfb2;
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+mat-form-field {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btnc {
+  padding-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
