@@ -3,7 +3,7 @@
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
     [opened]="false">
     <mat-toolbar class="elements-color">Menü</mat-toolbar>
-    <mat-nav-list>
+    <mat-nav-list class="lis">
       <ul>
         <li *ngIf="isAdmin" class="elements-color"><button class="elements-color" mat-icon-button title="Felhasználók"
             routerLink="/users" *ngIf="isAdmin">

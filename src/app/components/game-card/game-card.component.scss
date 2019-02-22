@@ -43,7 +43,7 @@
   max-width: 100%;
   border: solid 1px #ccc;
   min-height: 60px;
-  background: rgb(73, 112, 107);
+  background: #09b3a7;
   border-radius: 6px;
   overflow: hidden;
   display: block;
@@ -53,13 +53,13 @@
 .box {
   padding: 20px 10px;
   border-bottom: solid 3px darkgrey;
-  color: rgba(0, 0, 0, 0.87);
+  color:white;
   display: flex;
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
   cursor: move;
-  background: #09b3a7;
+  background: #3564A0;
   font-size: 14px;
   text-align: center;
 }
