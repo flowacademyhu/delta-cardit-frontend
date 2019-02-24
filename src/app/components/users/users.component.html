@@ -1,0 +1,43 @@
+<app-nav></app-nav>
+<h2 class="h4-container">Felhasználók</h2>
+
+<div class="container">
+  <table mat-table [dataSource]="dataSource" matSort class="table-size">
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+      <td mat-cell *matCellDef="let user"> {{user.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Név </th>
+      <td mat-cell *matCellDef="let user"> {{user.lastName}} {{user.firstName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> E-mail cím </th>
+      <td mat-cell *matCellDef="let user"> {{user.email}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="role">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Szerepkör </th>
+      <td mat-cell *matCellDef="let user"> {{user.role}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Felhasználó kezelés </th>
+      <td mat-cell *matCellDef="let user"> <button class="btn" mat-raised-button
+          [routerLink]="'/users/edit/' + user.id">Szerkesztés</button>
+        <button class="btn" mat-raised-button (click)="deleteUser(user.id)">Törlés</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+        showFirstLastButtons class="pag-pos"></mat-paginator>
+</div>
+  <div class="new-btn-position">
+    <button class="btn" mat-raised-button (click)="openDialog()">Új felhasználó</button>
+  </div>

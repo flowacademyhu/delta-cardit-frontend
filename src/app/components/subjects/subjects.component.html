@@ -1,0 +1,30 @@
+<app-nav></app-nav>
+
+<button mat-icon-button id="fab" title="Új"  *ngIf="!isStudent">
+  <mat-icon aria-label="Új" (click)="openDialog()">add</mat-icon>
+</button>
+<div class="container">
+  <div class="subject-list-container" *ngFor="let deck of decks">
+    <div class="subject-container">
+      <mat-card class="card">
+        <mat-card-title>{{deck.subject}}</mat-card-title>
+        <br>
+        <img class="card-img" mat-card-image src="assets/images/flow.png"
+          alt="{{deck.subject}}">
+
+        <mat-card-actions class="stat">
+          <button mat-stroked-button color="primary" class="color" routerLink="/cardmode/{{deck.id}}">Megnyitás</button>
+          <hr>
+          <button mat-stroked-button color="primary" class="btn" routerLink="/subjects/statistics/{{deck.id}}" *ngIf="!isStudent">Statisztika</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+
+    <div class="actions">
+      <div></div>
+      <button mat-stroked-button color="primary" class="btn" routerLink="/subjects/edit/{{deck.id}}" *ngIf="!isStudent">Szerkesztés</button>
+      <div></div>
+      <button mat-stroked-button color="warn" class="btn" (click)="destroy(deck.id)" *ngIf="!isStudent">Törlés</button>
+    </div>
+  </div>
+</div>

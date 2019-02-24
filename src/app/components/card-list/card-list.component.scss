@@ -1,0 +1,51 @@
+.card-list-container {
+  padding-top: 50px;
+}
+
+.two-card-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  height: 245px;
+  width: 200px;
+  background-color: #3564A0;
+  color: white;
+}
+
+.vl {
+  border-left: 1px solid grey;
+  height: 220px;
+}
+
+.space {
+  width: 20px;
+}
+
+#fab{
+  top: auto !important;
+  right: 30px !important;
+  bottom: 20px !important;
+  left: auto !important;
+  position: fixed !important;
+  background-color: #09b3a7;
+}
+
+.actions {
+  display: grid;
+  grid-template-rows: 165px 1fr;
+  grid-template-columns: 4fr 2fr 1fr 2fr 4fr;
+}
+
+.btn {
+  align-self: center;
+  background-color:  #00bfb2;
+  color: white;
+}
+
+#fab {
+  color: white;
+}

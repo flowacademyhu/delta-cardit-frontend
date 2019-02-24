@@ -1,0 +1,29 @@
+<div class="container">
+  <!-- <div class="drag-drop-container"> -->
+  <div class="questions">
+    <h4 class="title">Kérdések</h4>
+    <div cdkDropList #cardList="cdkDropList" class="list" [cdkDropListData]="cards" (cdkDropListDropped)="drop($event)">
+      <div class="box" *ngFor="let card of cards" title="{{card.question}}" cdkDrag>
+        <h4>{{card.question}}</h4>
+        <h4 *cdkDragPreview> {{card.question}}</h4>
+      </div>
+    </div>
+  </div>
+
+ <!--  <div *ngFor="let card of cards" class="buttons">
+    <button class="x-button" mat-mini-fab color="red"><i class="material-icons" color="red">close</i></button>
+    <button class="y-button" mat-mini-fab color="green" (click)="amIRight()"><i class="material-icons" color="green">done</i></button>
+  </div> -->
+<div class="space"></div>
+
+  <div class="answers">
+      <h4 class="title" >Válaszok</h4>
+    <div cdkDropList #cardsAnswerList="cdkDropList" class="list" [cdkDropListData]="cardsAnswers" (cdkDropListDropped)="drop2($event)">
+      <div class="box" *ngFor="let cardsAnswer of cardsAnswers" title={{cardsAnswer.answer}} cdkDrag>
+        <h4>{{cardsAnswer.answer}}</h4>
+        <h4 *cdkDragPreview> {{cardsAnswer.question}}</h4>
+      </div>
+    </div>
+  </div>
+  <!-- </div> -->
+</div>

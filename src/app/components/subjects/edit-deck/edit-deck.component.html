@@ -1,0 +1,13 @@
+<app-nav></app-nav>
+<div class="conatiner">
+<h3>Pakli módosítása</h3>
+
+
+  <mat-form-field>
+    <input type="text" id="type" name="type"  matInput placeholder="Subject" [(ngModel)]="deck.subject">
+  </mat-form-field>
+
+</div>
+<div class= btnc>
+<button class="btn" mat-raised-button (click)="update()">Módosítás</button>
+</div>
