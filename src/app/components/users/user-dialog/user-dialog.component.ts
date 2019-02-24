@@ -42,7 +42,6 @@ export class UserDialogComponent implements OnInit {
   save() {
     this.user.password = this.randomPassword;
     this.user.role = this.role;
-    console.log(this.user);
     this.usersService.newUser(this.user).subscribe(result => {
       this.router.navigate(['users']).then(() => {
         this.snack.open('A mentés sikeres!', 'Ok', { duration : 3000});

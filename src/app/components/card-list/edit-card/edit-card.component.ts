@@ -20,7 +20,6 @@ export class EditCardComponent implements OnInit {
 
   private decks: DeckModel[] = [];
 
-  // tslint:disable-next-line:max-line-length
   constructor(private router: Router,
     private route: ActivatedRoute,
     private cardsService: CardsService,
@@ -42,18 +41,15 @@ export class EditCardComponent implements OnInit {
   loadDecks() {
     this.decksService.getAllDecks().subscribe(decks => {
       this.decks = decks;
-      console.log(decks);
     });
   }
 
   update() {
-    console.log(this.card);
       this.cardsService.edit(this.card).subscribe((result) => {
         this.snack.open('Mentés sikeres');
         this.router.navigate([this.lastLocation.back()]);
       }, (error) => {
         alert('Mentés sikertelen!');
-        console.log('Error', error);
       });
     }
   }

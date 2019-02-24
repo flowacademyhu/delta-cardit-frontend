@@ -7,33 +7,18 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-constructor(private auth: AuthService) {}
+  constructor(private auth: AuthService) { }
 
- intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-  // add authorization header with jwt token if available
-  const token = this.auth.getToken();
-  if (token) {
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    const token = this.auth.getToken();
+    if (token) {
       request = request.clone({
-          setHeaders: {
-              Authorization: `Bearer ${token}`
-          }
+        setHeaders: {
+          Authorization: `Bearer ${token}`
+        }
       });
-  }
+    }
 
-  return next.handle(request);
-}
-
- /* intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-  const token = this.auth.getToken(); // auth is provided via constructor.
-  if (token) {
-    // Logged in. Add Bearer token.
-    return next.handle(
-      req.clone({
-        headers: req.headers.set('authorization', token)
-      })
-    );
+    return next.handle(request);
   }
-  // Not logged in. Continue without modification.
-  return next.handle(req);
-  } */
 }

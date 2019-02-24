@@ -65,21 +65,17 @@ export class GroupsDataComponent implements OnInit {
 
   getUsersByGroup(id: number) {
     this.groupService.usersByGroupId(id).subscribe(result => {
-    //  this.usersData = result;
       this.dataSource = new MatTableDataSource<UserModel>(result);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-      console.log(this.usersData);
     });
   }
 
   getDecksByGroup(id: number) {
     this.groupService.decksByGroupId(id).subscribe(result => {
-    //  this.deckData = result;
       this.deckDataSource = new MatTableDataSource<DeckModel>(result);
       this.deckDataSource.paginator = this.paginator;
       this.deckDataSource.sort = this.sort;
-      console.log(this.deckData);
     });
   }
 

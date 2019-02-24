@@ -36,7 +36,6 @@ export class LoginComponent implements OnInit {
   }
 
   public submit() {
-    console.log(this.userEmail, this.userPassword);
     this.auth.login(this.userEmail, this.userPassword)
       .subscribe(
         result => {

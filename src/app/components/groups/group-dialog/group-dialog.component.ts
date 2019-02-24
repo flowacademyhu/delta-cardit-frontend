@@ -30,23 +30,15 @@ export class GroupDialogComponent implements OnInit {
     this.deckService.getAllDecks().subscribe(decks => {
       this.decks = decks;
     });
-    console.log(this.decks);
   }
 
-  /*getDecks() {
-    this.deckService.getAllDecks().subscribe(decks => {
-      this.decks = decks;
-    });
-  } */
 
     checkValue(event: any) {
-    console.log(event.source.value);
     this.selectedDecks.push(event.source.value);
   }
 
   save() {
     this.group.name = this.name;
-    console.log(this.group);
     this.groupsService.newGroup(this.group).subscribe(result => {
       this.router.navigate(['groups']).then(() => {
         this.snack.open('A mentés sikeres!', 'Ok', { duration : 3000});

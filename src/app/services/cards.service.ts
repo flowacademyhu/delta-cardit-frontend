@@ -34,7 +34,6 @@ export class CardsService {
   }
 
   delete(card: CardModel) {
-    console.log(card.id);
     return this.httpClient.delete(`${environment.apiUrl}/cards/` + card.id);
   }
 }

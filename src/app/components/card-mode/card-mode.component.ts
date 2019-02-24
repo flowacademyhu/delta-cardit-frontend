@@ -25,23 +25,11 @@ export class CardModeComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
-      console.log(params.id);
       if (params.id) {
         this.decksService.getOne(params.id).subscribe((result: DeckModel) => {
           this.deck = result ? result : {} as DeckModel;
         });
       }
     });
-}
-
-
-    /* this.route.params.subscribe((params: Params) => {
-      if (params.id) {
-        this.decksService.getOne(params.id).subscribe((result: DeckModel) => {
-          this.deck = result ? result : {} as DeckModel;
-        });
-      }
-    });
-    console.log(this.deck.subject);
-  } */
+  }
 }

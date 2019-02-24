@@ -44,12 +44,10 @@ export class CardComponent implements OnInit {
 
   getDeck() {
     this.route.params.subscribe((params: Params) => {
-      console.log(params.id);
       if (params.id) {
         this.decksService.getOne(params.id).subscribe((result: DeckModel) => {
           this.deck = result ? result : {} as DeckModel;
           this.loadCardsByDeck(this.deck.id);
-          console.log(222222);
         });
       }
     });
@@ -57,14 +55,11 @@ export class CardComponent implements OnInit {
 
 
   loadCardsByDeck(id: number) {
-    console.log(id);
     this.cardsService.getAllFromDeck(id).subscribe(cards => {
-      console.log(cards);
       this.cards = cards;
       if (this.isRandom) {
         this.shuffle(this.cards);
       }
-      console.log(this.cards);
       this.getFirstCard();
       this.numberOfCards = this.cards.length;
       this.answers = 0;
@@ -80,7 +75,6 @@ export class CardComponent implements OnInit {
       const j = Math.floor(Math.random() * (i + 1));
       [cards[i], cards[j]] = [cards[j], cards[i]];
     }
-    console.log(cards);
   }
 
   reloadCards() {
@@ -89,7 +83,6 @@ export class CardComponent implements OnInit {
 
   next() {
     let index = this.cards.indexOf(this.card);
-    console.log(index);
     if (this.oneRound) {
       if (index !== this.cards.length - 1) {
         this.card = this.cards[index += 1];
@@ -99,13 +92,11 @@ export class CardComponent implements OnInit {
     } else {
       this.card = this.cards[0];
     }
-    console.log(this.oneRound);
   }
 
 
   prev() {
     let index = this.cards.indexOf(this.card);
-    console.log(index);
     if (!(this.card === this.cards[0])) {
       this.card = this.cards[index -= 1];
     }
@@ -114,7 +105,6 @@ export class CardComponent implements OnInit {
   amIRight() {
     const index = (this.cards.indexOf(this.card));
     this.cards.splice(index, 1);
-    console.log(this.cards);
     if (this.answers < this.numberOfCards - 1 ) {
       this.answers += 1;
     } else if (this.answers < this.numberOfCards) {

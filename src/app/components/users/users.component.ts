@@ -51,7 +51,6 @@ export class UsersComponent implements OnInit {
 
   loadUsers() {
     this.usersService.getAllUsers().subscribe(users => {
-   // this.users = users;
     this.dataSource = new MatTableDataSource<UserModel>(users);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
@@ -73,7 +72,6 @@ export class UsersComponent implements OnInit {
   getUser(id: number) {
     this.usersService.getOneUser(id).subscribe(user => {
       this.selectedUser = user;
-      console.log(this.selectedUser);
     });
   }
 

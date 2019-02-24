@@ -40,7 +40,6 @@ export class UsersEditComponent implements OnInit {
   }
 
   update() {
-    console.log(this.user);
       this.usersService.editUser(this.user).subscribe((result) => {
         this.router.navigate(['users']).then(() => {
           this.snack.open('A mentés sikeres!', 'Ok', { duration : 3000});

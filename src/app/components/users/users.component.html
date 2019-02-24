@@ -1,15 +1,5 @@
 <app-nav></app-nav>
 <h2 class="h4-container">Felhasználók</h2>
-<!-- <mat-list class="listposition">
-  <h3 mat-subheader>Felhasználók</h3>
-  <mat-list-item *ngFor="let user of users">
-    <mat-icon mat-list-icon>user</mat-icon>
-    <h4 mat-line>{{user.lastName}} {{user.firstName}}</h4>
-    <h4 mat-line>{{user.email}}</h4>
-    <button mat-raised-button class="btn" [routerLink]="'/users/edit/' + user.id">Szerkesztés</button>
-    <button mat-raised-button class="btn" (click)="deleteUser(user.id)" (userDeleted)="handleUserDeleted($event)">Törlés</button>
-  </mat-list-item>
-  <button mat-raised-button class="new-btn" (click)="openDialog()">Új felhasználó</button>  -->
 
 <div class="container">
   <table mat-table [dataSource]="dataSource" matSort class="table-size">

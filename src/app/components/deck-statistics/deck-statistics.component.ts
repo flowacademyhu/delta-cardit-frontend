@@ -44,7 +44,6 @@ export class DeckStatisticsComponent implements OnInit {
         });
       }
     });
-    console.log(this.deck.id);
   }
 
   loadData() {
@@ -52,9 +51,7 @@ export class DeckStatisticsComponent implements OnInit {
   }
 
   loadCardsByDeck(id: number) {
-    console.log(this.deck.id);
     this.cardsService.getAllFromDeck(id).subscribe(cards => {
-      console.log(cards);
       this.cards = cards;
       this.getCardCount();
     });

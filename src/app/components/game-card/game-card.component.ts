@@ -48,7 +48,6 @@ export class GameCardComponent implements OnInit {
 
   getDeck() {
     this.route.params.subscribe((params: Params) => {
-      console.log(params.id);
       if (params.id) {
         this.decksService.getOne(params.id).subscribe((result: DeckModel) => {
           this.deck = result ? result : {} as DeckModel;
@@ -77,8 +76,6 @@ export class GameCardComponent implements OnInit {
     console.log(event.currentIndex);
     this.currentIndex = event.currentIndex;
     this.currentQuestionCard = (this.cardsAnswers[event.currentIndex]);
-    // console.log(this.currentIndex);
-    // console.log(this.currentQuestionCard);
     this.isItRight();
   }
 
@@ -87,7 +84,6 @@ export class GameCardComponent implements OnInit {
     console.log(event.currentIndex);
     this.currentAnswerCard = (this.cardsAnswers[event.currentIndex]);
     this.currentIndex2 = event.currentIndex;
-    // console.log(this.currentAnswerCard);
     this.isItRight();
   }
 
@@ -119,7 +115,8 @@ export class GameCardComponent implements OnInit {
 
 
     for (let i = 0; i < this.cards.length; i++) {
-    if (this.cards[i] === this.cardsAnswers[i] && (this.cards[i] === this.currentQuestionCard || this.cardsAnswers[i] === this.currentAnswerCard)) {
+    if (this.cards[i] === this.cardsAnswers[i]
+      && (this.cards[i] === this.currentQuestionCard || this.cardsAnswers[i] === this.currentAnswerCard)) {
       this.openSnackBar();
     }
     }

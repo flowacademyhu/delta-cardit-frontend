@@ -17,7 +17,6 @@ export class MyDetailsComponent implements OnInit {
   constructor(private userService: UsersService, private router: Router, private auth: AuthService, private snack: MatSnackBar) {
     this.auth.currentUser.subscribe(result => {
       this.currentUser = result;
-      console.log(this.currentUser);
     });
   }
 
@@ -25,15 +24,11 @@ export class MyDetailsComponent implements OnInit {
   }
 
   public submit() {
-    console.log(this.userPassword);
-    console.log(this.currentUser.id);
     this.userService.changeOwnPassword(this.currentUser.id, this.userPassword).subscribe(result => {
       this.router.navigate(['index']).then(() => {
         this.snack.open('Sikeres jelszó módosítás!', 'Ok', { duration: 3000 });
-        console.log(result);
       }, err => {
         this.snack.open('Sikertelen jelszó modosítás!', 'Ok', { duration: 3000 });
-        console.log(err);
       });
     });
   }

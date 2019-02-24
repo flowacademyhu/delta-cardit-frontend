@@ -81,7 +81,6 @@ export class SubjectsComponent implements OnInit {
   }
 
   getGroup() {
-    console.log(this.currentUser);
     this.groupsService.getOneGroup(this.currentUser.groupId).subscribe(group => {
       this.group = group;
       this.getUserDecks();
@@ -92,6 +91,5 @@ export class SubjectsComponent implements OnInit {
     this.decksService.getByGroup(this.group.id).subscribe(decks => {
       this.decks = decks;
     });
-    console.log(this.group.id);
   }
 }

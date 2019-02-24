@@ -45,7 +45,6 @@ export class CardListComponent implements OnInit {
 
   getDeck() {
     this.route.params.subscribe((params: Params) => {
-      console.log(params.id);
       if (params.id) {
         this.decksService.getOne(params.id).subscribe((result: DeckModel) => {
           this.deck = result ? result : {} as DeckModel;
@@ -57,9 +56,7 @@ export class CardListComponent implements OnInit {
 
 
   loadCardsByDeck(id: number) {
-    console.log(this.deck.id);
     this.cardsService.getAllFromDeck(id).subscribe(cards => {
-      console.log(cards);
       this.cards = cards;
     });
   }
@@ -83,10 +80,6 @@ export class CardListComponent implements OnInit {
           this.snack.open('A törlés sikeres!', 'Ok', { duration : 3000});
         });
     }
-    /* this.cardsService.delete(this.cards.id).subscribe((result) => {
-      alert('A törlés sikeres!');
-      this.router.navigate(['learningcard']);
-    }); */
 
   get isAdmin() {
     return this.currentUser && this.currentUser.role === 'admin';

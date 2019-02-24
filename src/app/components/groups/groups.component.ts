@@ -45,7 +45,6 @@ export class GroupsComponent implements OnInit {
 
   loadGroups() {
     this.groupService.getAllGroups().subscribe(groups => {
-     // this.groups = groups;
       this.dataSource = new MatTableDataSource<GroupModel>(groups);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
@@ -55,7 +54,6 @@ export class GroupsComponent implements OnInit {
   getUser(id: number) {
     this.groupService.getOneGroup(id).subscribe(group => {
       this.selectedGroup = group;
-      console.log(this.selectedGroup);
     });
   }
 
@@ -81,7 +79,6 @@ export class GroupsComponent implements OnInit {
       this.ngOnInit();
     }, error => {
       this.snack.open('A törlés sikertelen!', 'Ok', { duration : 3000});
-      console.log('Error', error);
     });
   }
 

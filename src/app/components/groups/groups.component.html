@@ -1,14 +1,5 @@
 <app-nav></app-nav>
 <h2 class="h4-container">Csoportok</h2>
-<!-- <mat-list class="listposition">
-  <h3 mat-subheader>Csoportok</h3>
-  <mat-list-item *ngFor="let group of groups">
-    <mat-icon mat-list-icon>user</mat-icon>
-    <h4 type="link" mat-line type [routerLink]="'/groups/' + group.id + '/users'"> {{group.name}} </h4>
-    <button mat-raised-button class="btn" [routerLink]="'/groups/edit/' + group.id">Szerkesztés</button>
-    <button mat-raised-button class="btn" (click)="deleteGroup(group.id)" (groupDeleted)="handleGroupDeleted($event)">Törlés</button>
-  </mat-list-item>
-  <button mat-raised-button class="new-btn" (click)="openDialog()">Új Csoport</button>  -->
 
   <div class="container">
     <table mat-table [dataSource]="dataSource" matSort class="table-size">

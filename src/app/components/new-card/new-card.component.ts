@@ -23,8 +23,6 @@ export class NewCardComponent implements OnInit {
   private type: string = null;
   private deckId: number = null;
 
-
-  // tslint:disable-next-line:max-line-length
   constructor(public dialogRef: MatDialogRef<NewCardComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private router: Router, private route: ActivatedRoute,
@@ -35,7 +33,6 @@ export class NewCardComponent implements OnInit {
   ngOnInit() {
     this.decksService.getAllDecks().subscribe(decks => {
       this.decks = decks;
-      console.log(decks);
     });
   }
 
@@ -45,7 +42,6 @@ export class NewCardComponent implements OnInit {
       alert('Sikeres mentés!');
       this.router.navigate(['learningcard']);
     }, (error) => {
-      console.log('Error', error);
     });
   }
 

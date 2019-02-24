@@ -17,23 +17,13 @@ export class NewDeckComponent implements OnInit {
 
   public subject: string;
 
-
-  // tslint:disable-next-line:max-line-length
   constructor(public dialogRef: MatDialogRef<NewDeckComponent>,
     private route: ActivatedRoute, private router: Router,
     private decksService: DecksService,
     private snack: MatSnackBar) { }
 
   ngOnInit() {
-    /* this.route.params.subscribe((params: Params) => {
-      console.log(params);
-      console.log(params.id);
-      console.log('P' + params.id);
-      this.decksService.getOne(params.id).subscribe((result) => {
-        console.log('R' + result);
-        this.deck = result ? result : {} as DeckModel;
-      });
-    }); */
+
   }
 
   loadDecks() {
@@ -45,7 +35,6 @@ export class NewDeckComponent implements OnInit {
 
   save() {
     this.subject = this.deck.subject;
-    console.log(this.deck);
     this.decksService.save(this.deck).subscribe(result => {
       this.snack.open('Sikeres mentés!');
       this.router.navigate(['subjects']);

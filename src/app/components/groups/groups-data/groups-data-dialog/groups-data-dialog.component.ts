@@ -38,7 +38,6 @@ export class GroupsDataDialogComponent implements OnInit {
   }
 
   save() {
-    console.log(this.paramId);
     this.decksService.addingDecks(this.paramId, this.deckId).subscribe(result => {
       this.snack.open('A hozzáadás sikeres!', 'Ok', { duration : 3000});
       this.dialogRef.close();
